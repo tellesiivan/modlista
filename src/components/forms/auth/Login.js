@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import LoadingButton from "../../helpers/LoadingButton";
 
 export default function Login() {
+  const [ui, setUid] = useState({
+    error: "",
+    loading: false,
+  });
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -37,13 +42,16 @@ export default function Login() {
           className="px-2 py-3 rounded-md sm:text-sm bg-slate-200 text-slate-600 focus-within:outline-none "
         />
       </div>
-
-      <button
+      <LoadingButton
+        styling={
+          "inline-flex justify-center w-full p-3 text-sm font-medium tracking-wide text-white bg-black border border-transparent rounded-md hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        }
+        loading={ui.loading}
+        text="Login"
         type="submit"
-        className="inline-flex justify-center w-full p-3 text-sm font-medium text-white bg-black border border-transparent rounded-md"
-      >
-        Login
-      </button>
+        action={() => console.log("clicked")}
+        disabled={values.password === "" || values.email === ""}
+      />
     </form>
   );
 }
