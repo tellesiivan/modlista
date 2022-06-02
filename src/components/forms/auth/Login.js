@@ -5,6 +5,7 @@ import { auth } from "../../../firebase/clientApp";
 import AlertMessage from "../../helpers/AlertMessage";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import { authModalStatus } from "../../../store/user/modalsSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -14,14 +15,14 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [isError, setIsError] = useState("");
 
+  const [errorFound, setErrorFound] = useState("");
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   const onChangeHandler = (e) => {
-    if (isError) {
-      setIsError("");
+    if (errorFound) {
+      setErrorFound("");
     }
     const {
       target: { name, value },
@@ -37,16 +38,17 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      signInWithEmailAndPassword(values.email, values.password);
-
-      if (error) {
-        throw new Error("Email or password not found.");
-      }
-
-      router.replace(`/dashboard`);
+      await signInWithEmailAndPassword(values.email, values.password);
     } catch (error) {
       console.error(error);
-      setIsError(error.message);
+    }
+    if (error || !loading) {
+      setErrorFound("User not found, check email and password");
+
+      return;
+    } else {
+      dispatch(authModalStatus({ open: false, from: "login" }));
+      router.replace(`/dashboard`);
     }
   };
 
@@ -70,7 +72,7 @@ export default function Login() {
           className="px-2 py-3 rounded-md sm:text-sm bg-slate-200 text-slate-600 focus-within:outline-none "
         />
       </div>
-      {isError && <AlertMessage message={isError} />}
+      {errorFound && <AlertMessage message={errorFound} />}
       <LoadingButton
         styling={
           "inline-flex justify-center w-full p-3 text-sm font-medium tracking-wide text-white bg-black border border-transparent rounded-md hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
@@ -78,7 +80,7 @@ export default function Login() {
         loading={loading}
         text="Login"
         type="submit"
-        disabled={values.password === "" || values.email === "" || isError}
+        disabled={values.password === "" || values.email === "" || errorFound}
       />
     </form>
   );

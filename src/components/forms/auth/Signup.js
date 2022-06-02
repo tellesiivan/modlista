@@ -3,18 +3,21 @@ import LoadingButton from "../../helpers/LoadingButton";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase/clientApp";
 import { useRouter } from "next/router";
-
+import { useDispatch } from "react-redux";
 import AlertMessage from "../../helpers/AlertMessage";
+import { authModalStatus } from "../../../store/user/modalsSlice";
 
 export default function Signup() {
+  const [isError, setIsError] = useState("");
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: "",
     password: "",
+    comfirmPassword: "",
   });
-  const [isError, setIsError] = useState("");
-  const router = useRouter();
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   const onChangeHandler = (e) => {
@@ -36,15 +39,23 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      if (error) {
-        throw new Error("Unable to create user: " + email + error.message);
+      if (values.password !== values.comfirmPassword) {
+        setIsError("Passwords do not match");
+        return;
+      } else if (values.password.length < 5) {
+        setIsError("Password is too short");
+        return;
       }
       createUserWithEmailAndPassword(values.email, values.password);
-      router.replace(`/dashboard`);
     } catch (error) {
       console.log("onSubmitHandler:Signup", error.message);
       setIsError(error.message);
     }
+    if (error) {
+      throw new Error("Unable to create user: " + email + error.message);
+    }
+    dispatch(authModalStatus({ open: false, from: "signup" }));
+    router.replace(`/dashboard`);
   };
 
   return (
@@ -66,7 +77,16 @@ export default function Signup() {
           placeholder="Password"
           className="px-2 py-3 text-black rounded-md sm:text-sm bg-slate-200 focus-within:outline-none placeholder:text-xs sm:placeholder:text-sm "
         />
+        <input
+          type="password"
+          value={values.comfirmPassword}
+          onChange={onChangeHandler}
+          name="comfirmPassword"
+          placeholder="Verify password"
+          className="px-2 py-3 text-black rounded-md sm:text-sm bg-slate-200 focus-within:outline-none placeholder:text-xs sm:placeholder:text-sm "
+        />
       </div>
+
       {isError && <AlertMessage message={isError} />}
       <LoadingButton
         styling={
@@ -75,7 +95,12 @@ export default function Signup() {
         loading={loading}
         text="Create account"
         type="submit"
-        disabled={values.password === "" || values.email === "" || isError}
+        disabled={
+          values.password === "" ||
+          values.email === "" ||
+          values.comfirmPassword === "" ||
+          isError
+        }
       />
     </form>
   );

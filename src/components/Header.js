@@ -26,31 +26,6 @@ export default function Header() {
     );
   };
 
-  useEffect(() => {
-    if (user?.email) {
-      const getUser = async () => {
-        try {
-          const docRef = doc(firestore, `users/${user.uid}`);
-          const docSnap = await getDoc(docRef);
-
-          if (docSnap.exists()) {
-            dispatch(
-              addUser({
-                user: docSnap.data(),
-              })
-            );
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
-        } catch (error) {
-          console.log("getUser", error.message);
-        }
-      };
-      getUser();
-    }
-  }, [user?.email]);
-
   return (
     <header className="flex items-center w-full px-3 bg-[#090909]  h-14 justify-between ">
       <div>

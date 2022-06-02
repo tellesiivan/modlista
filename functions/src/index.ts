@@ -9,6 +9,8 @@ export const createUserDoc = functions.auth.user().onCreate(async (user) => {
 
   const newUser = {
     uid: user.uid,
+    ...(user.displayName && { name: user.displayName }),
+    ...(user.photoURL && { avatarImg: user.photoURL }),
     email: user.email,
     createdAt: firestore.Timestamp.fromDate(new Date()),
   };
