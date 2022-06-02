@@ -3,7 +3,7 @@ import uiReducer from "./user/uiSlice";
 import modalsReducer from "./user/modalsSlice";
 export const store = configureStore({
   reducer: {
-    ui: uiReducer,
+    userUI: uiReducer,
     modals: modalsReducer,
   },
 });

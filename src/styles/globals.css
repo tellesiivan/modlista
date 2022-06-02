@@ -28,19 +28,20 @@
 }
 
 @layer components {
-  .select2-dropdown {
-    @apply rounded-b-lg shadow-md;
+  .outlineBtn {
+    @apply px-6 py-1.5 text-xs border-2 border-black rounded-full;
   }
-  .select2-search {
-    @apply border border-gray-300 rounded;
+  .fillBtn {
+    @apply px-6 py-1.5 text-xs bg-black rounded-full border-2 border-transparent;
   }
+
   .select2-results__group {
     @apply text-lg font-bold text-gray-900;
   }
   /* ... */
 }
 @layer base {
-  body {
-    @apply font-mono;
+  html {
+    @apply font-sans;
   }
 }
