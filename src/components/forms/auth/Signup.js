@@ -2,27 +2,26 @@ import { useState } from "react";
 import LoadingButton from "../../helpers/LoadingButton";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase/clientApp";
-import useNewUser from "../../../Hooks/useNewUser";
+import { useRouter } from "next/router";
+
+import AlertMessage from "../../helpers/AlertMessage";
 
 export default function Signup() {
-  const [ui, setUid] = useState({
-    error: "",
-    loading: false,
-  });
-
   const [values, setValues] = useState({
     email: "",
-    userName: "",
     password: "",
   });
+  const [isError, setIsError] = useState("");
+  const router = useRouter();
 
-  const { error, loading, newUser } = useNewUser(
-    values.userName,
-    values.email,
-    values.password
-  );
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
   const onChangeHandler = (e) => {
+    if (isError) {
+      setIsError("");
+    }
+
     const {
       target: { name, value },
     } = e;
@@ -34,34 +33,25 @@ export default function Signup() {
   };
 
   const onSubmitHandler = async (e) => {
-    console.log("onSubmitHandler", values.userName, values.email);
     e.preventDefault();
-    await newUser();
 
     try {
+      if (error) {
+        throw new Error("Unable to create user: " + email + error.message);
+      }
+      createUserWithEmailAndPassword(values.email, values.password);
+      router.replace(`/dashboard`);
     } catch (error) {
       console.log("onSubmitHandler:Signup", error.message);
+      setIsError(error.message);
     }
   };
 
   return (
     <form onSubmit={onSubmitHandler}>
       <div className="flex flex-col max-w-md mx-auto mb-4 space-y-2">
-        <div className="flex flex-row items-center pr-2 overflow-hidden text-black rounded-md h-11 sm:text-sm bg-slate-200 focus-within:outline-none">
-          <div className="flex items-center justify-center h-full px-2 mr-1.5  font-medium tracking-wide text-black bg-slate-300 ">
-            Paaartly.app/
-          </div>
-          <input
-            type="text"
-            value={values.userName}
-            onChange={onChangeHandler}
-            name="userName"
-            placeholder="Your username goes here..."
-            className="flex-1 font-medium bg-transparent focus-within:outline-none placeholder:text-gray-400 placeholder:text-xs sm:placeholder:text-sm "
-          />
-        </div>
         <input
-          type="text"
+          type="email"
           value={values.email}
           onChange={onChangeHandler}
           name="email"
@@ -77,6 +67,7 @@ export default function Signup() {
           className="px-2 py-3 text-black rounded-md sm:text-sm bg-slate-200 focus-within:outline-none placeholder:text-xs sm:placeholder:text-sm "
         />
       </div>
+      {isError && <AlertMessage message={isError} />}
       <LoadingButton
         styling={
           "inline-flex justify-center w-full p-3 text-sm font-medium tracking-wide text-white bg-black border border-transparent rounded-md hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
@@ -84,11 +75,7 @@ export default function Signup() {
         loading={loading}
         text="Create account"
         type="submit"
-        disabled={
-          values.password === "" ||
-          values.email === "" ||
-          values.userName === ""
-        }
+        disabled={values.password === "" || values.email === "" || isError}
       />
     </form>
   );

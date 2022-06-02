@@ -10,7 +10,7 @@ export default function LoadingButton({
 }) {
   return (
     <button type={type} className={styling} disabled={disabled}>
-      {loading ? <ClipLoader color="#fff" size="26" /> : text}
+      {loading ? <ClipLoader color="#fff" size="26px" /> : text}
     </button>
   );
 }

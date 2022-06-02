@@ -12,3 +12,11 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps = async (ctx) => {
+  return {
+    props: {
+      data: null,
+    },
+  };
+};

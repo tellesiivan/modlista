@@ -1,35 +1,49 @@
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, firestore } from "../firebase/clientApp";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
+import { useState } from "react";
 
-export default function useNewUser(userName, email, password) {
+export default function useNewUser(userID, userName, email, password) {
+  const [isError, setIsError] = useState("");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   const newUser = async () => {
-    console.log("new user function called");
-    const userRef = doc(firestore, `users/${userName}`);
+    const userRef = doc(firestore, `users/${user.user.uid}`);
     try {
       const docSnap = await getDoc(userRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        throw new Error("Username already exists");
-      }
 
-      await createUserWithEmailAndPassword(email, password);
-      await setDoc(userRef, {
-        userName: userName,
-        uid: user.user.uid,
-        email,
-      });
+      if (docSnap.exists()) {
+        throw new Error("Someone already has this username.");
+      } else if (error) {
+        throw new Error("Unable to create user: " + email + error.message);
+      }
+      createUserWithEmailAndPassword(email, password);
+
+      if (!loading && user) {
+        const data = {
+          userName: userName,
+
+          timeStamp: serverTimestamp(),
+        };
+        await updateDoc(userRef, data);
+      }
     } catch (error) {
-      console.log("new user Hook", error.message);
+      setIsError(error.message);
+      console.log("new user Hook =>", error.message);
     }
   };
 
   return {
     newUser,
     loading,
-    error,
+    isError,
+    setIsError,
   };
 }

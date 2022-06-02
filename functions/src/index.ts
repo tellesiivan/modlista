@@ -5,11 +5,12 @@ admin.initializeApp();
 const db = admin.firestore();
 
 export const createUserDoc = functions.auth.user().onCreate(async (user) => {
+  const firestore = admin.firestore;
+
   const newUser = {
     uid: user.uid,
     email: user.email,
-    photoURL: user.providerData[0].photoURL,
-    displayName: user.displayName,
+    createdAt: firestore.Timestamp.fromDate(new Date()),
   };
 
   db.collection("users").doc(user.uid).set(newUser);
