@@ -12,9 +12,9 @@ export default function Avatar() {
       {user?.photoURL ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          className="w-10 h-10 rounded-full"
+          className="w-10 h-10 rounded-full border-[#b5b5b5] border-2 "
           src={user.photoURL}
-          alt="Rounded avatar"
+          alt={`${user.displayName} avatar`}
         />
       ) : (
         <div className="flex items-center justify-center w-10 h-10 font-semibold text-white bg-black rounded-full cursor-pointer border-2 border-[#5e5e5e]">
