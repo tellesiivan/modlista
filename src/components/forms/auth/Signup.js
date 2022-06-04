@@ -55,7 +55,7 @@ export default function Signup() {
       throw new Error("Unable to create user: " + email + error.message);
     }
     dispatch(authModalStatus({ open: false, from: "signup" }));
-    router.replace(`/dashboard`);
+    router.replace(`/`);
   };
 
   return (

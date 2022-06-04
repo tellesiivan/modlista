@@ -2,25 +2,29 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/clientApp";
 
-export default function Avatar() {
+export default function Avatar({ size }) {
   const [user] = useAuthState(auth);
 
-  console.log(user.photoURL);
+  const avatarAlt = user.email.charAt(0).toUpperCase();
 
   return (
-    <>
+    <div className="cursor-pointer">
       {user?.photoURL ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          className="w-10 h-10 rounded-full border-[#b5b5b5] border-2 "
+          className={`rounded-full ${size ? size : "w-9 h-9"}`}
           src={user.photoURL}
           alt={`${user.displayName} avatar`}
         />
       ) : (
-        <div className="flex items-center justify-center w-10 h-10 font-semibold text-white bg-black rounded-full cursor-pointer border-2 border-[#5e5e5e]">
-          W
+        <div
+          className={`flex items-center justify-center font-semibold text-white rounded-full cursor-pointer bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ${
+            size ? size : "w-9 h-9"
+          }`}
+        >
+          {avatarAlt}
         </div>
       )}
-    </>
+    </div>
   );
 }
