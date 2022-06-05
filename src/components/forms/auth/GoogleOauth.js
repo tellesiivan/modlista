@@ -6,7 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
-import { authModalStatus } from "../../../store/user/modalsSlice";
+import { authModalStatus } from "../../../store/slices/modalsSlice";
 
 export default function GoogleOauth({ from }) {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);

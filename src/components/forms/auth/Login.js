@@ -5,7 +5,7 @@ import { auth } from "../../../firebase/clientApp";
 import AlertMessage from "../../helpers/AlertMessage";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { authModalStatus } from "../../../store/user/modalsSlice";
+import { authModalStatus } from "../../../store/slices/modalsSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ export default function Login() {
     } catch (error) {
       console.error(error);
     }
-    if (error || !loading) {
+    if (error && !loading) {
       setErrorFound("User not found, check email and password");
 
       return;

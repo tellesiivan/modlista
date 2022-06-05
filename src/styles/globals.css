@@ -24,3 +24,16 @@
 .sidebarH {
   height: calc(100% - 1rem);
 }
+html {
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.react-horizontal-scrolling-menu--wrapper {
+  position: relative !important;
+}

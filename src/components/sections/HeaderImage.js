@@ -10,7 +10,7 @@ export default function HeaderImage() {
     <div className="relative w-full h-[350px] sm:h-[400px] lg:h-[550px] ">
       <Image
         onLoadingComplete={() => console.log("complete")}
-        src="https://images.unsplash.com/photo-1628081182521-d6c4e374357f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+        src="https://images.unsplash.com/photo-1632350456633-0043fde4bf78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
         alt="banner image"
         layout="fill"
         objectFit="cover"

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { authModalStatus } from "../../store/user/modalsSlice";
+import { authModalStatus } from "../../store/slices/modalsSlice";
 import Login from "../forms/auth/Login";
 import Signup from "../forms/auth/Signup";
 import GoogleOauth from "../forms/auth/GoogleOauth";

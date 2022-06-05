@@ -5,7 +5,7 @@ import { auth } from "../../../firebase/clientApp";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import AlertMessage from "../../helpers/AlertMessage";
-import { authModalStatus } from "../../../store/user/modalsSlice";
+import { authModalStatus } from "../../../store/slices/modalsSlice";
 
 export default function Signup() {
   const [isError, setIsError] = useState("");

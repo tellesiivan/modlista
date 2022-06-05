@@ -4,12 +4,12 @@ import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, firestore } from "../../firebase/clientApp";
-import { toggleSidebar } from "../../store/user/modalsSlice";
+import { toggleSidebar } from "../../store/slices/modalsSlice";
 import Avatar from "../helpers/Avatar";
 import UserName from "../SidebarActions/UserName";
 import { useRouter } from "next/router";
 import { doc, onSnapshot } from "firebase/firestore";
-import { addUser } from "../../store/user/uiSlice";
+import { addUser } from "../../store/slices/uiSlice";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 export default function Sidebar({ active }) {
@@ -88,7 +88,10 @@ export default function Sidebar({ active }) {
                 <Dialog.Title
                   as="div"
                   className="flex flex-row items-center justify-between w-full p-2 border border-gray-900 rounded-md cursor-pointer hover:bg-black"
-                  onClick={() => router.push(`/u/${user?.uid}`)}
+                  onClick={() => {
+                    router.push(`/u/${user?.uid} `);
+                    dispatch(toggleSidebar({ open: false }));
+                  }}
                 >
                   {user && (
                     <>

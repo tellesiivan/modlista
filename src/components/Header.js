@@ -1,15 +1,14 @@
 import Image from "next/image";
-
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
 import { auth } from "../firebase/clientApp";
 import logo from "../public/tempLogo.webp";
-import { authModalStatus, toggleSidebar } from "../store/user/modalsSlice";
+import { authModalStatus, toggleSidebar } from "../store/slices/modalsSlice";
 import Link from "next/link";
 import Avatar from "./helpers/Avatar";
 
 export default function Header() {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const dispatch = useDispatch();
 
   return (
