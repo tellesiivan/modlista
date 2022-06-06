@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         main: "#101216",
         alt: "#ffffff36",
+        inputMain: "#1a1e24",
         selected: "#6b00e7",
       },
     },

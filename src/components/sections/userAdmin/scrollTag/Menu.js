@@ -46,7 +46,7 @@ export default function Menu() {
     };
 
   return (
-    <div className="-mx-2">
+    <div className="-mx-2 h-7">
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
         {actionTabs.map(({ title }) => (
           <Card
