@@ -12,15 +12,14 @@ const actionTabs = [
     title: "Social Links",
   },
   {
-    title: "Settings",
+    title: "Events",
   },
   {
     title: "Vehicles",
   },
   {
-    title: "Files",
+    title: "Settings",
   },
-
   {
     title: "Feedback",
   },

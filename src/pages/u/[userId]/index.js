@@ -3,6 +3,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import AdminPanel from "../../../components/sections/userAdmin/AdminPanel";
 import { auth } from "../../../firebase/clientApp";
 import { useSelector } from "react-redux";
+import HeaderImage from "../../../components/sections/HeaderImage";
+import HeaderSection from "../../../components/sections/profile/HeaderSection";
 
 export default function UserProfile() {
   const router = useRouter();
@@ -12,10 +14,13 @@ export default function UserProfile() {
   const { user: currentUser } = useSelector((store) => store.userUI);
 
   return (
-    <div className="flex flex-row w-full h-screen">
+    <div className="flex flex-row w-full h-full">
       {isValid && <AdminPanel currentUser={currentUser} />}
-
-      <div className="flex-grow h-full"></div>
+      {currentUser && (
+        <div className="flex-grow h-full md:ml-96">
+          <HeaderSection currentUser={currentUser} />
+        </div>
+      )}
     </div>
   );
 }

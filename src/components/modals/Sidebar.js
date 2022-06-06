@@ -74,17 +74,17 @@ export default function Sidebar({ active }) {
             <div className="fixed inset-0 bg-black bg-opacity-50" />
           </Transition.Child>
 
-          <div className="fixed top-0 bottom-0 right-0 z-50 h-full text-center sm:top-2 sm:bottom-2 sm:right-2">
+          <div className="fixed top-0 bottom-0 right-0 z-50 w-full h-full text-center md:top-2 md:bottom-2 md:right-2 md:w-80">
             <Transition.Child
               as={Fragment}
-              enter="transition ease-in duration-500 sm:duration-700 transform"
+              enter="transition ease-in duration-500 md:duration-700 transform"
               enterFrom="translate-x-96"
               enterTo="translate-x-0"
-              leave="transition ease duration-500 sm:duration-700 transform"
+              leave="transition ease duration-500 md:duration-700 transform"
               leaveFrom="translate-x-0"
               leaveTo="translate-x-full"
             >
-              <Dialog.Panel className="w-full p-2 overflow-hidden text-left align-middle bg-[#050505] border border-gray-900 rounded-md shadow-xl sidebarH sm:w-80 flex flex-col z-50">
+              <Dialog.Panel className="w-full p-2 overflow-hidden text-left align-middle bg-[#050505] border border-gray-900 rounded-md shadow-xl sidebarH md:w-80 flex flex-col z-50">
                 <Dialog.Title
                   as="div"
                   className="flex flex-row items-center justify-between w-full p-2 border border-gray-900 rounded-md cursor-pointer hover:bg-black"

@@ -18,8 +18,8 @@ export default function Avatar({ size }) {
         />
       ) : (
         <div
-          className={`flex items-center justify-center font-semibold text-white rounded-full cursor-pointer bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ${
-            size ? size : "w-9 h-9"
+          className={` flex items-center justify-center font-semibold text-white rounded-full cursor-pointer bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ${
+            size ? size : "w-9 h-9 "
           }`}
         >
           {avatarAlt}
