@@ -10,11 +10,9 @@ export default function AdminPanel({ currentUser }) {
   }
 
   return (
-    <div className="fixed hidden p-3 border-r border-gray-900 sidebarH md:block w-96">
-      <h2 className="mb-3 text-white text-md">
-        {currentUser?.name ? `Hello ${currentUser.name}` : "Hello"},
-      </h2>
+    <div className="fixed hidden p-3 border-r border-gray-900 sidebarH md:block w-96 md:overflow-y-scroll ">
       <Menu />
+
       <ActionToShow action={actionSelected} />
     </div>
   );

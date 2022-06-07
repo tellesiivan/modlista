@@ -11,7 +11,7 @@ export default function HeaderSection({ currentUser }) {
       <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-t from-main " />
       <Image
         onLoadingComplete={() => console.log("complete")}
-        src="https://images.unsplash.com/photo-1633170728672-316be60cb0f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        src="https://images.unsplash.com/photo-1582092605233-7f8e5af6f235?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         alt="banner image"
         layout="fill"
         objectFit="cover"
