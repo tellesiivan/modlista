@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import useSelectFile from "../../../Hooks/useSelectFile";
 import Toggle from "../../helpers/Toggle";
+import UploadPreview from "./UploadPreview";
 
 export default function ImageUploads() {
   const uploadRef = useRef(null);
@@ -20,13 +21,9 @@ export default function ImageUploads() {
         </p>
         <Toggle getValue={getValue} />
       </div>
-      <section className="relative w-full p-2 rounded-lg h-96 bg-inputMain">
+      <section className="relative w-full p-2 overflow-hidden rounded-lg h-96 bg-inputMain">
         {selectedFile ? (
-          uploadType === "cover" ? (
-            <p></p>
-          ) : (
-            <p></p>
-          )
+          <UploadPreview src={selectedFile} type={uploadType} />
         ) : (
           <form className="flex items-center justify-center w-full h-full border border-gray-700 border-dashed rounded-lg">
             <button
@@ -45,6 +42,20 @@ export default function ImageUploads() {
             />
           </form>
         )}
+
+        <div
+          className={`absolute grid w-48 grid-cols-2 py-2 text-xs text-white transform -translate-x-1/2 ${
+            selectedFile ? "-translate-y-2" : "translate-y-[50px]"
+          } divide-x rounded-md shadow-2xl bg-selected bottom-1 left-1/2 transition-transform `}
+        >
+          <button
+            className="font-medium hover:text-white"
+            onClick={() => setSelectedFile("")}
+          >
+            Delete
+          </button>
+          <button className="font-medium hover:text-white">Upload</button>
+        </div>
       </section>
     </div>
   );
