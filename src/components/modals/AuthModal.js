@@ -15,7 +15,7 @@ export default function AuthModal() {
       <Transition appear show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-10"
+          className="relative z-40"
           onClose={() => dispatch(authModalStatus({ open: false, from }))}
         >
           <Transition.Child
@@ -27,7 +27,7 @@ export default function AuthModal() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 h-screen bg-black bg-opacity-70 " />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">

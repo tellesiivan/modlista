@@ -4,7 +4,7 @@ const initialState = {
   user: null,
   vehicles: [],
   isAuth: false,
-  actionSelected: "",
+  actionSelected: "Profile",
 };
 
 export const uiSlice = createSlice({
