@@ -22,7 +22,6 @@ export default function ProfileMobileNav() {
       <Dialog
         as="div"
         className="relative z-50 md:hidden"
-        onClick={() => dispatch(toggleMobileNav())}
         onClose={() => dispatch(toggleMobileNav())}
       >
         <Transition.Child
@@ -34,7 +33,10 @@ export default function ProfileMobileNav() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-50" />
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50"
+            onClick={() => dispatch(toggleMobileNav())}
+          />
         </Transition.Child>
 
         <div className="w-full h-full text-center ">
