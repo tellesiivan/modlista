@@ -1,47 +1,40 @@
 import Image from "next/image";
-import { useEffect } from "react";
-import { signOut } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
-import { auth, firestore } from "../firebase/clientApp";
-import logo from "../public/tempLogo.png";
-import { authModalStatus } from "../store/user/modalsSlice";
-import { addUser } from "../store/user/uiSlice";
-import { useRouter } from "next/router";
+import { auth } from "../firebase/clientApp";
+import logo from "../public/tempLogo.webp";
+import { authModalStatus, toggleSidebar } from "../store/slices/modalsSlice";
+import Link from "next/link";
 import Avatar from "./helpers/Avatar";
 
 export default function Header() {
-  const router = useRouter();
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const dispatch = useDispatch();
 
-  const logout = () => {
-    signOut(auth);
-    router.replace("/home");
-    dispatch(
-      addUser({
-        user: null,
-      })
-    );
-  };
-
   return (
-    <header className="flex items-center w-full px-3 bg-[#090909]  h-14 justify-between ">
-      <div>
-        <Image src={logo} alt="logo" height="35" width="35" />
-      </div>
+    <header className="hidden sm:flex items-center w-full px-3 border-b border-[#070707]  h-16 justify-between bg-black bg-opacity-50 backdrop-blur backdrop-filter firefox:bg-opacity-90 sticky top-0 z-20">
+      <Link href="/">
+        <Image
+          src={logo}
+          alt="logo"
+          height="30"
+          width="50"
+          className="cursor-pointer"
+        />
+      </Link>
 
       <div className="flex items-center h-full space-x-2">
         {user ? (
           <>
-            <button
-              className="font-semibold text-black outlineBtn"
-              onClick={logout}
+            <div
+              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out bg-black border border-gray-800 rounded-full cursor-pointer hover:bg-gray-800 group"
+              onClick={() => dispatch(toggleSidebar({ open: true }))}
             >
-              Logout
-            </button>
-            <Avatar />
+              <p className="text-sm text-gray-500 group-hover:text-gray-300">
+                Menu
+              </p>
+              <Avatar size={"h-6 w-6"} />
+            </div>
           </>
         ) : (
           <>

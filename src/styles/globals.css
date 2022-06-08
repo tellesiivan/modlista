@@ -2,31 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.gridBg {
-  height: calc(100vh - 3.5rem);
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(
-      transparent 3px,
-      #f2f2f2 3px,
-      #f2f2f2 78px,
-      transparent 78px
-    ),
-    linear-gradient(-90deg, #aaa 1px, transparent 1px),
-    linear-gradient(
-      -90deg,
-      transparent 3px,
-      #f2f2f2 3px,
-      #f2f2f2 78px,
-      transparent 78px
-    ),
-    linear-gradient(#aaa 1px, transparent 1px), #f2f2f2;
-  background-size: 4px 4px, 4px 4px, 80px 80px, 80px 80px, 80px 80px, 80px 80px,
-    80px 80px, 80px 80px;
-}
-
 @layer components {
   .outlineBtn {
     @apply px-6 py-1.5 text-xs border-2 border-black rounded-full;
@@ -42,6 +17,26 @@
 }
 @layer base {
   html {
-    @apply font-sans;
+    @apply font-sans bg-[#101216];
   }
+}
+
+.sidebarH {
+  height: calc(100% - 1rem);
+}
+html {
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.react-horizontal-scrolling-menu--wrapper {
+  position: relative !important;
+}
+#__next {
+  height: 100%;
 }

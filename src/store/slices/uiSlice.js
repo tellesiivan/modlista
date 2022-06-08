@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
+  vehicles: [],
   isAuth: false,
+  actionSelected: "",
 };
 
 export const uiSlice = createSlice({
@@ -15,13 +17,13 @@ export const uiSlice = createSlice({
         state.isAuth = true;
       }
     },
-    increment: (state) => {
-      state.value += 1;
+    selectedAction: (state, action) => {
+      state.actionSelected = action.payload.action;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addUser } = uiSlice.actions;
+export const { addUser, selectedAction } = uiSlice.actions;
 
 export default uiSlice.reducer;
