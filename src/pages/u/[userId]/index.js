@@ -17,18 +17,16 @@ export default function UserProfile({ userData }) {
 
   // profile changes from DB
   useEffect(() => {
-    if (user) {
-      onSnapshot(doc(firestore, `users/${userData.uid}`), (doc) => {
-        const userData = {
-          ...doc.data(),
-          createdAt: new Date(
-            doc.data()?.createdAt.seconds * 1000
-          ).toLocaleString("en-US"),
-        };
-        setProfileUser(userData);
-      });
-    }
-  }, [userData?.uid, user]);
+    onSnapshot(doc(firestore, `users/${userData.uid}`), (doc) => {
+      const userData = {
+        ...doc.data(),
+        createdAt: new Date(
+          doc.data()?.createdAt.seconds * 1000
+        ).toLocaleString("en-US"),
+      };
+      setProfileUser(userData);
+    });
+  }, []);
 
   return (
     <div className="flex flex-row w-full h-full">
