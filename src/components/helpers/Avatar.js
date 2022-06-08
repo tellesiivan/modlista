@@ -1,20 +1,21 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useSelector } from "react-redux";
 import { auth } from "../../firebase/clientApp";
 
 export default function Avatar({ size }) {
   const [user] = useAuthState(auth);
-
+  const currentUser = useSelector((state) => state.userUI.user);
   const avatarAlt = user.email.charAt(0).toUpperCase();
 
   return (
     <div className="cursor-pointer">
-      {user?.photoURL ? (
+      {user?.photoURL || currentUser?.avatarImg ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           className={`rounded-full ${size ? size : "w-9 h-9"}`}
-          src={user.photoURL}
-          alt={`${user.displayName} avatar`}
+          src={currentUser?.avatarImg || user.photoURL}
+          alt={`${user.displayName || ""} avatar`}
         />
       ) : (
         <div

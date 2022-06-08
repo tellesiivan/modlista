@@ -53,7 +53,7 @@ export default function AdminProfile() {
           </button>
         </div>
       </form>
-      <ImageUploads />
+      <ImageUploads userId={user?.uid} />
     </>
   );
 }

@@ -37,3 +37,6 @@ body::-webkit-scrollbar {
 .react-horizontal-scrolling-menu--wrapper {
   position: relative !important;
 }
+#__next {
+  height: 100%;
+}

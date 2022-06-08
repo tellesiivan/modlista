@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import MobileNav from "./MobileNav";
 import AuthModal from "./modals/AuthModal";
 import Sidebar from "./modals/Sidebar";
 
@@ -7,9 +8,10 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className="h-full">{children}</main>
       <AuthModal />
       <Sidebar active={true} />
+      <MobileNav />
     </>
   );
 }

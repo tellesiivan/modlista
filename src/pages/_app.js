@@ -4,6 +4,7 @@ import { store } from "../store/index";
 import Layout from "../components/Layout";
 import { auth } from "../firebase/clientApp";
 import { useEffect, useState } from "react";
+
 import { onAuthStateChanged } from "firebase/auth";
 
 function MyApp({ Component, pageProps }) {
