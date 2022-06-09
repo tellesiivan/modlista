@@ -25,7 +25,7 @@ export default function HeaderSection({ profileUser }) {
 
       <div className="absolute z-20 flex items-center left-4 bottom-10 md:left-6">
         {avatarImg ? (
-          <Avatar src={avatarImg} css={{ size: "$20" }} zoomed />
+          <Avatar src={avatarImg} css={{ size: "$18" }} zoomed />
         ) : (
           <Avatar
             text={email.charAt(0).toUpperCase()}
@@ -36,7 +36,7 @@ export default function HeaderSection({ profileUser }) {
         )}
 
         <div className="ml-2">
-          <h2 className="text-lg font-bold tracking-wider text-gray-200 md:text-xl ">
+          <h2 className="text-lg font-bold text-gray-200 md:text-xl ">
             {name ? name : email}
           </h2>
           <p className="text-xs text-gray-400">

@@ -5,8 +5,11 @@ import { doc, updateDoc } from "firebase/firestore";
 import { auth, firestore } from "../../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import ImageUploads from "./ImageUploads";
+import { toggleMobileNav } from "../../../store/slices/modalsSlice";
+import { useDispatch } from "react-redux";
 
 export default function AdminProfile() {
+  const dispatch = useDispatch();
   const [user] = useAuthState(auth);
   const [values, setValues] = useState({
     name: "",
@@ -29,6 +32,7 @@ export default function AdminProfile() {
       ...prev,
       name: "",
     }));
+    dispatch(toggleMobileNav({ open: false }));
   };
   6;
 

@@ -9,20 +9,13 @@ export default function ProfileMobileNav() {
   const actionSelected = useSelector((store) => store.userUI.actionSelected);
   const open = useSelector((store) => store.modals.showMobileNav);
   const dispatch = useDispatch();
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
 
   return (
     <Transition appear show={open} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50 md:hidden"
-        onClose={() => dispatch(toggleMobileNav())}
+        onClose={() => dispatch(toggleMobileNav({ open: false }))}
       >
         <Transition.Child
           as={Fragment}
@@ -33,10 +26,7 @@ export default function ProfileMobileNav() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50"
-            onClick={() => dispatch(toggleMobileNav())}
-          />
+          <div className="fixed inset-0 bg-black bg-opacity-50" />
         </Transition.Child>
 
         <div className="w-full h-full text-center ">
@@ -51,8 +41,11 @@ export default function ProfileMobileNav() {
           >
             <Dialog.Panel className="fixed bottom-0 w-full p-2 text-left align-middle bg-main rounded-xl shadow-xl flex flex-col z-50 h-[80%] overflow-y-scroll ">
               <div className="p-2">
-                <div className="mb-6 text-center">
-                  <button className="px-3 py-1 text-xs text-gray-400 rounded-full bg-inputMain ">
+                <div className="mb-6 -mt-2 text-center">
+                  <button
+                    className="px-3 py-1 text-xs text-gray-400 rounded-full outline-none bg-inputMain"
+                    onClick={() => dispatch(toggleMobileNav({ open: false }))}
+                  >
                     Close
                   </button>
                 </div>

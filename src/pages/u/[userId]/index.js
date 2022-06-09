@@ -39,10 +39,6 @@ export default function UserProfile({ userData }) {
           </div>
         )}
       </div>
-      {profileUser && (
-        <ToggleMobileNav profileUser={profileUser} isValid={isValid} />
-      )}
-      <ProfileMobileNav />
     </>
   );
 }

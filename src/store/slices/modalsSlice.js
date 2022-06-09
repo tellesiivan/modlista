@@ -22,8 +22,8 @@ export const modalSlice = createSlice({
     toggleSidebar: (state, action) => {
       state.sidebarModal.open = action.payload.open;
     },
-    toggleMobileNav: (state) => {
-      state.showMobileNav = !state.showMobileNav;
+    toggleMobileNav: (state, action) => {
+      state.showMobileNav = action.payload.open;
     },
   },
 });

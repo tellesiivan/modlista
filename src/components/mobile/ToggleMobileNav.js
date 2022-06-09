@@ -11,7 +11,14 @@ export default function ToggleMobileNav({ profileUser, isValid }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="fixed flex items-center px-2 space-x-2 transition -translate-x-1/2 border rounded-full shadow-xl h-11 bg-main border-alt md:hidden bottom-3 left-1/2">
+    <div
+      className="fixed flex items-center px-2 space-x-2 transition -translate-x-1/2 border rounded-full shadow-xl cursor-pointer h-11 bg-main border-alt md:hidden bottom-3 left-1/2"
+      onClick={() =>
+        isValid
+          ? dispatch(toggleMobileNav({ open: true }))
+          : dispatch(authModalStatus({ open: true, from: "login" }))
+      }
+    >
       {avatarImg ? (
         <Avatar src={avatarImg} size="sm" zoomed />
       ) : (
@@ -23,19 +30,11 @@ export default function ToggleMobileNav({ profileUser, isValid }) {
         />
       )}
       {isValid ? (
-        <button
-          className="h-full text-sm font-semibold text-gray-200"
-          onClick={() => dispatch(toggleMobileNav())}
-        >
+        <button className="h-full text-sm font-semibold text-gray-200">
           Edit Profile
         </button>
       ) : (
-        <button
-          className="h-full text-sm font-semibold text-gray-200"
-          onClick={() =>
-            dispatch(authModalStatus({ open: true, from: "login" }))
-          }
-        >
+        <button className="h-full text-sm font-semibold text-gray-200">
           Signup / Login
         </button>
       )}
