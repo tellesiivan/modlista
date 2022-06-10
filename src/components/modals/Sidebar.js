@@ -50,8 +50,6 @@ export default function Sidebar({ active }) {
     );
 
     dispatch(toggleSidebar({ open: false }));
-
-    router.replace("/");
   };
 
   return (

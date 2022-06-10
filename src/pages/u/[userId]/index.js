@@ -3,10 +3,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import AdminPanel from "../../../components/sections/userAdmin/AdminPanel";
 import { auth } from "../../../firebase/clientApp";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { firestore } from "../../../firebase/clientApp";
 import HeaderSection from "../../../components/sections/profile/HeaderSection";
+import ToggleMobileNav from "../../../components/mobile/ToggleMobileNav";
+import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
@@ -26,17 +27,25 @@ export default function UserProfile({ userData }) {
       };
       setProfileUser(userData);
     });
-  }, []);
+  }, [userId, userData.uid]);
 
   return (
-    <div className="flex flex-row w-full h-full">
-      {isValid && <AdminPanel profileUser={profileUser} />}
-      {profileUser && (
-        <div className={`flex-grow h-full ${isValid && "md:ml-96"}`}>
-          <HeaderSection profileUser={profileUser} />
-        </div>
-      )}
-    </div>
+    <>
+      <div className="flex flex-row w-full h-full">
+        {isValid && <AdminPanel profileUser={profileUser} />}
+        {profileUser && (
+          <div
+            className={`flex-grow h-full ${isValid && "md:ml-96"} ${
+              !isValid &&
+              "lg:max-w-2xl lg:border-l lg:border-r lg:border-alt lg:mx-auto"
+            }`}
+          >
+            <HeaderSection profileUser={profileUser} isValid={isValid} />
+          </div>
+        )}
+        {isValid && <ProfileMobileNav />}
+      </div>
+    </>
   );
 }
 

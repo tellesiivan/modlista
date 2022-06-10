@@ -18,7 +18,7 @@ export default function UploadPreview({ type, src }) {
             className="absolute w-14 h-14 rounded-full bottom-2.5 left-2 z-10 object-cover"
           />
         ) : (
-          <div className="absolute w-14 h-14 rounded-full bottom-2.5 left-2 z-10 border-2 border-alt">
+          <div className="absolute w-14 h-14 rounded-full bottom-2.5 left-2 z-10 border-2 border-alt overflow-hidden flex items-center justify-center">
             <Avatar size="w-13 h-13" />
           </div>
         )}

@@ -27,6 +27,10 @@
 html {
   scrollbar-width: none;
 }
+html,
+body {
+  height: 100%;
+}
 
 body::-webkit-scrollbar {
   display: none;

@@ -22,7 +22,6 @@ export default function GoogleOauth({ from }) {
     }
     if (!loading) {
       dispatch(authModalStatus({ open: false, from: "login" }));
-      router.replace(`/`);
     }
   };
 

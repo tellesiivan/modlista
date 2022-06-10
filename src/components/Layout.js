@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import MobileNav from "./MobileNav";
+import MobileNav from "./mobile/MobileNav";
 import AuthModal from "./modals/AuthModal";
 import Sidebar from "./modals/Sidebar";
 

@@ -8,6 +8,7 @@ const initialState = {
   sidebarModal: {
     open: false,
   },
+  showMobileNav: false,
 };
 
 export const modalSlice = createSlice({
@@ -21,10 +22,14 @@ export const modalSlice = createSlice({
     toggleSidebar: (state, action) => {
       state.sidebarModal.open = action.payload.open;
     },
+    toggleMobileNav: (state, action) => {
+      state.showMobileNav = action.payload.open;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { authModalStatus, toggleSidebar } = modalSlice.actions;
+export const { authModalStatus, toggleSidebar, toggleMobileNav } =
+  modalSlice.actions;
 
 export default modalSlice.reducer;

@@ -6,8 +6,11 @@ import { Loading } from "@nextui-org/react";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { storage, firestore } from "../../../firebase/clientApp";
 import { doc, updateDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 
 export default function ImageUploads({ userId }) {
+  const dispatch = useDispatch();
   const uploadRef = useRef(null);
   const [uploadType, setUploadType] = useState("cover");
   const getValue = (toggleStatus) => {
@@ -42,6 +45,7 @@ export default function ImageUploads({ userId }) {
     }
     setUploading(false);
     setSelectedFile("");
+    dispatch(toggleMobileNav({ open: false }));
   };
 
   return (
@@ -63,7 +67,7 @@ export default function ImageUploads({ userId }) {
             onSubmit={uploadImage}
           >
             <button
-              className="px-3 py-1 text-xs text-gray-300 rounded-full bg-selected"
+              className="px-4 py-1 text-gray-300 rounded-full md:px-4 md:py-2 md:text-xs bg-selected hover:opacity-80"
               onClick={() => uploadRef.current?.click()}
               type="button"
             >

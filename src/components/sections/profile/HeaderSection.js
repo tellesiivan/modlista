@@ -1,51 +1,66 @@
 import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
+import { MdOutlineCalendarToday } from "react-icons/md";
+import placeholdeImge from "../../../../public/blurPlaceholder.png";
+import { useDispatch } from "react-redux";
+import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 
-export default function HeaderSection({ profileUser }) {
+export default function HeaderSection({ profileUser, isValid }) {
   const { name, email, createdAt, coverImg, avatarImg } = profileUser;
+  const dispatch = useDispatch();
 
   return (
-    <div className="relative h-[250px] overflow-hidden ">
-      <div className="absolute inset-0 z-10 w-full h-full bg-gradient-to-t from-main " />
-      {coverImg ? (
-        <Image
-          onLoadingComplete={() => console.log("complete")}
-          src={coverImg}
-          alt="banner image"
-          layout="fill"
-          objectFit="cover"
-        />
-      ) : (
-        <div className="w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500"></div>
-      )}
-
-      <div className="absolute z-20 flex items-center left-4 bottom-10 md:left-6">
-        {avatarImg ? (
-          <Avatar
-            src={avatarImg}
-            size="xl"
-            color="gradient"
-            bordered
-            zoomed
-            borderWeight="bold"
+    <div className="pb-4 border-b border-alt">
+      <div className="relative h-[145px] md:h-[200px]  ">
+        <div className="absolute inset-0 z-10 w-full h-full " />
+        {coverImg ? (
+          <Image
+            onLoadingComplete={() => console.log("complete")}
+            src={coverImg}
+            alt="banner image"
+            layout="fill"
+            placeholder="blur"
+            blurDataURL={placeholdeImge}
+            objectFit="cover"
           />
         ) : (
-          <Avatar
-            text={email.charAt(0).toUpperCase()}
-            color="gradient"
-            textColor="white"
-            size="xl"
-          />
+          <div className="w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500"></div>
         )}
+        <div className="absolute z-20 flex items-center border-[5px] rounded-full left-4 -bottom-16 md:left-6 border-main">
+          {avatarImg ? (
+            <Avatar src={avatarImg} css={{ size: "$20" }} zoomed />
+          ) : (
+            <Avatar
+              text={email.charAt(0).toUpperCase()}
+              color="gradient"
+              textColor="white"
+              css={{ size: "$20" }}
+            />
+          )}
+        </div>
+      </div>
+      {isValid && (
+        <div className="flex justify-end mt-2 mr-4 md:hidden">
+          <button
+            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-400 border rounded-full border-alt w-fit hover:opacity-80"
+            onClick={() => dispatch(toggleMobileNav({ open: true }))}
+          >
+            Edit Profile
+          </button>
+        </div>
+      )}
 
+      <div
+        className={`${!isValid ? "mt-20" : "mt-12"} mx-4  md:mx-6 md:mt-20 `}
+      >
         <div className="ml-2">
-          <h2 className="font-bold text-gray-200 md:font-semibold text-md md:text-lg">
+          <h2 className="text-lg font-bold text-gray-200 md:font-semibold md:text-2xl">
             {name ? name : email}
           </h2>
-          <p className="-mt-1 text-xs text-gray-400 ">
-            Member since{" "}
-            <span>{moment(new Date(createdAt)).format("YYYY")}</span>
+          <p className="-mt-0.25 text-xs text-gray-400 flex items-center space-x-1 ">
+            <MdOutlineCalendarToday className="mr-2" /> Joined{" "}
+            <span>{moment(new Date(createdAt)).format("MMMM YYYY")}</span>
           </p>
         </div>
       </div>

@@ -48,7 +48,6 @@ export default function Login() {
       return;
     } else {
       dispatch(authModalStatus({ open: false, from: "login" }));
-      router.replace(`/`);
     }
   };
 
