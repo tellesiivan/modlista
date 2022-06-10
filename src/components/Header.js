@@ -27,10 +27,10 @@ export default function Header() {
         {user ? (
           <>
             <div
-              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out bg-black border border-gray-800 rounded-full cursor-pointer hover:bg-gray-800 group"
+              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out rounded-full cursor-pointer bg-alt hover:bg-opacity-80"
               onClick={() => dispatch(toggleSidebar({ open: true }))}
             >
-              <p className="text-sm text-gray-500 group-hover:text-gray-300">
+              <p className="text-sm text-gray-300 group-hover:text-gray-300">
                 Menu
               </p>
               <Avatar size={"h-6 w-6"} />

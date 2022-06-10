@@ -62,7 +62,6 @@ export const getServerSideProps = async (ctx) => {
           docSnap.data()?.createdAt.seconds * 1000
         ).toLocaleString("en-US"),
       };
-      console.log(docSnap.data());
       return {
         props: {
           userData,

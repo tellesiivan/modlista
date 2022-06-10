@@ -12,7 +12,7 @@ export default function HeaderSection({ profileUser, isValid }) {
 
   return (
     <div className="pb-4 border-b border-alt">
-      <div className="relative h-[145px] md:h-[200px]  ">
+      <div className="relative h-[125px] md:h-[200px]  ">
         <div className="absolute inset-0 z-10 w-full h-full " />
         {coverImg ? (
           <Image
@@ -52,17 +52,22 @@ export default function HeaderSection({ profileUser, isValid }) {
       )}
 
       <div
-        className={`${!isValid ? "mt-20" : "mt-12"} mx-4  md:mx-6 md:mt-20 `}
+        className={`${
+          !isValid ? "mt-20" : "mt-12"
+        } mx-6  md:mx-8 md:mt-20 flex justify-between items-center`}
       >
-        <div className="ml-2">
+        <div className="">
           <h2 className="text-lg font-bold text-gray-200 md:font-semibold md:text-2xl">
             {name ? name : email}
           </h2>
           <p className="-mt-0.25 text-xs text-gray-400 flex items-center space-x-1 ">
-            <MdOutlineCalendarToday className="mr-2" /> Joined{" "}
-            <span>{moment(new Date(createdAt)).format("MMMM YYYY")}</span>
+            <MdOutlineCalendarToday className="mr-1" />
+            <span>
+              Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
+            </span>
           </p>
         </div>
+        <div>Links</div>
       </div>
     </div>
   );

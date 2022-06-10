@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import ImageUploads from "./ImageUploads";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 import { useDispatch } from "react-redux";
+import AlertMessage from "../../helpers/AlertMessage";
 
 export default function AdminProfile() {
   const dispatch = useDispatch();
@@ -16,10 +17,21 @@ export default function AdminProfile() {
     avatar: "",
     coverImg: "",
   });
+  const [error, setError] = useState("");
+
+  const containsSpecialChars = (str) => {
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    return specialChars.test(str);
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const userRef = doc(firestore, `users/${user.uid}`);
+
+    if (containsSpecialChars(values.name)) {
+      setError("Special characters not allowed");
+      return;
+    }
     try {
       // update user' name
       await updateDoc(userRef, {
@@ -34,7 +46,6 @@ export default function AdminProfile() {
     }));
     dispatch(toggleMobileNav({ open: false }));
   };
-  6;
 
   return (
     <>
@@ -47,16 +58,26 @@ export default function AdminProfile() {
           Name
         </label>
         <div className="flex items-center w-full h-10 px-2 mt-1.5 rounded-md bg-inputMain">
-          <NameInput setValues={setValues} values={values} />
+          <NameInput
+            setValues={setValues}
+            values={values}
+            setError={setError}
+            error={error}
+          />
           <button
             type="submit"
             className="px-3 py-1 text-xs text-gray-200 transition-opacity duration-500 rounded-full opacity-100 bg-selected disabled:opacity-0"
-            disabled={values.name.trim().length < 3}
+            disabled={values.name.trim().length < 3 || error}
           >
             Update
           </button>
         </div>
       </form>
+      {error && (
+        <div className="p-2 mt-2 text-sm rounded-sm bg-alt text-selected ">
+          {error}
+        </div>
+      )}
       <ImageUploads userId={user?.uid} />
     </>
   );

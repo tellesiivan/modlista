@@ -9,14 +9,15 @@ const actionTabs = [
     title: "Profile",
   },
   {
-    title: "Social Links",
+    title: "Vehicles",
+  },
+  {
+    title: "Links",
   },
   {
     title: "Events",
   },
-  {
-    title: "Vehicles",
-  },
+
   {
     title: "Settings",
   },
@@ -37,7 +38,6 @@ export default function Menu() {
     ({ getItemById, scrollToItem }) => {
       const itemSelected = isItemSelected(id);
       dispatch(selectedAction({ action: id }));
-      console.log(id);
       setSelected((currentSelected) =>
         itemSelected
           ? currentSelected.filter((el) => el !== id)
