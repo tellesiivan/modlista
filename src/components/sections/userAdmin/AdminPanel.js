@@ -10,7 +10,7 @@ export default function AdminPanel({ profileUser }) {
   }
 
   return (
-    <div className="fixed hidden h-full p-3 border-r border-gray-800 md:block w-96 md:overflow-y-scroll ">
+    <div className="fixed hidden p-3 border-r border-gray-800 md:h-full md:block w-96 md:overflow-y-scroll">
       <Menu />
       <ActionToShow action={actionSelected} />
     </div>

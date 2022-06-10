@@ -1,7 +1,10 @@
 import React from "react";
 
-export default function NameInput({ setValues, values }) {
+export default function NameInput({ setValues, values, error, setError }) {
   const onChange = ({ target: { value, name } }) => {
+    if (error) {
+      setError("");
+    }
     setValues((prev) => ({
       ...prev,
       [name]: value,
