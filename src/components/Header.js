@@ -12,7 +12,7 @@ export default function Header() {
   const dispatch = useDispatch();
 
   return (
-    <header className="hidden md:flex items-center w-full px-3 border-b border-[#070707]  h-16 justify-between bg-black bg-opacity-50 backdrop-blur backdrop-filter firefox:bg-opacity-90 sticky top-0 z-20">
+    <header className="sticky top-0 z-20 items-center justify-between hidden w-full h-16 px-3 bg-black bg-opacity-40 md:flex backdrop-blur backdrop-filter firefox:bg-opacity-90">
       <Link href="/">
         <Image
           src={logo}

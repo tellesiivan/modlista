@@ -8,6 +8,7 @@ import { toggleMobileNav } from "../../store/slices/modalsSlice";
 export default function ProfileMobileNav() {
   const actionSelected = useSelector((store) => store.userUI.actionSelected);
   const open = useSelector((store) => store.modals.showMobileNav);
+
   const dispatch = useDispatch();
 
   return (
@@ -39,7 +40,7 @@ export default function ProfileMobileNav() {
             leaveFrom="translate-y-0"
             leaveTo="translate-y-full"
           >
-            <Dialog.Panel className="fixed bottom-0 w-full p-2 text-left align-middle bg-main rounded-xl shadow-xl flex flex-col z-50 h-[80%] overflow-y-scroll ">
+            <Dialog.Panel className="fixed bottom-0 w-full p-2 text-left align-middle bg-main rounded-xl shadow-xl flex flex-col z-50 h-[85%] overflow-y-scroll ">
               <div className="p-2">
                 <div className="mb-6 -mt-2 text-center">
                   <button
