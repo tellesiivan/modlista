@@ -16,7 +16,7 @@ function Arrow({ children, disabled, onClick }) {
         height: "24px",
         width: "24px",
         cursor: "pointer",
-        backgroundColor: "#333",
+        backgroundColor: "#4c6f68",
         cursor: "pointer",
         borderRadius: "100px",
         display: "flex",

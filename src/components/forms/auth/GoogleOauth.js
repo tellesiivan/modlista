@@ -27,7 +27,7 @@ export default function GoogleOauth({ from }) {
 
   return (
     <button
-      className="flex items-center justify-center w-full p-3 rounded-lg bg-violet-600"
+      className="flex items-center justify-center w-full p-3 bg-blue-600 rounded-lg"
       onClick={handleGoogleOAuth}
     >
       {loading ? (

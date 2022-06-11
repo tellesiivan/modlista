@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { firestore } from "../../../firebase/clientApp";
 import HeaderSection from "../../../components/sections/profile/HeaderSection";
-import ToggleMobileNav from "../../../components/mobile/ToggleMobileNav";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
 
 export default function UserProfile({ userData }) {
