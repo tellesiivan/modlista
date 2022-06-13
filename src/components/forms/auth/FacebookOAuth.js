@@ -23,6 +23,7 @@ export default function FacebookOAuth({ from }) {
     }
     if (!loading) {
       dispatch(authModalStatus({ open: false, from: "login" }));
+      console.log(user);
     }
   };
 

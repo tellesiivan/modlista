@@ -14,12 +14,12 @@ export default function VinInput({
         type="text"
         value={vinValue}
         onChange={(e) => {
-          setVinValue(e.target.value);
+          setVinValue(e.target.value.toUpperCase());
           errorReset("");
         }}
       />
       <button
-        className="h-full px-3 py-1 text-xs text-gray-300 transition-opacity duration-500 rounded-full opacity-100 bg-selected disabled:opacity-0"
+        className="px-3 py-1 text-xs text-gray-300 transition-opacity duration-500 rounded-full opacity-100 bg-selected disabled:opacity-0"
         disabled={vinValue.trim().length < 17}
         onClick={clickAction}
       >

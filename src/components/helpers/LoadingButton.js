@@ -7,9 +7,15 @@ export default function LoadingButton({
   type,
   styling,
   disabled,
+  clickAction,
 }) {
   return (
-    <button type={type} className={styling} disabled={disabled}>
+    <button
+      type={type}
+      className={styling}
+      disabled={disabled}
+      onClick={clickAction}
+    >
       {loading ? <ClipLoader color="#fff" size="26px" /> : text}
     </button>
   );
