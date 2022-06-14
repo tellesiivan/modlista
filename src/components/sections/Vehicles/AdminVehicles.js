@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useVehicleData from "../../../Hooks/useVehicleData";
 import { addingVehicle } from "../../../store/slices/uiSlice";
@@ -7,16 +7,24 @@ import RadioGroupTemplate from "../../helpers/RadioGroupTemp";
 import TrimSelection from "./TrimSelectionVin";
 import VehicleItem from "./VehicleItem";
 import VinInput from "./VinInput";
+import { writeBatch, doc, collection } from "firebase/firestore";
+import { auth, firestore } from "../../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import VehicleCoverImage from "./VehicleCoverImage";
+import useSelectFile from "../../../Hooks/useSelectFile";
 
-const formTypes = ["VIN", "Make/Model"];
+const formTypes = ["VIN"];
+// , "Make/Model"
 
 export default function AdminVehicles() {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.userUI.vehicles.adding);
   const [formType, setFormType] = useState("VIN");
   const [vinValue, setVinValue] = useState("");
-  const [trim, setTrim] = useState(data ? data.trim[0].name : "");
+  const [trim, setTrim] = useState(data ? data.Trim[0].name : "");
   const { getDataByVin, error, setError } = useVehicleData();
+  const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
+  const [user] = useAuthState(auth);
 
   const getDataHandler = async (e) => {
     e.preventDefault();
@@ -31,53 +39,68 @@ export default function AdminVehicles() {
 
   const addVehicle = async (e) => {
     e.preventDefault();
-
     const trimPick =
-      data.trim.length > 1
-        ? trim == ""
-          ? data.trim[0].name
-          : trim
-        : data.trim[0].name;
+      data.Trim.length > 1 ? (trim == "" ? data.Trim[0] : trim) : data.Trim[0];
+    const format = { ...data, Trim: trimPick, Owner: user.uid };
+    try {
+      // Get a new write batch
+      const batch = writeBatch(firestore);
 
-    const format = { ...data, trim: trimPick };
-
-    console.log(format);
+      // vehicles db REF
+      const vehicleRef = doc(collection(firestore, "vehicles"));
+      batch.set(vehicleRef, format);
+      // user db REF
+      const userRef = doc(
+        firestore,
+        `users/${user.uid}/vehiclePreviews/${vehicleRef.id}`
+      );
+      batch.set(userRef, {
+        Make: data.Make,
+        Model: data.Model,
+        Year: data.Year,
+        Trim: data.Trim[0],
+      });
+      // Commit the batch
+      await batch.commit();
+    } catch (error) {
+      console.log(error.message, "addVehicle");
+    }
   };
 
   return (
     <>
       <AdminHeading
         Heading="Vehicles"
-        Desc="Add the vehicles you own here. Can be added with the vehicle's VIN number(recommended) or using the form."
+        Desc="Add the vehicles you own here. Add them with the vehicle's VIN number. More options coming soon."
       />
       <RadioGroupTemplate
         options={formTypes}
-        label="Add vehicle by"
+        label="Add vehicle with VIN number:"
         setSelected={setFormType}
         selected={formType}
       />
-      <form className="my-4">
+      <form className="mt-4">
         {data && data.formType === formType ? (
           formType === "VIN" ? (
-            <div className="mt-6">
+            <div className={`mt-6 ${!selectedFile && "pb-2"}`}>
               <h2 className="font-bold text-white text-md">
                 Nice! We Found Your Car.
               </h2>
               <p className="text-sm text-gray-500">Here are a few details...</p>
-              {data.trim.length > 1 && (
+              {data.Trim.length > 1 && (
                 <TrimSelection
-                  trims={data.trim}
+                  trims={data.Trim}
                   setTrim={setTrim}
                   trim={trim}
                 />
               )}
               <VehicleItem
                 vehicle={
-                  data.trim.length > 1
+                  data.Trim.length > 1
                     ? Object.fromEntries(
                         Object.entries(data).filter(
                           ([key]) =>
-                            !key.includes("trim") && !key.includes("formType")
+                            !key.includes("Trim") && !key.includes("formType")
                         )
                       )
                     : Object.fromEntries(
@@ -86,6 +109,11 @@ export default function AdminVehicles() {
                         )
                       )
                 }
+              />
+              <VehicleCoverImage
+                selectedFile={selectedFile}
+                setSelectedFile={setSelectedFile}
+                onSelectedFile={onSelectedFile}
               />
             </div>
           ) : (
@@ -101,8 +129,8 @@ export default function AdminVehicles() {
         ) : (
           <div>MAKE/MODEL</div>
         )}
-        {data && data.formType === formType && (
-          <div className="sticky grid grid-cols-2 gap-2 text-sm text-gray-200 border divide-x rounded-md bottom-2 bg-selected divide-inputMain border-inputMain">
+        {data && data.formType === formType && selectedFile && (
+          <div className="sticky grid grid-cols-2 gap-2 text-sm text-gray-200 border divide-x rounded-md bottom-3 bg-selected divide-inputMain border-inputMain">
             <button
               className="py-3 hover:opacity-80"
               onClick={() => dispatch(addingVehicle({ vehicle: null }))}

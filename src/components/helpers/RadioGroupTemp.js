@@ -12,7 +12,7 @@ export default function RadioGroupTemplate({
       <div className="w-full ">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
-          <div className={`grid grid-cols-2 w-full space-x-2`}>
+          <div className={`grid grid-cols-1 w-full space-x-2`}>
             {options.map((option) => (
               <RadioGroup.Option
                 key={option}
@@ -24,7 +24,7 @@ export default function RadioGroupTemplate({
                       ? "bg-selected bg-opacity-75 text-gray-300"
                       : "bg-alt "
                   }
-                    relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none`
+                    relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none `
                 }
               >
                 {({ active, checked }) => (

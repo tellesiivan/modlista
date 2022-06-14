@@ -82,10 +82,10 @@ export default function Sidebar({ active }) {
               leaveFrom="translate-x-0"
               leaveTo="translate-x-full"
             >
-              <Dialog.Panel className="w-full p-2 overflow-hidden text-left align-middle bg-[#050505] border border-gray-900 rounded-md shadow-xl sidebarH md:w-80 flex flex-col z-50">
+              <Dialog.Panel className="z-50 flex flex-col w-full p-2 overflow-hidden text-left align-middle border rounded-md shadow-xl border-inputMain bg-alt sidebarH md:w-80">
                 <Dialog.Title
                   as="div"
-                  className="flex flex-row items-center justify-between w-full p-2 border border-gray-900 rounded-md cursor-pointer hover:bg-black"
+                  className="flex flex-row items-center justify-between w-full p-2 border rounded-md cursor-pointer border-inputMain hover:bg-black"
                   onClick={() => {
                     router.push(`/u/${user?.uid} `);
                     dispatch(toggleSidebar({ open: false }));
@@ -116,7 +116,7 @@ export default function Sidebar({ active }) {
                 </div>
                 <div className="mt-auto">
                   <button
-                    className="flex flex-row items-center justify-between w-full p-2 text-sm text-gray-300 border border-gray-900 rounded-md cursor-pointer hover:bg-black"
+                    className="flex flex-row items-center justify-between w-full p-2 text-sm text-gray-300 border rounded-md cursor-pointer border-inputMain hover:bg-black"
                     onClick={Logout}
                   >
                     <RiLogoutBoxLine />

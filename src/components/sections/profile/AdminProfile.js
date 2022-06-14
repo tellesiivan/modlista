@@ -57,20 +57,13 @@ export default function AdminProfile() {
         <label className="text-xs text-gray-500" htmlFor="name">
           Name
         </label>
-        <div className="flex items-center w-full h-10 px-2 mt-1.5 rounded-md bg-inputMain">
+        <div className="flex items-center w-full h-10 px-2 mt-1.5 rounded-md bg-alt">
           <NameInput
             setValues={setValues}
             values={values}
             setError={setError}
             error={error}
           />
-          <button
-            type="submit"
-            className="px-3 py-1 text-xs text-gray-200 transition-opacity duration-500 rounded-full opacity-100 bg-selected disabled:opacity-0"
-            disabled={values.name.trim().length < 3 || error}
-          >
-            Update
-          </button>
         </div>
       </form>
       {error && (
@@ -79,6 +72,17 @@ export default function AdminProfile() {
         </div>
       )}
       <ImageUploads userId={user?.uid} />
+      {values.name.trim().length >= 3 && !error && (
+        <div className="sticky w-full bottom-2">
+          <button
+            onClick={onSubmit}
+            disabled={values.name.trim().length < 3 || error}
+            className="w-full py-2 text-sm text-center text-gray-200 transition-opacity duration-500 border divide-x rounded-md opacity-100 sm:py-3 hover:opacity-80 bg-selected divide-inputMain border-inputMain disabled:opacity-0"
+          >
+            Update
+          </button>
+        </div>
+      )}
     </>
   );
 }

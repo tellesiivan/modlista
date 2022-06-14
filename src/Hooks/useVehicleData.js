@@ -24,16 +24,17 @@ export default function useVehicleData() {
       if (!data) {
         throw new Error("No information for this vehicle was found");
       }
+      console.log(data);
 
       const formatData = {
-        make: data.make.name,
-        model: data.model.name,
-        transmission: data.transmission.transmissionType,
-        category: data.categories.vehicleStyle ?? data.categories.vehicleType,
-        ...(data.years && { year: data.years[0].year }),
-        ...(data.years[0].styles && { trim: data.years[0].styles }),
+        ...(data.make.name && { Make: data.make.name }),
+        ...(data.model && { Model: data.model.name }),
+        Transmission: data.transmission.transmissionType,
+        Category: data.categories.vehicleStyle ?? data.categories.vehicleType,
+        ...(data.years && { Year: data.years[0].year }),
+        ...(data.years[0].styles && { Trim: data.years[0].styles }),
         VIN: vinNum,
-        drivetrain: data.drivenWheels,
+        Drivetrain: data.drivenWheels,
         formType,
         // ...(data.years[0].styles.length = 1 && {
         //   trim: data.years[0].styles[0],
