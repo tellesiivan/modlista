@@ -58,7 +58,7 @@ export default function ImageUploads({ userId }) {
         </p>
         <Toggle getValue={getValue} />
       </div>
-      <section className="relative w-full p-2 overflow-hidden rounded-lg h-96 bg-inputMain">
+      <section className="relative w-full p-2 overflow-hidden rounded-lg h-96 bg-alt">
         {selectedFile ? (
           <UploadPreview src={selectedFile} type={uploadType} />
         ) : (
@@ -67,7 +67,7 @@ export default function ImageUploads({ userId }) {
             onSubmit={uploadImage}
           >
             <button
-              className="px-4 py-1 text-gray-300 rounded-full md:px-4 md:py-2 md:text-xs bg-selected hover:opacity-80"
+              className="px-3 py-1 text-xs text-gray-300 rounded-full bg-selected hover:opacity-80"
               onClick={() => uploadRef.current?.click()}
               type="button"
             >
@@ -103,7 +103,7 @@ export default function ImageUploads({ userId }) {
                 Discard
               </button>
               <button
-                className="font-medium hover:text-white"
+                className="font-medium cursor-pointer hover:text-white"
                 type="submit"
                 onClick={uploadImage}
               >

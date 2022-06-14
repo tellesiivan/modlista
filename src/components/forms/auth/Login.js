@@ -39,15 +39,14 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(values.email, values.password);
+      dispatch(authModalStatus({ open: false, from: "login" }));
     } catch (error) {
-      console.error(error);
+      setErrorFound("User not found, check email and password");
     }
     if (error && !loading) {
+      console.log(error.message);
       setErrorFound("User not found, check email and password");
-
       return;
-    } else {
-      dispatch(authModalStatus({ open: false, from: "login" }));
     }
   };
 
@@ -60,7 +59,7 @@ export default function Login() {
           onChange={onChangeHandler}
           name="email"
           placeholder="Email Address"
-          className="px-2 py-3 rounded-md sm:text-sm bg-slate-200 text-slate-600 focus-within:outline-none "
+          className="px-2 py-3 text-gray-300 rounded-md sm:text-sm bg-alt focus-within:outline-none placeholder:text-gray-500"
         />
         <input
           type="password"
@@ -68,13 +67,13 @@ export default function Login() {
           onChange={onChangeHandler}
           name="password"
           placeholder="Password"
-          className="px-2 py-3 rounded-md sm:text-sm bg-slate-200 text-slate-600 focus-within:outline-none "
+          className="px-2 py-3 text-gray-300 rounded-md sm:text-sm bg-alt focus-within:outline-none placeholder:text-gray-500"
         />
       </div>
       {errorFound && <AlertMessage message={errorFound} />}
       <LoadingButton
         styling={
-          "inline-flex justify-center w-full p-3 text-sm font-medium tracking-wide text-white bg-black border border-transparent rounded-md hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          "inline-flex justify-center w-full p-3 text-sm font-medium tracking-wide text-white bg-selected border border-transparent rounded-md hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         }
         loading={loading}
         text="Login"

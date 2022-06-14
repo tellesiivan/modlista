@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  vehicles: [],
+  vehicles: {
+    adding: null,
+    current: [],
+  },
   isAuth: false,
   actionSelected: "Profile",
 };
@@ -20,10 +23,13 @@ export const uiSlice = createSlice({
     selectedAction: (state, action) => {
       state.actionSelected = action.payload.action;
     },
+    addingVehicle: (state, action) => {
+      state.vehicles.adding = action.payload.vehicle;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addUser, selectedAction } = uiSlice.actions;
+export const { addUser, selectedAction, addingVehicle } = uiSlice.actions;
 
 export default uiSlice.reducer;

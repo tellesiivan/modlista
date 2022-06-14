@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { firestore } from "../../../firebase/clientApp";
 import HeaderSection from "../../../components/sections/profile/HeaderSection";
-import ToggleMobileNav from "../../../components/mobile/ToggleMobileNav";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
+import VehicleSection from "../../../components/sections/Vehicles/VehicleSection";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
@@ -41,6 +41,9 @@ export default function UserProfile({ userData }) {
             }`}
           >
             <HeaderSection profileUser={profileUser} isValid={isValid} />
+            <section className="p-2 md:p-3">
+              <VehicleSection />
+            </section>
           </div>
         )}
         {isValid && <ProfileMobileNav />}

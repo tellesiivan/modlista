@@ -16,7 +16,7 @@ function Arrow({ children, disabled, onClick }) {
         height: "24px",
         width: "24px",
         cursor: "pointer",
-        backgroundColor: "#333",
+        backgroundColor: "#444",
         cursor: "pointer",
         borderRadius: "100px",
         display: "flex",
@@ -63,7 +63,7 @@ function LeftArrow() {
     scrollToItem(getItemById(center), "smooth", "center");
 
   return (
-    <div className="absolute left-0 z-10 flex items-center justify-center h-7">
+    <div className="absolute z-10 flex items-center justify-center left-0.5 h-7">
       <Arrow disabled={disabled} onClick={scrollPrevCentered}>
         <HiOutlineArrowSmLeft className="text-white" />
       </Arrow>
@@ -86,7 +86,7 @@ function RightArrow() {
   }, [isLastItemVisible, visibleItemsWithoutSeparators]);
 
   return (
-    <div className="absolute right-0 z-10 flex items-center justify-center h-7">
+    <div className="absolute z-10 flex items-center justify-center right-0.5 h-7">
       <Arrow disabled={disabled} onClick={() => scrollNext()}>
         <HiOutlineArrowSmRight className="text-white" />
       </Arrow>

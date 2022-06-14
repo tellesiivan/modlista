@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
 @layer components {
   .outlineBtn {
@@ -17,18 +18,22 @@
 }
 @layer base {
   html {
-    @apply font-sans bg-[#091211];
+    @apply font-sans bg-[#000];
   }
 }
 
 .sidebarH {
   height: calc(100% - 1rem);
 }
+.adminPanelH {
+  height: calc(100vh - 64px);
+}
 html {
   scrollbar-width: none;
 }
 html,
 body {
+  font-family: "Manrope", sans-serif;
   height: 100%;
 }
 

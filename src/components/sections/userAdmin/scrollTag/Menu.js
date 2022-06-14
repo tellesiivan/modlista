@@ -17,7 +17,9 @@ const actionTabs = [
   {
     title: "Events",
   },
-
+  {
+    title: "Overview",
+  },
   {
     title: "Settings",
   },
@@ -46,7 +48,7 @@ export default function Menu() {
     };
 
   return (
-    <div className="-mx-2 h-7">
+    <div className="translate-y-1/2 top-1/2 h-7">
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
         {actionTabs.map(({ title }) => (
           <Card
