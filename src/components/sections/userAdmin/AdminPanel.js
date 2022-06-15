@@ -13,7 +13,7 @@ export default function AdminPanel({ profileUser }) {
   return (
     <div className="fixed hidden px-3 border-r border-gray-800 adminPanelH md:block w-96 md:overflow-y-scroll">
       <div className="relative adminPanelH">
-        <div className="sticky z-50 h-12 my-auto -mx-3 top-4 md:top-0 bg-gradient-to-b from-main via-main to-transparent">
+        <div className="z-50 my-auto -mx-3 md:sticky md:h-12 top-4 md:top-0 bg-gradient-to-b from-main via-main to-transparent">
           <Menu />
         </div>
 

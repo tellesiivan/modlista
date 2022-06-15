@@ -3,7 +3,7 @@ import React from "react";
 export default function VehicleItem({ vehicle }) {
   return (
     <div>
-      <div className="px-2 my-3 border divide-y rounded-md divide-alt bg-inputMain border-alt">
+      <div className="px-2 mt-3 border divide-y rounded-md divide-main bg-alt border-inputMain">
         {Object.entries(vehicle).map(([key, val]) => (
           <div
             key={key}

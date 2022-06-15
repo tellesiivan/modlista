@@ -30,7 +30,7 @@ export default function ImageUploads({ userId }) {
       if (!selectedFile) {
         throw new Error("No selected file");
       }
-      //  added to strorage then get DOWNLOAD URL to update the post in DB
+      //  add to strorage then get DOWNLOAD URL to update the post in DB
       await uploadString(imageRef, selectedFile, "data_url");
       const downloadedUrl = await getDownloadURL(imageRef);
       // match DB naming convention | profile -> avatarImg

@@ -7,8 +7,9 @@ import RadioGroupTemplate from "../../helpers/RadioGroupTemp";
 import TrimSelection from "./TrimSelectionVin";
 import VehicleItem from "./VehicleItem";
 import VinInput from "./VinInput";
-import { writeBatch, doc, collection } from "firebase/firestore";
-import { auth, firestore } from "../../../firebase/clientApp";
+import { writeBatch, doc, collection, increment } from "firebase/firestore";
+import { auth, firestore, storage } from "../../../firebase/clientApp";
+import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { useAuthState } from "react-firebase-hooks/auth";
 import VehicleCoverImage from "./VehicleCoverImage";
 import useSelectFile from "../../../Hooks/useSelectFile";
@@ -41,31 +42,53 @@ export default function AdminVehicles() {
     e.preventDefault();
     const trimPick =
       data.Trim.length > 1 ? (trim == "" ? data.Trim[0] : trim) : data.Trim[0];
-    const format = { ...data, Trim: trimPick, Owner: user.uid };
+
+    // vehicles db REF
+    const vehicleRef = doc(collection(firestore, "vehicles"));
+    // user previews db REF
+    const userPreviewsRef = doc(
+      firestore,
+      `users/${user.uid}/vehiclePreviews/${vehicleRef.id}`
+    );
+    // user db REF
+    const userRef = doc(firestore, `users/${user.uid}`);
+    // storage reference
+    const imageStorageRef = ref(
+      storage,
+      `vehicles/${vehicleRef.id}/${user.uid}`
+    );
+
     try {
       // Get a new write batch
       const batch = writeBatch(firestore);
+      //  add to strorage then get DOWNLOAD URL to update the post in DB
+      await uploadString(imageStorageRef, selectedFile, "data_url");
+      const downloadedUrl = await getDownloadURL(imageStorageRef);
 
-      // vehicles db REF
-      const vehicleRef = doc(collection(firestore, "vehicles"));
+      const format = {
+        ...data,
+        Trim: trimPick,
+        Owner: user.uid,
+        coverImage: downloadedUrl,
+      };
       batch.set(vehicleRef, format);
-      // user db REF
-      const userRef = doc(
-        firestore,
-        `users/${user.uid}/vehiclePreviews/${vehicleRef.id}`
-      );
-      batch.set(userRef, {
+      batch.set(userPreviewsRef, {
         Make: data.Make,
         Model: data.Model,
         Year: data.Year,
         Trim: data.Trim[0],
+        coverImage: downloadedUrl,
       });
+      batch.update(userRef, { vehiclesOwn: increment(1) });
+
       // Commit the batch
       await batch.commit();
     } catch (error) {
       console.log(error.message, "addVehicle");
     }
   };
+
+  const showActionBTN = data && data.formType === formType;
 
   return (
     <>
@@ -79,14 +102,24 @@ export default function AdminVehicles() {
         setSelected={setFormType}
         selected={formType}
       />
-      <form className="mt-4">
+      <form>
         {data && data.formType === formType ? (
           formType === "VIN" ? (
-            <div className={`mt-6 ${!selectedFile && "pb-2"}`}>
+            <div
+              className={`mt-4 ${
+                data && data.formType === formType ? "mb-6" : ""
+              }`}
+            >
               <h2 className="font-bold text-white text-md">
                 Nice! We Found Your Car.
               </h2>
               <p className="text-sm text-gray-500">Here are a few details...</p>
+              <VehicleCoverImage
+                selectedFile={selectedFile}
+                setSelectedFile={setSelectedFile}
+                onSelectedFile={onSelectedFile}
+                data={data}
+              />
               {data.Trim.length > 1 && (
                 <TrimSelection
                   trims={data.Trim}
@@ -94,26 +127,26 @@ export default function AdminVehicles() {
                   trim={trim}
                 />
               )}
+
               <VehicleItem
                 vehicle={
                   data.Trim.length > 1
                     ? Object.fromEntries(
                         Object.entries(data).filter(
                           ([key]) =>
-                            !key.includes("Trim") && !key.includes("formType")
+                            !key.includes("Trim") &&
+                            !key.includes("formType") &&
+                            !key.includes("coverImage")
                         )
                       )
                     : Object.fromEntries(
                         Object.entries(data).filter(
-                          ([key]) => !key.includes("formType")
+                          ([key]) =>
+                            !key.includes("formType") &&
+                            !key.includes("coverImage")
                         )
                       )
                 }
-              />
-              <VehicleCoverImage
-                selectedFile={selectedFile}
-                setSelectedFile={setSelectedFile}
-                onSelectedFile={onSelectedFile}
               />
             </div>
           ) : (
@@ -129,19 +162,46 @@ export default function AdminVehicles() {
         ) : (
           <div>MAKE/MODEL</div>
         )}
-        {data && data.formType === formType && selectedFile && (
-          <div className="sticky grid grid-cols-2 gap-2 text-sm text-gray-200 border divide-x rounded-md bottom-3 bg-selected divide-inputMain border-inputMain">
-            <button
-              className="py-3 hover:opacity-80"
-              onClick={() => dispatch(addingVehicle({ vehicle: null }))}
-            >
-              Delete
-            </button>
-            <button className="py-3 hover:opacity-80" onClick={addVehicle}>
-              Add
-            </button>
-          </div>
-        )}
+        {showActionBTN &&
+          (selectedFile || data?.coverImage ? (
+            <div className="sticky grid grid-cols-2 gap-2 text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
+              <button
+                className="py-3 hover:opacity-80"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedFile("");
+                  dispatch(
+                    addingVehicle({
+                      vehicle: null,
+                    })
+                  );
+                }}
+              >
+                Delete
+              </button>
+              <button className="py-3 hover:opacity-80" onClick={addVehicle}>
+                Add
+              </button>
+            </div>
+          ) : (
+            <div className="sticky w-full text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
+              <button
+                className="w-full py-3 text-center hover:opacity-80"
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedFile("");
+                  dispatch(
+                    addingVehicle({
+                      vehicle: null,
+                    })
+                  );
+                }}
+              >
+                New Search
+              </button>
+            </div>
+          ))}
       </form>
     </>
   );

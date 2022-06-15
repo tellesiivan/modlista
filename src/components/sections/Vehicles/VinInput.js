@@ -7,7 +7,7 @@ export default function VinInput({
   errorReset,
 }) {
   return (
-    <div className="flex items-center h-12 px-2 py-2 rounded-md bg-alt">
+    <div className="flex items-center h-12 px-2 py-2 mt-4 rounded-md bg-alt">
       <input
         className="flex-grow text-gray-300 bg-transparent border-none outline-none sm:text-sm placeholder:text-xs placeholder:text-gray-500 "
         placeholder="Enter VIN number..."

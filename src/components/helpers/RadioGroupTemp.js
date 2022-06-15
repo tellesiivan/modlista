@@ -12,19 +12,15 @@ export default function RadioGroupTemplate({
       <div className="w-full ">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
-          <div className={`grid grid-cols-1 w-full space-x-2`}>
+          <div className={`grid grid-cols-1 w-full space-x-2 `}>
             {options.map((option) => (
               <RadioGroup.Option
                 key={option}
                 value={option}
                 className={({ active, checked }) =>
                   `
-                  ${
-                    checked
-                      ? "bg-selected bg-opacity-75 text-gray-300"
-                      : "bg-alt "
-                  }
-                    relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none `
+                  ${checked ? "bg-selected bg-opacity-75 text-main" : "bg-alt "}
+                    relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none h-12 `
                 }
               >
                 {({ active, checked }) => (
@@ -35,7 +31,7 @@ export default function RadioGroupTemplate({
                           <RadioGroup.Label
                             as="p"
                             className={`font-medium  ${
-                              checked ? "text-white" : "text-gray-400"
+                              checked ? "text-main" : "text-gray-400"
                             }`}
                           >
                             {option}
@@ -62,10 +58,10 @@ export default function RadioGroupTemplate({
 function CheckIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
+      <circle cx={12} cy={12} r={12} fill="#111" opacity="0.2" />
       <path
         d="M7 13l3 3 7-7"
-        stroke="#fff"
+        stroke="#000"
         strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"

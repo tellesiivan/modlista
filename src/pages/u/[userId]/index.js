@@ -3,7 +3,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import AdminPanel from "../../../components/sections/userAdmin/AdminPanel";
 import { auth } from "../../../firebase/clientApp";
 import { useEffect, useState } from "react";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+
+import {
+  doc,
+  getDoc,
+  onSnapshot,
+  collection,
+  getDocs,
+} from "firebase/firestore";
 import { firestore } from "../../../firebase/clientApp";
 import HeaderSection from "../../../components/sections/profile/HeaderSection";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
@@ -19,13 +26,26 @@ export default function UserProfile({ userData }) {
   // profile changes from DB
   useEffect(() => {
     onSnapshot(doc(firestore, `users/${userData.uid}`), (doc) => {
+      let previews = [];
+      const getSubs = async () => {
+        // get snippets || path to that specific collection
+        const snippetDocs = await getDocs(
+          collection(firestore, `users/${userId}/vehiclePreviews`)
+        );
+        snippetDocs.docs.map((doc) => {
+          previews.push(doc.data());
+        });
+      };
+
       const userData = {
         ...doc.data(),
         createdAt: new Date(
           doc.data()?.createdAt.seconds * 1000
         ).toLocaleString("en-US"),
+        vehiclePreviews: previews,
       };
       setProfileUser(userData);
+      getSubs();
     });
   }, [userId, userData.uid]);
 

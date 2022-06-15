@@ -15,7 +15,6 @@ const useSelectFile = () => {
     reader.onload = (readerEvent) => {
       if (readerEvent.target?.result) {
         setSelectedFile(readerEvent.target.result);
-        console.log(readerEvent.target.result);
       }
     };
   };

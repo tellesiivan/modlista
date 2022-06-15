@@ -7,9 +7,9 @@ module.exports = {
     extend: {
       colors: {
         main: "#000",
-        alt: "#111",
+        alt: "#16181c",
         inputMain: "#1212",
-        selected: "#7c1bff",
+        selected: "#fff",
       },
     },
   },
