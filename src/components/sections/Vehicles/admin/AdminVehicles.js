@@ -13,6 +13,7 @@ import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { useAuthState } from "react-firebase-hooks/auth";
 import VehicleCoverImage from "./VehicleCoverImage";
 import useSelectFile from "../../../../Hooks/useSelectFile";
+import VehiclePreviewsTable from "./VehiclePreviewsTable";
 
 const formTypes = ["VIN"];
 // , "Make/Model"
@@ -20,6 +21,9 @@ const formTypes = ["VIN"];
 export default function AdminVehicles() {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.userUI.vehicles.adding);
+  const vehiclePreviews = useSelector(
+    (store) => store.userUI.vehicles.previews
+  );
   const [formType, setFormType] = useState("VIN");
   const [vinValue, setVinValue] = useState("");
   const [loading, setLoading] = useState(false);
@@ -103,122 +107,138 @@ export default function AdminVehicles() {
         Heading="Vehicles"
         Desc="Add the vehicles you own here. Add them with the vehicle's VIN number. More options coming soon."
       />
-      <RadioGroupTemplate
-        options={formTypes}
-        label="Add vehicle with VIN number:"
-        setSelected={setFormType}
-        selected={formType}
-      />
-      <form>
-        {data && data.formType === formType ? (
-          formType === "VIN" ? (
-            <div
-              className={`mt-4 ${
-                data && data.formType === formType ? "mb-6" : ""
-              }`}
-            >
-              <h2 className="font-bold text-white text-md">
-                Nice! We Found Your Car.
-              </h2>
-              <p className="text-sm text-gray-500">Here are a few details...</p>
-              <VehicleCoverImage
-                selectedFile={selectedFile}
-                setSelectedFile={setSelectedFile}
-                onSelectedFile={onSelectedFile}
-                data={data}
-              />
-              {data.Trim.length > 1 && (
-                <TrimSelection
-                  trims={data.Trim}
-                  setTrim={setTrim}
-                  trim={trim}
-                />
-              )}
+      {vehiclePreviews && vehiclePreviews.length >= 2 && (
+        <span className="">Mx number of vehicles reached!</span>
+      )}
+      {vehiclePreviews && <VehiclePreviewsTable vehicles={vehiclePreviews} />}
 
-              <VehicleItem
-                vehicle={
-                  data.Trim.length > 1
-                    ? Object.fromEntries(
-                        Object.entries(data).filter(
-                          ([key]) =>
-                            !key.includes("Trim") &&
-                            !key.includes("formType") &&
-                            !key.includes("coverImage")
-                        )
-                      )
-                    : Object.fromEntries(
-                        Object.entries(data).filter(
-                          ([key]) =>
-                            !key.includes("formType") &&
-                            !key.includes("coverImage")
-                        )
-                      )
-                }
-              />
-            </div>
-          ) : (
-            <div>show data from MAKE/MODEL FORM</div>
-          )
-        ) : formType === "VIN" ? (
-          <VinInput
-            setVinValue={setVinValue}
-            vinValue={vinValue}
-            clickAction={getDataHandler}
-            errorReset={setError}
+      {vehiclePreviews && vehiclePreviews.length >= 2 ? (
+        <div></div>
+      ) : (
+        <>
+          <RadioGroupTemplate
+            options={formTypes}
+            label="Add vehicle with VIN number:"
+            setSelected={setFormType}
+            selected={formType}
           />
-        ) : (
-          <div>MAKE/MODEL</div>
-        )}
-        {showActionBTN &&
-          ((selectedFile || data?.coverImage) && !loading ? (
-            <div className="sticky grid grid-cols-2 gap-2 text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
-              <button
-                className="py-3 hover:opacity-80"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSelectedFile("");
-                  dispatch(
-                    addingVehicle({
-                      vehicle: null,
-                    })
-                  );
-                }}
-              >
-                Delete
-              </button>
-              <button className="py-3 hover:opacity-80" onClick={addVehicle}>
-                Add
-              </button>
-            </div>
-          ) : (
-            <div className="sticky w-full text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
-              {loading ? (
-                <button
-                  className="w-full py-3 text-center hover:opacity-80"
-                  type="button"
+          <form>
+            {data && data.formType === formType ? (
+              formType === "VIN" ? (
+                <div
+                  className={`mt-4 ${
+                    data && data.formType === formType ? "mb-6" : ""
+                  }`}
                 >
-                  Loading...
-                </button>
+                  <h2 className="font-bold text-white text-md">
+                    Nice! We Found Your Car.
+                  </h2>
+                  <p className="text-sm text-gray-500">
+                    Here are a few details...
+                  </p>
+                  <VehicleCoverImage
+                    selectedFile={selectedFile}
+                    setSelectedFile={setSelectedFile}
+                    onSelectedFile={onSelectedFile}
+                    data={data}
+                  />
+                  {data.Trim.length > 1 && (
+                    <TrimSelection
+                      trims={data.Trim}
+                      setTrim={setTrim}
+                      trim={trim}
+                    />
+                  )}
+
+                  <VehicleItem
+                    vehicle={
+                      data.Trim.length > 1
+                        ? Object.fromEntries(
+                            Object.entries(data).filter(
+                              ([key]) =>
+                                !key.includes("Trim") &&
+                                !key.includes("formType") &&
+                                !key.includes("coverImage")
+                            )
+                          )
+                        : Object.fromEntries(
+                            Object.entries(data).filter(
+                              ([key]) =>
+                                !key.includes("formType") &&
+                                !key.includes("coverImage")
+                            )
+                          )
+                    }
+                  />
+                </div>
               ) : (
-                <button
-                  className="w-full py-3 text-center hover:opacity-80"
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedFile("");
-                    dispatch(
-                      addingVehicle({
-                        vehicle: null,
-                      })
-                    );
-                  }}
-                >
-                  New Search
-                </button>
-              )}
-            </div>
-          ))}
-      </form>
+                <div>show data from MAKE/MODEL FORM</div>
+              )
+            ) : formType === "VIN" ? (
+              <VinInput
+                setVinValue={setVinValue}
+                vinValue={vinValue}
+                clickAction={getDataHandler}
+                errorReset={setError}
+              />
+            ) : (
+              <div>MAKE/MODEL</div>
+            )}
+            {showActionBTN &&
+              ((selectedFile || data?.coverImage) && !loading ? (
+                <div className="sticky grid grid-cols-2 gap-2 text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
+                  <button
+                    className="py-3 hover:opacity-80"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedFile("");
+                      dispatch(
+                        addingVehicle({
+                          vehicle: null,
+                        })
+                      );
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="py-3 hover:opacity-80"
+                    onClick={addVehicle}
+                  >
+                    Add
+                  </button>
+                </div>
+              ) : (
+                <div className="sticky w-full text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
+                  {loading ? (
+                    <button
+                      className="w-full py-3 text-center hover:opacity-80"
+                      type="button"
+                    >
+                      Loading...
+                    </button>
+                  ) : (
+                    <button
+                      className="w-full py-3 text-center hover:opacity-80"
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setSelectedFile("");
+                        dispatch(
+                          addingVehicle({
+                            vehicle: null,
+                          })
+                        );
+                      }}
+                    >
+                      New Search
+                    </button>
+                  )}
+                </div>
+              ))}
+          </form>
+        </>
+      )}
     </>
   );
 }

@@ -61,7 +61,7 @@ export default function HeaderSection({ profileUser, isValid }) {
           <h2 className="flex items-center text-lg font-bold text-gray-200 md:font-semibold md:text-2xl">
             {name ? name : email}{" "}
             {vehiclesOwn && (
-              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-[#00ffad] rounded-full text-main">
+              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-inputMain rounded-full text-white">
                 {vehiclesOwn}
               </div>
             )}

@@ -1,14 +1,42 @@
+import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/router";
 
 export default function VehicleCard({ vehicle }) {
+  const router = useRouter();
+  const { userId } = router.query;
+
   return (
-    <div className="flex items-center justify-between h-20 min-w-full p-2 rounded-sm bg-inputMain">
-      <div>
-        <img src={vehicle.coverImage} alt="" className="object-cover w-6 h-6" />
+    <div className="relative flex items-center justify-between h-24 min-w-full p-3 overflow-hidden cursor-pointer hover:bg-alt hover:bg-opacity-10">
+      <div
+        className="relative w-12 h-12 overflow-hidden rounded-full"
+        onClick={() =>
+          router.push(
+            {
+              pathname: `/u/[userId]`,
+              query: {
+                userId,
+              },
+            },
+            `/u/${userId}?v=${vehicle.id}`,
+            { shallow: true }
+          )
+        }
+      >
+        <Image
+          src={vehicle.coverImage}
+          objectFit="cover"
+          layout="fill"
+          objectPosition="center"
+          className="absolute "
+          alt=""
+        />
       </div>
-      <h2 className="text-white">
-        {vehicle.Make} \ {vehicle.Model}
-      </h2>
+      <div className="text-right">
+        <p className="text-sm text-gray-400">{vehicle.Year}</p>
+        <h2 className="text-xl font-bold text-gray-200">{vehicle.Make}</h2>
+        <p className="text-sm text-gray-500">{vehicle.Model}</p>
+      </div>
     </div>
   );
 }

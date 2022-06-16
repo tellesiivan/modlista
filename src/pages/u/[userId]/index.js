@@ -3,7 +3,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import AdminPanel from "../../../components/sections/userAdmin/AdminPanel";
 import { auth } from "../../../firebase/clientApp";
 import { useEffect, useState } from "react";
-
 import {
   doc,
   getDoc,
@@ -16,6 +15,8 @@ import HeaderSection from "../../../components/sections/profile/HeaderSection";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
 import VehicleSection from "../../../components/sections/Vehicles/public/VehicleSection";
 import AdminPanelLoading from "../../../components/helpers/loading/AdminPanelLoading";
+import { useDispatch } from "react-redux";
+import { addVehiclePreviews } from "../../../store/slices/uiSlice";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
@@ -24,6 +25,7 @@ export default function UserProfile({ userData }) {
   const { userId } = router.query;
   const [user] = useAuthState(auth);
   const isValid = user?.uid === userId;
+  const dispatch = useDispatch();
 
   // profile changes from DB
   useEffect(() => {
@@ -35,11 +37,16 @@ export default function UserProfile({ userData }) {
           collection(firestore, `users/${userId}/vehiclePreviews`)
         );
         snippetDocs.docs.map((doc) => {
-          previews.push(doc.data());
+          previews.push({
+            ...doc.data(),
+            id: doc.id,
+          });
         });
         setVehiclePreviews(previews);
+        if (isValid) {
+          dispatch(addVehiclePreviews({ previews }));
+        }
       };
-
       const userData = {
         ...doc.data(),
         createdAt: new Date(
