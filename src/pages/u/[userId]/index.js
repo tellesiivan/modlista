@@ -3,22 +3,50 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import AdminPanel from "../../../components/sections/userAdmin/AdminPanel";
 import { auth } from "../../../firebase/clientApp";
 import { useEffect, useState } from "react";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  onSnapshot,
+  collection,
+  getDocs,
+} from "firebase/firestore";
 import { firestore } from "../../../firebase/clientApp";
 import HeaderSection from "../../../components/sections/profile/HeaderSection";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
-import VehicleSection from "../../../components/sections/Vehicles/VehicleSection";
+import VehicleSection from "../../../components/sections/Vehicles/public/VehicleSection";
+import AdminPanelLoading from "../../../components/helpers/loading/AdminPanelLoading";
+import { useDispatch } from "react-redux";
+import { addVehiclePreviews } from "../../../store/slices/uiSlice";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
   const [profileUser, setProfileUser] = useState(null);
+  const [vehiclePreviews, setVehiclePreviews] = useState(null);
   const { userId } = router.query;
   const [user] = useAuthState(auth);
   const isValid = user?.uid === userId;
+  const dispatch = useDispatch();
 
   // profile changes from DB
   useEffect(() => {
     onSnapshot(doc(firestore, `users/${userData.uid}`), (doc) => {
+      const getSubs = async () => {
+        let previews = [];
+        // get snippets || path to that specific collection
+        const snippetDocs = await getDocs(
+          collection(firestore, `users/${userId}/vehiclePreviews`)
+        );
+        snippetDocs.docs.map((doc) => {
+          previews.push({
+            ...doc.data(),
+            id: doc.id,
+          });
+        });
+        setVehiclePreviews(previews);
+        if (isValid) {
+          dispatch(addVehiclePreviews({ previews }));
+        }
+      };
       const userData = {
         ...doc.data(),
         createdAt: new Date(
@@ -26,6 +54,7 @@ export default function UserProfile({ userData }) {
         ).toLocaleString("en-US"),
       };
       setProfileUser(userData);
+      getSubs();
     });
   }, [userId, userData.uid]);
 
@@ -33,19 +62,26 @@ export default function UserProfile({ userData }) {
     <>
       <div className="flex flex-row w-full h-full">
         {isValid && <AdminPanel profileUser={profileUser} />}
-        {profileUser && (
-          <div
-            className={`flex-grow h-full ${isValid && "md:ml-96"} ${
-              !isValid &&
-              "lg:max-w-2xl lg:border-l lg:border-r lg:border-alt lg:mx-auto"
-            }`}
-          >
-            <HeaderSection profileUser={profileUser} isValid={isValid} />
-            <section className="p-2 md:p-3">
-              <VehicleSection />
-            </section>
-          </div>
-        )}
+
+        <div
+          className={`flex-grow h-full ${isValid && "md:ml-96"} ${
+            !isValid &&
+            "lg:max-w-2xl lg:border-l lg:border-r lg:border-alt lg:mx-auto"
+          }`}
+        >
+          {profileUser ? (
+            <>
+              <HeaderSection profileUser={profileUser} isValid={isValid} />
+
+              {vehiclePreviews && <VehicleSection vehicles={vehiclePreviews} />}
+            </>
+          ) : (
+            <>
+              <AdminPanelLoading />
+            </>
+          )}
+        </div>
+
         {isValid && <ProfileMobileNav />}
       </div>
     </>

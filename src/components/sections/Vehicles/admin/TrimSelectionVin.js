@@ -12,13 +12,13 @@ export default function TrimSelection({ trims, setTrim, trim }) {
 
       <Listbox value={trim === "" ? selected : trim} onChange={setTrim}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full py-3 pl-3 pr-10 text-left rounded-lg shadow-md cursor-default bg-inputMain sm:text-sm">
-            <span className="block text-gray-300 truncate sm:text-xs">
+          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-lg shadow-md cursor-default bg-alt sm:text-sm">
+            <span className="block text-xs text-gray-300 truncate">
               {trim === "" ? selected : trim}
             </span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <HiOutlineSelector
-                className="w-5 h-5 text-gray-400"
+                className="w-5 h-5 text-main"
                 aria-hidden="true"
               />
             </span>
@@ -29,7 +29,7 @@ export default function TrimSelection({ trims, setTrim, trim }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base rounded-md shadow-lg bg-alt max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-xs">
+            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-xs border rounded-md shadow-lg bg-alt max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none border-main">
               {trims.map((trim, trimIdx) => (
                 <Listbox.Option
                   key={trimIdx}

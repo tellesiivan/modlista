@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 
 export default function HeaderSection({ profileUser, isValid }) {
-  const { name, email, createdAt, coverImg, avatarImg } = profileUser;
+  const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn } =
+    profileUser;
   const dispatch = useDispatch();
 
   return (
@@ -43,7 +44,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-400 border rounded-full border-alt w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-400 border border-gray-700 rounded-full w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
@@ -57,8 +58,13 @@ export default function HeaderSection({ profileUser, isValid }) {
         } mx-6  md:mx-8 md:mt-20 flex justify-between items-center`}
       >
         <div className="">
-          <h2 className="text-lg font-bold text-gray-200 md:font-semibold md:text-2xl">
-            {name ? name : email}
+          <h2 className="flex items-center text-lg font-bold text-gray-200 md:font-semibold md:text-2xl">
+            {name ? name : email}{" "}
+            {vehiclesOwn && (
+              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-inputMain rounded-full text-white">
+                {vehiclesOwn}
+              </div>
+            )}
           </h2>
           <p className="-mt-0.25 text-xs text-gray-400 flex items-center space-x-1 ">
             <MdOutlineCalendarToday className="mr-1" />

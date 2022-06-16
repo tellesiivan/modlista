@@ -4,7 +4,7 @@ const initialState = {
   user: null,
   vehicles: {
     adding: null,
-    current: [],
+    previews: {},
   },
   isAuth: false,
   actionSelected: "Profile",
@@ -26,10 +26,14 @@ export const uiSlice = createSlice({
     addingVehicle: (state, action) => {
       state.vehicles.adding = action.payload.vehicle;
     },
+    addVehiclePreviews: (state, action) => {
+      state.vehicles.previews = action.payload.previews;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addUser, selectedAction, addingVehicle } = uiSlice.actions;
+export const { addUser, selectedAction, addingVehicle, addVehiclePreviews } =
+  uiSlice.actions;
 
 export default uiSlice.reducer;
