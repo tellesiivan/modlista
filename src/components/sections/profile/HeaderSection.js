@@ -11,8 +11,6 @@ export default function HeaderSection({ profileUser, isValid }) {
     profileUser;
   const dispatch = useDispatch();
 
-  console.log(profileUser);
-
   return (
     <div className="pb-4 border-b border-alt">
       <div className="relative h-[125px] md:h-[200px]  ">
@@ -46,7 +44,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-400 border rounded-full border-alt w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-400 border border-gray-700 rounded-full w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
@@ -63,7 +61,7 @@ export default function HeaderSection({ profileUser, isValid }) {
           <h2 className="flex items-center text-lg font-bold text-gray-200 md:font-semibold md:text-2xl">
             {name ? name : email}{" "}
             {vehiclesOwn && (
-              <div className="flex items-center justify-center w-5 h-5 ml-1 text-xs bg-yellow-200 rounded-full text-main">
+              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-[#00ffad] rounded-full text-main">
                 {vehiclesOwn}
               </div>
             )}

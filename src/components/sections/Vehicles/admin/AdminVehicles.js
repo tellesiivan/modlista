@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useVehicleData from "../../../Hooks/useVehicleData";
-import { addingVehicle } from "../../../store/slices/uiSlice";
-import AdminHeading from "../../helpers/AdminHeading";
-import RadioGroupTemplate from "../../helpers/RadioGroupTemp";
+import useVehicleData from "../../../../Hooks/useVehicleData";
+import { addingVehicle } from "../../../../store/slices/uiSlice";
+import AdminHeading from "../../../helpers/AdminHeading";
+import RadioGroupTemplate from "../../../helpers/RadioGroupTemp";
 import TrimSelection from "./TrimSelectionVin";
 import VehicleItem from "./VehicleItem";
 import VinInput from "./VinInput";
 import { writeBatch, doc, collection, increment } from "firebase/firestore";
-import { auth, firestore, storage } from "../../../firebase/clientApp";
+import { auth, firestore, storage } from "../../../../firebase/clientApp";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { useAuthState } from "react-firebase-hooks/auth";
 import VehicleCoverImage from "./VehicleCoverImage";
-import useSelectFile from "../../../Hooks/useSelectFile";
+import useSelectFile from "../../../../Hooks/useSelectFile";
 
 const formTypes = ["VIN"];
 // , "Make/Model"
@@ -22,6 +22,7 @@ export default function AdminVehicles() {
   const data = useSelector((store) => store.userUI.vehicles.adding);
   const [formType, setFormType] = useState("VIN");
   const [vinValue, setVinValue] = useState("");
+  const [loading, setLoading] = useState(false);
   const [trim, setTrim] = useState(data ? data.Trim[0].name : "");
   const { getDataByVin, error, setError } = useVehicleData();
   const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
@@ -57,7 +58,7 @@ export default function AdminVehicles() {
       storage,
       `vehicles/${vehicleRef.id}/${user.uid}`
     );
-
+    setLoading(true);
     try {
       // Get a new write batch
       const batch = writeBatch(firestore);
@@ -84,8 +85,14 @@ export default function AdminVehicles() {
       // Commit the batch
       await batch.commit();
     } catch (error) {
+      setLoading(false);
       console.log(error.message, "addVehicle");
     }
+
+    // reset values
+    setLoading(false);
+    setSelectedFile("");
+    dispatch(addingVehicle({ vehicle: null }));
   };
 
   const showActionBTN = data && data.formType === formType;
@@ -163,7 +170,7 @@ export default function AdminVehicles() {
           <div>MAKE/MODEL</div>
         )}
         {showActionBTN &&
-          (selectedFile || data?.coverImage ? (
+          ((selectedFile || data?.coverImage) && !loading ? (
             <div className="sticky grid grid-cols-2 gap-2 text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
               <button
                 className="py-3 hover:opacity-80"
@@ -185,21 +192,30 @@ export default function AdminVehicles() {
             </div>
           ) : (
             <div className="sticky w-full text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
-              <button
-                className="w-full py-3 text-center hover:opacity-80"
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSelectedFile("");
-                  dispatch(
-                    addingVehicle({
-                      vehicle: null,
-                    })
-                  );
-                }}
-              >
-                New Search
-              </button>
+              {loading ? (
+                <button
+                  className="w-full py-3 text-center hover:opacity-80"
+                  type="button"
+                >
+                  Loading...
+                </button>
+              ) : (
+                <button
+                  className="w-full py-3 text-center hover:opacity-80"
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedFile("");
+                    dispatch(
+                      addingVehicle({
+                        vehicle: null,
+                      })
+                    );
+                  }}
+                >
+                  New Search
+                </button>
+              )}
             </div>
           ))}
       </form>

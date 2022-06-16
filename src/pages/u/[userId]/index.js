@@ -14,11 +14,13 @@ import {
 import { firestore } from "../../../firebase/clientApp";
 import HeaderSection from "../../../components/sections/profile/HeaderSection";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
-import VehicleSection from "../../../components/sections/Vehicles/VehicleSection";
+import VehicleSection from "../../../components/sections/Vehicles/public/VehicleSection";
+import AdminPanelLoading from "../../../components/helpers/loading/AdminPanelLoading";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
   const [profileUser, setProfileUser] = useState(null);
+  const [vehiclePreviews, setVehiclePreviews] = useState(null);
   const { userId } = router.query;
   const [user] = useAuthState(auth);
   const isValid = user?.uid === userId;
@@ -26,8 +28,8 @@ export default function UserProfile({ userData }) {
   // profile changes from DB
   useEffect(() => {
     onSnapshot(doc(firestore, `users/${userData.uid}`), (doc) => {
-      let previews = [];
       const getSubs = async () => {
+        let previews = [];
         // get snippets || path to that specific collection
         const snippetDocs = await getDocs(
           collection(firestore, `users/${userId}/vehiclePreviews`)
@@ -35,6 +37,7 @@ export default function UserProfile({ userData }) {
         snippetDocs.docs.map((doc) => {
           previews.push(doc.data());
         });
+        setVehiclePreviews(previews);
       };
 
       const userData = {
@@ -42,7 +45,6 @@ export default function UserProfile({ userData }) {
         createdAt: new Date(
           doc.data()?.createdAt.seconds * 1000
         ).toLocaleString("en-US"),
-        vehiclePreviews: previews,
       };
       setProfileUser(userData);
       getSubs();
@@ -53,19 +55,26 @@ export default function UserProfile({ userData }) {
     <>
       <div className="flex flex-row w-full h-full">
         {isValid && <AdminPanel profileUser={profileUser} />}
-        {profileUser && (
-          <div
-            className={`flex-grow h-full ${isValid && "md:ml-96"} ${
-              !isValid &&
-              "lg:max-w-2xl lg:border-l lg:border-r lg:border-alt lg:mx-auto"
-            }`}
-          >
-            <HeaderSection profileUser={profileUser} isValid={isValid} />
-            <section className="p-2 md:p-3">
-              <VehicleSection />
-            </section>
-          </div>
-        )}
+
+        <div
+          className={`flex-grow h-full ${isValid && "md:ml-96"} ${
+            !isValid &&
+            "lg:max-w-2xl lg:border-l lg:border-r lg:border-alt lg:mx-auto"
+          }`}
+        >
+          {profileUser ? (
+            <>
+              <HeaderSection profileUser={profileUser} isValid={isValid} />
+
+              {vehiclePreviews && <VehicleSection vehicles={vehiclePreviews} />}
+            </>
+          ) : (
+            <>
+              <AdminPanelLoading />
+            </>
+          )}
+        </div>
+
         {isValid && <ProfileMobileNav />}
       </div>
     </>

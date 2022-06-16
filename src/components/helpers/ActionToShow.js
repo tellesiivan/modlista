@@ -1,7 +1,7 @@
 import AdminProfile from "../sections/profile/AdminProfile";
 import SocialLinks from "../sections/links/Links";
 import AdminEvents from "../sections/events/AdminEvents";
-import AdminVehicles from "../sections/Vehicles/AdminVehicles";
+import AdminVehicles from "../sections/Vehicles/admin/AdminVehicles";
 import Settings from "../sections/Settings";
 import Feedback from "../sections/Feedback";
 

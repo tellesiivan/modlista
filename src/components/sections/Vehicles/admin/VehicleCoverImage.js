@@ -2,7 +2,7 @@
 import { FiImage } from "react-icons/fi";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addingVehicle } from "../../../store/slices/uiSlice";
+import { addingVehicle } from "../../../../store/slices/uiSlice";
 
 export default function VehicleCoverImage({
   selectedFile,

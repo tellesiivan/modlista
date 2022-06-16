@@ -24,7 +24,6 @@ export default function useVehicleData() {
       if (!data) {
         throw new Error("No information for this vehicle was found");
       }
-      console.log(data);
 
       const formatData = {
         ...(data.make.name && { Make: data.make.name }),

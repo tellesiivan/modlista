@@ -19,7 +19,7 @@ export default function RadioGroupTemplate({
                 value={option}
                 className={({ active, checked }) =>
                   `
-                  ${checked ? "bg-selected bg-opacity-75 text-main" : "bg-alt "}
+                  ${checked ? "bg-selected  text-main" : "bg-alt "}
                     relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none h-12 `
                 }
               >
