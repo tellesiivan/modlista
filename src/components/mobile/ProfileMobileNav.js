@@ -42,7 +42,7 @@ export default function ProfileMobileNav() {
           >
             <Dialog.Panel className="fixed bottom-0 w-full p-2 text-left align-middle bg-main rounded-xl shadow-xl flex flex-col z-50 h-[85%] overflow-y-scroll ">
               <div className="p-2">
-                <div className="mb-2.5 text-center">
+                <div className="mb-5 text-center">
                   <button
                     className="px-3 py-1 text-xs text-gray-400 rounded-full outline-none bg-inputMain"
                     onClick={() => dispatch(toggleMobileNav({ open: false }))}

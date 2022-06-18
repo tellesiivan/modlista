@@ -9,6 +9,7 @@ export default function VehicleCoverImage({
   setSelectedFile,
   onSelectedFile,
   data,
+  loading,
 }) {
   const dispatch = useDispatch();
   const uploadRef = useRef(null);
@@ -37,23 +38,25 @@ export default function VehicleCoverImage({
             alt=""
             className="object-cover w-full h-full"
           />
-          <button
-            className="absolute px-3 py-1 text-xs bg-white rounded-full opacity-50 text-main top-1 right-1 hover:opacity-70"
-            onClick={(e) => {
-              e.preventDefault();
-              setSelectedFile("");
-              dispatch(
-                addingVehicle({
-                  vehicle: {
-                    ...data,
-                    coverImage: null,
-                  },
-                })
-              );
-            }}
-          >
-            Discard
-          </button>
+          {!loading && (
+            <button
+              className="absolute px-3 py-1 text-xs bg-white rounded-full opacity-50 text-main top-1 right-1 hover:opacity-70"
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedFile("");
+                dispatch(
+                  addingVehicle({
+                    vehicle: {
+                      ...data,
+                      coverImage: null,
+                    },
+                  })
+                );
+              }}
+            >
+              Discard
+            </button>
+          )}
         </>
       ) : (
         <div

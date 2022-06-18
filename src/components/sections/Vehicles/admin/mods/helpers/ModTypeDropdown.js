@@ -2,22 +2,18 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { HiOutlineSelector, HiCheck } from "react-icons/hi";
 
-export default function TrimSelection({ trims, setTrim, trim }) {
-  const [selected, setSelected] = useState(trims[0].name);
-
+export default function ModTypeDropdown({ mods, setType, type }) {
   return (
-    <div className="w-full my-3">
-      <p className="text-sm text-gray-500">Trim</p>
-
-      <Listbox value={trim === "" ? selected : trim} onChange={setTrim}>
+    <div className="absolute z-30 w-[95%] mt-4 -bottom-6 -translate-x-1/2 left-1/2">
+      <Listbox value={type} onChange={setType}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-lg shadow-md cursor-default bg-alt sm:text-sm">
-            <span className="block text-xs text-gray-300 truncate">
-              {trim === "" ? selected : trim}
+          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-md cursor-pointer bg-lighterAlt sm:text-sm">
+            <span className="block text-xs tracking-wide text-gray-200 truncate">
+              {type}
             </span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <HiOutlineSelector
-                className="w-5 h-5 text-main"
+                className="w-5 h-5 text-gray-200"
                 aria-hidden="true"
               />
             </span>
@@ -29,24 +25,24 @@ export default function TrimSelection({ trims, setTrim, trim }) {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-xs border rounded-md shadow-lg bg-alt max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none border-main">
-              {trims.map((trim, trimIdx) => (
+              {mods.map((type, typeIdx) => (
                 <Listbox.Option
-                  key={trimIdx}
+                  key={typeIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? "bg-inputMain text-gray-300" : "text-gray-500"
+                      active ? "bg-lighterAlt text-gray-200" : "text-gray-500"
                     }`
                   }
-                  value={trim.name}
+                  value={type.name}
                 >
                   {({ selected }) => (
                     <>
                       <span
                         className={`block truncate ${
-                          selected ? "font-medium" : "font-normal"
+                          selected ? "font-medium text-selected" : "font-normal"
                         }`}
                       >
-                        {trim.name}
+                        {type.name}
                       </span>
                       {selected ? (
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-selected">

@@ -33,9 +33,9 @@ export default function VehicleCard({ vehicle }) {
         />
       </div>
       <div className="text-right">
-        <p className="text-sm text-gray-400">{vehicle.Year}</p>
-        <h2 className="text-xl font-bold text-gray-200">{vehicle.Make}</h2>
-        <p className="text-sm text-gray-500">{vehicle.Model}</p>
+        <p className="text-xs text-gray-400 md:text-sm">{vehicle.Year}</p>
+        <h2 className="font-bold text-gray-200 md:text-md">{vehicle.Make}</h2>
+        <p className="text-xs text-gray-500 md:text-sm">{vehicle.Model}</p>
       </div>
     </div>
   );

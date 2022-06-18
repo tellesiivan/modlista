@@ -6,10 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: "#000",
-        alt: "#16181c",
+        main: "#01151A",
+        alt: "#011F26",
+        main2: "#202529",
+        lighterAlt: "#01151A",
         inputMain: "#34494E",
         selected: "#fff",
+        highlight: "#FFC806",
       },
     },
   },

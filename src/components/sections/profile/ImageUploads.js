@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { FiImage } from "react-icons/fi";
 import useSelectFile from "../../../Hooks/useSelectFile";
 import Toggle from "../../helpers/Toggle";
 import UploadPreview from "./UploadPreview";
@@ -67,11 +68,12 @@ export default function ImageUploads({ userId }) {
             onSubmit={uploadImage}
           >
             <button
-              className="px-3 py-1 text-xs text-gray-300 rounded-full bg-selected hover:opacity-80"
+              className="flex flex-col items-center justify-center w-full h-full px-3 py-1 text-xs text-gray-300 hover:opacity-60 "
               onClick={() => uploadRef.current?.click()}
               type="button"
             >
-              Select Image
+              <FiImage className="" size="1.4em" />
+              <b className="my-2 text-xs font-normal">Select Image</b>
             </button>
             <input
               type="file"
@@ -83,9 +85,9 @@ export default function ImageUploads({ userId }) {
           </form>
         )}
         <div
-          className={`absolute px-4 flex items-center justify-center py-2 text-xs text-white transform -translate-x-1/2 ${
+          className={`absolute px-4 flex items-center justify-center py-2 text-xs text-main transform -translate-x-1/2 ${
             selectedFile ? "-translate-y-2" : "translate-y-[50px]"
-          } divide-x rounded-full shadow-2xl bg-selected bottom-1 left-1/2 transition duration-700`}
+          } divide-x rounded-full shadow-2xl bg-highlight bottom-1 left-1/2 transition duration-700`}
         >
           {uploading ? (
             <Loading
@@ -97,13 +99,13 @@ export default function ImageUploads({ userId }) {
           ) : (
             <div className="grid w-32 grid-cols-2 divide-x">
               <button
-                className="font-medium hover:text-white"
+                className="font-medium hover:text-alt"
                 onClick={() => setSelectedFile("")}
               >
                 Discard
               </button>
               <button
-                className="font-medium cursor-pointer hover:text-white"
+                className="font-medium cursor-pointer hover:text-alt"
                 type="submit"
                 onClick={uploadImage}
               >

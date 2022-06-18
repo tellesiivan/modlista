@@ -17,7 +17,7 @@
 }
 @layer base {
   html {
-    @apply font-sans bg-[#000];
+    @apply font-sans bg-[#01151A];
   }
 }
 

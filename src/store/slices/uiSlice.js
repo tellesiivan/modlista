@@ -4,7 +4,7 @@ const initialState = {
   user: null,
   vehicles: {
     adding: null,
-    previews: {},
+    previews: [],
   },
   isAuth: false,
   actionSelected: "Profile",

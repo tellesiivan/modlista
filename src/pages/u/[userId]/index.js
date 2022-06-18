@@ -43,7 +43,7 @@ export default function UserProfile({ userData }) {
           });
         });
         setVehiclePreviews(previews);
-        if (isValid) {
+        if (isValid && previews.length !== 0) {
           dispatch(addVehiclePreviews({ previews }));
         }
       };
