@@ -26,7 +26,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             objectFit="cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500"></div>
+          <div className="w-full h-full bg-gradient-to-r from-alt to-highlight "></div>
         )}
         <div className="absolute z-20 flex items-center border-[5px] rounded-full left-4 -bottom-16 md:left-6 border-main">
           {avatarImg ? (
@@ -58,10 +58,10 @@ export default function HeaderSection({ profileUser, isValid }) {
         } mx-6  md:mx-8 md:mt-20 flex justify-between items-center`}
       >
         <div className="">
-          <h2 className="flex items-center text-lg font-bold text-gray-200 md:font-semibold md:text-2xl">
+          <h2 className="flex items-center text-lg font-semibold tracking-wide text-gray-200 md:text-xl">
             {name ? name : email}{" "}
             {vehiclesOwn && (
-              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-inputMain rounded-full text-white">
+              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-gradient-to-r from-selected to-highlight rounded-full text-main">
                 {vehiclesOwn}
               </div>
             )}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import ModToShow from "../../../../templates/ModTypes/ModToShow";
 import ModTypeDropdown from "./helpers/ModTypeDropdown";
 
 const modType = [
@@ -17,7 +18,7 @@ export default function AddModsContainer({ vehicleModifying }) {
   const [type, setType] = useState(modType[0].name);
 
   return (
-    <div className="w-full overflow-hidden rounded-md h-96 bg-alt">
+    <div className="w-full overflow-hidden rounded-md bg-alt">
       <div className="relative w-full h-40 ">
         <div className="absolute z-10 w-full h-full bg-gradient-to-t from-alt via-transparent to-transparent " />
         <div className="absolute z-20 bottom-10 left-3">
@@ -35,6 +36,9 @@ export default function AddModsContainer({ vehicleModifying }) {
           alt=""
         />
         <ModTypeDropdown mods={modType} setType={setType} type={type} />
+      </div>
+      <div className="p-3 mt-7">
+        <ModToShow mod={type} />
       </div>
     </div>
   );

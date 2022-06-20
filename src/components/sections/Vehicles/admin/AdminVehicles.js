@@ -34,7 +34,9 @@ export default function AdminVehicles() {
   const vehiclePreviews = useSelector(
     (store) => store.userUI.vehicles.previews
   );
-  const [selectedTab, setSelectedTab] = useState("Garage");
+  const [selectedTab, setSelectedTab] = useState(
+    vehiclePreviews.length > 0 ? "Garage" : "Add Vehicle"
+  );
 
   const getDataHandler = async (e) => {
     e.preventDefault();

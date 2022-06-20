@@ -7,22 +7,11 @@ export default function VehicleCard({ vehicle }) {
   const { userId } = router.query;
 
   return (
-    <div className="relative flex items-center justify-between h-24 min-w-full p-3 overflow-hidden cursor-pointer hover:bg-alt hover:bg-opacity-10">
-      <div
-        className="relative w-12 h-12 overflow-hidden rounded-full"
-        onClick={() =>
-          router.push(
-            {
-              pathname: `/u/[userId]`,
-              query: {
-                userId,
-              },
-            },
-            `/u/${userId}?v=${vehicle.id}`,
-            { shallow: true }
-          )
-        }
-      >
+    <div
+      className="relative flex items-center justify-between h-24 min-w-full p-3 overflow-hidden cursor-pointer hover:bg-alt hover:bg-opacity-10"
+      onClick={() => router.push(`/b/${vehicle.id}`)}
+    >
+      <div className="relative w-12 h-12 overflow-hidden rounded-full">
         <Image
           src={vehicle.coverImage}
           objectFit="cover"

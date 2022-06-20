@@ -10,7 +10,7 @@ export default function VehiclePreviewitem({
     <div key={vehicle.Trim.id || vehicle.Trim.name}>
       <div
         className={`relative transition-colors duration-700 flex items-center justify-between min-w-full p-2 overflow-hidden rounded-md cursor-pointer ${
-          modifying.id === vehicle.id ? "bg-black" : "bg-lighterAlt"
+          modifying.id === vehicle.id ? "bg-inputMain" : "bg-lighterAlt"
         }`}
         onClick={() => setModifying(vehicle)}
       >

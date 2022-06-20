@@ -40,7 +40,7 @@ export default function Header() {
           <>
             {" "}
             <button
-              className="font-semibold outlineBtn"
+              className="font-semibold text-main bg-highlight fillBtn"
               onClick={() =>
                 dispatch(authModalStatus({ open: true, from: "login" }))
               }
