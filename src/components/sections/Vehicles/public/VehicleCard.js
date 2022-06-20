@@ -7,22 +7,11 @@ export default function VehicleCard({ vehicle }) {
   const { userId } = router.query;
 
   return (
-    <div className="relative flex items-center justify-between h-24 min-w-full p-3 overflow-hidden cursor-pointer hover:bg-alt hover:bg-opacity-10">
-      <div
-        className="relative w-12 h-12 overflow-hidden rounded-full"
-        onClick={() =>
-          router.push(
-            {
-              pathname: `/u/[userId]`,
-              query: {
-                userId,
-              },
-            },
-            `/u/${userId}?v=${vehicle.id}`,
-            { shallow: true }
-          )
-        }
-      >
+    <div
+      className="relative flex items-center justify-between h-24 min-w-full p-3 overflow-hidden cursor-pointer hover:bg-alt hover:bg-opacity-10"
+      onClick={() => router.push(`/b/${vehicle.id}`)}
+    >
+      <div className="relative w-12 h-12 overflow-hidden rounded-full">
         <Image
           src={vehicle.coverImage}
           objectFit="cover"
@@ -33,9 +22,9 @@ export default function VehicleCard({ vehicle }) {
         />
       </div>
       <div className="text-right">
-        <p className="text-sm text-gray-400">{vehicle.Year}</p>
-        <h2 className="text-xl font-bold text-gray-200">{vehicle.Make}</h2>
-        <p className="text-sm text-gray-500">{vehicle.Model}</p>
+        <p className="text-xs text-gray-400 md:text-sm">{vehicle.Year}</p>
+        <h2 className="font-bold text-gray-200 md:text-md">{vehicle.Make}</h2>
+        <p className="text-xs text-gray-500 md:text-sm">{vehicle.Model}</p>
       </div>
     </div>
   );

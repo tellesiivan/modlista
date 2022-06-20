@@ -9,7 +9,7 @@ export default function UploadPreview({ type, src }) {
         {type === "cover" ? (
           <img src={src} alt="" className="object-cover w-full h-full" />
         ) : (
-          <div className="w-full h-full bg-selected animate-pulse"></div>
+          <div className="w-full h-full bg-inputMain animate-pulse"></div>
         )}
         {type === "profile" ? (
           <img
@@ -19,7 +19,7 @@ export default function UploadPreview({ type, src }) {
           />
         ) : (
           <div className="absolute w-14 h-14 rounded-full bottom-2.5 left-2 z-10 border-2 border-alt overflow-hidden flex items-center justify-center">
-            <Avatar size="w-13 h-13" />
+            <Avatar size="w-14 h-14" />
           </div>
         )}
       </div>
