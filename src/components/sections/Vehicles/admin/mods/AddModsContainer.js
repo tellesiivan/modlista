@@ -37,7 +37,7 @@ export default function AddModsContainer({ vehicleModifying }) {
         />
         <ModTypeDropdown mods={modType} setType={setType} type={type} />
       </div>
-      <div className="p-3 mt-7">
+      <div className="p-3 mt-8">
         <ModToShow mod={type} />
       </div>
     </div>

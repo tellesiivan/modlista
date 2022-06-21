@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import ImageUploads from "./ImageUploads";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 import { useDispatch } from "react-redux";
-import AlertMessage from "../../helpers/AlertMessage";
+import CheckSpecialChars from "../../../utils/CheckSpecialChars";
 
 export default function AdminProfile() {
   const dispatch = useDispatch();
@@ -19,16 +19,11 @@ export default function AdminProfile() {
   });
   const [error, setError] = useState("");
 
-  const containsSpecialChars = (str) => {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    return specialChars.test(str);
-  };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     const userRef = doc(firestore, `users/${user.uid}`);
 
-    if (containsSpecialChars(values.name)) {
+    if (CheckSpecialChars(values.name)) {
       setError("Special characters not allowed");
       return;
     }

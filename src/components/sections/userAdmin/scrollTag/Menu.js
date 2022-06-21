@@ -48,7 +48,7 @@ export default function Menu() {
     };
 
   return (
-    <div className="md:translate-y-1/2 md:top-1/2 h-7">
+    <div className="translate-y-1/4 top-1/2 h-7">
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
         {actionTabs.map(({ title }) => (
           <Card
