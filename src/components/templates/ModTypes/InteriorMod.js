@@ -6,6 +6,7 @@ import ImageUpload from "./sharable/ImageUpload";
 import ModNameInput from "./sharable/ModNameInput";
 import ModRating from "./sharable/ModRating";
 import Price from "./sharable/Price";
+import Url from "./sharable/Url";
 
 export default function InteriorMod() {
   const [values, setValues] = useState({
@@ -13,7 +14,11 @@ export default function InteriorMod() {
     desc: "",
     title: "",
     ratingValue: 0,
-    price: 0,
+    price: "",
+    url: {
+      link: "",
+      isValid: false,
+    },
     link: "",
   });
   const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
@@ -48,6 +53,11 @@ export default function InteriorMod() {
           />
         </div>
       </div>
+      <Url
+        setLink={setValues}
+        link={values.url.link}
+        valid={values.url.isValid}
+      />
     </form>
   );
 }
