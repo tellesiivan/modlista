@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CheckSpecialChars from "../../../../utils/CheckSpecialChars";
 import { HiX } from "react-icons/hi";
 export default function CategoryInput({
   tags,
@@ -10,7 +11,8 @@ export default function CategoryInput({
   const [tag, setTag] = useState("");
 
   const addTag = (e) => {
-    if (tags.includes(tag)) return;
+    e.preventDefault();
+    if (tags.includes(tag) || CheckSpecialChars(tag)) return;
     setTags((prev) => ({ ...prev, tags: [tag, ...prev.tags] }));
     setTag("");
   };

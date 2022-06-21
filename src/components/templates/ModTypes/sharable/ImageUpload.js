@@ -17,7 +17,9 @@ export default function ImageUpload({
         {selectedFile && !loading && (
           <p
             className="text-xs text-gray-500 cursor-pointer hover:opacity-75"
-            onClick={() => setSelectedFile("")}
+            onClick={() => {
+              setSelectedFile("");
+            }}
           >
             Delete
           </p>

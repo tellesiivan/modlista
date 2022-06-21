@@ -10,8 +10,7 @@ export default function ModRating({ ratingValue, setRatingValue }) {
       transition
       onClick={handleRating}
       ratingValue={ratingValue}
-      size={21}
-      className="foo"
+      size={20}
       fillColor="#1ce783"
     />
   );

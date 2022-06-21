@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import useSelectFile from "../../../Hooks/useSelectFile";
+import { inProgressMod } from "../../../store/slices/modificationsSlice";
 import CategoryInput from "./sharable/CategoryInput";
 import DescTextBox from "./sharable/DescTextBox";
 import ImageUpload from "./sharable/ImageUpload";
@@ -9,19 +11,30 @@ import Price from "./sharable/Price";
 import Url from "./sharable/Url";
 
 export default function InteriorMod() {
-  const [values, setValues] = useState({
-    tags: [],
-    desc: "",
-    title: "",
-    ratingValue: 0,
-    price: "",
-    url: {
-      link: "",
-      isValid: false,
-    },
-    link: "",
-  });
+  const dispatch = useDispatch();
+  const addingValues = useSelector((store) => store.modifications.adding);
   const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
+  const [values, setValues] = useState(
+    addingValues && addingValues.mod === "Interior"
+      ? addingValues
+      : {
+          tags: [],
+          desc: "",
+          title: "",
+          ratingValue: 0,
+          price: "",
+          url: {
+            link: "",
+            isValid: false,
+          },
+          mod: "Interior",
+          image: selectedFile,
+        }
+  );
+
+  useEffect(() => {
+    dispatch(inProgressMod({ mod: values }));
+  }, [values]);
 
   return (
     <form className="space-y-2.5 -mt-2 w-full">
