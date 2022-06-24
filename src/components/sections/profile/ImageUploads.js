@@ -87,7 +87,7 @@ export default function ImageUploads({ userId }) {
         <div
           className={`absolute px-4 flex items-center justify-center py-2 text-xs text-main transform -translate-x-1/2 ${
             selectedFile ? "-translate-y-2" : "translate-y-[50px]"
-          } divide-x rounded-full shadow-2xl bg-highlight bottom-1 left-1/2 transition duration-700`}
+          } divide-x rounded-full shadow-2xl bg-main bottom-1 left-1/2 transition duration-700`}
         >
           {uploading ? (
             <Loading
@@ -97,15 +97,15 @@ export default function ImageUploads({ userId }) {
               className="w-16 h-4"
             />
           ) : (
-            <div className="grid w-32 grid-cols-2 divide-x">
+            <div className="grid w-32 grid-cols-2 text-white divide-x divide-inputMain">
               <button
-                className="font-medium hover:text-alt"
+                className="font-medium "
                 onClick={() => setSelectedFile("")}
               >
                 Discard
               </button>
               <button
-                className="font-medium cursor-pointer hover:text-alt"
+                className="font-medium cursor-pointer "
                 type="submit"
                 onClick={uploadImage}
               >

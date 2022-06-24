@@ -10,12 +10,12 @@ import ModRating from "./sharable/ModRating";
 import Price from "./sharable/Price";
 import Url from "./sharable/Url";
 
-export default function InteriorMod() {
+export default function ExteriorMod() {
   const dispatch = useDispatch();
   const addingValues = useSelector((store) => store.modifications.adding);
   const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
   const [values, setValues] = useState(
-    addingValues && addingValues.mod === "Interior"
+    addingValues && addingValues.mod === "Exterior"
       ? addingValues
       : {
           tags: [],
@@ -27,8 +27,8 @@ export default function InteriorMod() {
             link: "",
             isValid: false,
           },
-          mod: "Interior",
-          image: "",
+          mod: "Exterior",
+          image: selectedFile,
         }
   );
 
@@ -39,22 +39,22 @@ export default function InteriorMod() {
   return (
     <div className="space-y-2.5 -mt-2 w-full">
       <ModNameInput
-        placeholder="Carbon Fiber Center Console Trim..."
+        placeholder="Carbon Fiber Diffuser..."
         value={values.title}
         setValue={setValues}
       />
       <DescTextBox value={values.desc} setValue={setValues} />
       <CategoryInput
-        placeholder="Door Component, Steering wheel..."
+        placeholder="Rear Lip Spoiler, Front Lip..."
         label="Category Tags"
         id="category"
         setTags={setValues}
         tags={values.tags}
       />
       <ImageUpload
+        setImage={setValues}
         selectedFile={selectedFile}
         setSelectedFile={setSelectedFile}
-        setImage={setValues}
         onSelectedFile={onSelectedFile}
       />
       <div className="grid w-full grid-cols-2 border border-gray-800 divide-x divide-gray-800 rounded-md bg-lighterAlt justify-items-stretch">

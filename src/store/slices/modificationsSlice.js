@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   adding: null,
+  submit: false,
 };
 
 export const modificationsSlice = createSlice({

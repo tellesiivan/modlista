@@ -16,7 +16,7 @@ export default function LoadingButton({
       disabled={disabled}
       onClick={clickAction}
     >
-      {loading ? <ClipLoader color="#fff" size="26px" /> : text}
+      {loading ? <ClipLoader color="#000" size="26px" /> : text}
     </button>
   );
 }

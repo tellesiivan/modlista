@@ -1,24 +1,37 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import { useEffect } from "react";
 import { FiImage } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import { inProgressMod } from "../../../../store/slices/modificationsSlice";
 
 export default function ImageUpload({
   selectedFile,
   setSelectedFile,
   onSelectedFile,
   loading,
+  setImage,
 }) {
+  const addingMod = useSelector((store) => store.modifications.adding);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (selectedFile) {
+      setImage((prev) => ({ ...prev, image: selectedFile }));
+    }
+  }, [selectedFile]);
+
   return (
     <div className="space-y-1.5">
       <div className="flex items-center justify-between">
         <label htmlFor="imageUpload" className="text-xs text-gray-600">
           Modification Image
         </label>
-        {selectedFile && !loading && (
+        {(selectedFile || addingMod?.image) && !loading && (
           <p
             className="text-xs text-gray-500 cursor-pointer hover:opacity-75"
             onClick={() => {
               setSelectedFile("");
+              dispatch(inProgressMod({ mod: { ...addingMod, image: "" } }));
             }}
           >
             Delete
@@ -26,14 +39,14 @@ export default function ImageUpload({
         )}
       </div>
       <div
-        className="flex items-center justify-center w-full rounded-md h-60 bg-main mt-1.5 overflow-hidden"
+        className="flex items-center justify-center w-full rounded-md h-72 bg-main mt-1.5 overflow-hidden"
         id="imageUpload"
       >
         {/* selectedFile || data.coverImage */}
-        {selectedFile ? (
+        {selectedFile || addingMod?.image ? (
           <>
             <img
-              src={selectedFile}
+              src={selectedFile || addingMod.image}
               alt=""
               className="object-cover w-full h-full"
             />

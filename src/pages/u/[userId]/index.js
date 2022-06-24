@@ -17,6 +17,7 @@ import VehicleSection from "../../../components/sections/Vehicles/public/Vehicle
 import AdminPanelLoading from "../../../components/helpers/loading/AdminPanelLoading";
 import { useDispatch } from "react-redux";
 import { addVehiclePreviews } from "../../../store/slices/uiSlice";
+import ProfileLoading from "../../../components/helpers/loading/ProfileLoading";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
@@ -77,7 +78,7 @@ export default function UserProfile({ userData }) {
             </>
           ) : (
             <>
-              <AdminPanelLoading />
+              <ProfileLoading />
             </>
           )}
         </div>

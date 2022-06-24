@@ -8,7 +8,7 @@ export default function Price({ price, setPrice }) {
         size="1.5em"
       />
       <input
-        className="w-full h-full font-bold text-gray-300 bg-transparent border-0 rounded-md outline-none group-focus-within:text-highlight text-md placeholder:text-md placeholder:text-gray-600 placeholder:font-light"
+        className="w-full h-full font-bold text-gray-300 bg-transparent border-0 rounded-md outline-none group-focus-within:text-highlight text-md placeholder:text-sm placeholder:text-gray-600 placeholder:font-light"
         type="number"
         placeholder="Price"
         onChange={({ target: { value } }) =>
