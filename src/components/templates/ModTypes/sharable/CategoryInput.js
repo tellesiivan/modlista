@@ -11,7 +11,6 @@ export default function CategoryInput({
   const [tag, setTag] = useState("");
 
   const addTag = (e) => {
-    e.preventDefault();
     if (tags.includes(tag) || CheckSpecialChars(tag)) return;
     setTags((prev) => ({ ...prev, tags: [tag, ...prev.tags] }));
     setTag("");
@@ -22,11 +21,11 @@ export default function CategoryInput({
   };
 
   return (
-    <div className="space-y-1.5">
+    <>
       <label htmlFor={id} className="text-xs text-gray-600">
         {label}
       </label>
-      <div className="flex flex-row px-2 rounded-md h-11 bg-main">
+      <div className="flex flex-row px-2 mt-1 rounded-md h-11 bg-main">
         <input
           className="w-full h-full text-gray-300 bg-transparent border-0 outline-none text-md md:text-xs placeholder:text-xs placeholder:text-gray-600"
           placeholder={placeholder}
@@ -44,7 +43,7 @@ export default function CategoryInput({
         </button>
       </div>
       {tags.length > 0 && (
-        <div className="pt-2 flex overflow-x-scroll space-x-1.5 ">
+        <div className="pt-2  flex overflow-x-scroll space-x-1.5 ">
           {tags.map((t) => (
             <div
               className="px-1.5 py-1 text-xs text-gray-300 rounded-full bg-inputMain flex items-center whitespace-nowrap"
@@ -61,6 +60,6 @@ export default function CategoryInput({
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 }

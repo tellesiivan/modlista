@@ -7,7 +7,7 @@ export default function VehiclePreviewsTable({ vehicles }) {
   const [modifying, setModifying] = useState(vehicles[0]);
 
   return (
-    <div className="pt-6 pb-3 space-y-5 ">
+    <div className="pt-2 pb-2.5 space-y-5 ">
       <div className="p-3 space-y-3 divide-y rounded-md bg-alt divide-main">
         <div className="space-y-3">
           <h2 className="font-bold tracking-wide text-gray-200 text-md">

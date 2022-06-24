@@ -16,7 +16,7 @@ export default function AuthModal() {
       <Transition appear show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-40"
+          className="relative z-50"
           onClose={() => dispatch(authModalStatus({ open: false, from }))}
         >
           <Transition.Child

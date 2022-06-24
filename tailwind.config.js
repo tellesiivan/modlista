@@ -12,7 +12,7 @@ module.exports = {
         lighterAlt: "#01151A",
         inputMain: "#34494E",
         selected: "#fff",
-        highlight: "#1ce783",
+        highlight: "#96c2a9",
       },
     },
   },
