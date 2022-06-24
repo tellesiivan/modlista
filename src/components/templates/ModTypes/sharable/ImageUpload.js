@@ -11,7 +11,7 @@ export default function ImageUpload({
   loading,
   setImage,
 }) {
-  const addingMod = useSelector((store) => store.modifications.adding);
+  const addingMod = useSelector((store) => store.modifications.adding.details);
   const dispatch = useDispatch();
 
   useEffect(() => {

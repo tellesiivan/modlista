@@ -12,25 +12,11 @@ import Url from "./sharable/Url";
 
 export default function ExteriorMod() {
   const dispatch = useDispatch();
-  const addingValues = useSelector((store) => store.modifications.adding);
-  const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
-  const [values, setValues] = useState(
-    addingValues && addingValues.mod === "Exterior"
-      ? addingValues
-      : {
-          tags: [],
-          desc: "",
-          title: "",
-          ratingValue: 0,
-          price: "",
-          url: {
-            link: "",
-            isValid: false,
-          },
-          mod: "Exterior",
-          image: selectedFile,
-        }
+  const addingValues = useSelector(
+    (store) => store.modifications.adding.details
   );
+  const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
+  const [values, setValues] = useState(addingValues);
 
   useEffect(() => {
     dispatch(inProgressMod({ mod: values }));

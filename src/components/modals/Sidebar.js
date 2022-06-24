@@ -57,7 +57,7 @@ export default function Sidebar({ active }) {
       <Transition appear show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-20"
+          className="relative z-50"
           onClose={() => dispatch(toggleSidebar({ open: false }))}
         >
           <Transition.Child

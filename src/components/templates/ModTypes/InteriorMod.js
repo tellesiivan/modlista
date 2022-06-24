@@ -12,25 +12,11 @@ import Url from "./sharable/Url";
 
 export default function InteriorMod() {
   const dispatch = useDispatch();
-  const addingValues = useSelector((store) => store.modifications.adding);
-  const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
-  const [values, setValues] = useState(
-    addingValues && addingValues.mod === "Interior"
-      ? addingValues
-      : {
-          tags: [],
-          desc: "",
-          title: "",
-          ratingValue: 0,
-          price: "",
-          url: {
-            link: "",
-            isValid: false,
-          },
-          mod: "Interior",
-          image: "",
-        }
+  const addingValues = useSelector(
+    (store) => store.modifications.adding.details
   );
+  const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
+  const [values, setValues] = useState(addingValues);
 
   useEffect(() => {
     dispatch(inProgressMod({ mod: values }));

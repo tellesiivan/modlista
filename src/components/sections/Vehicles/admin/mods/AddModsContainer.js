@@ -16,7 +16,7 @@ const modType = [
 ];
 
 export default function AddModsContainer({ vehicleModifying }) {
-  const addingMod = useSelector((state) => state.modifications.adding);
+  const addingMod = useSelector((state) => state.modifications.adding.details);
   const { Make, Model, Year, Trim, coverImage, id } = vehicleModifying;
   const [type, setType] = useState(addingMod?.mod || modType[0].name);
   const [viewDetails, setViewDetails] = useState(false);

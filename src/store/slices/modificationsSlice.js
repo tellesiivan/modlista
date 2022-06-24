@@ -1,7 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  adding: null,
+  adding: {
+    modType: "",
+    details: {
+      tags: [],
+      desc: "",
+      title: "",
+      ratingValue: 0,
+      price: "",
+      url: {
+        link: "",
+        isValid: false,
+      },
+      image: "",
+    },
+  },
   submit: false,
 };
 
@@ -10,12 +24,15 @@ export const modificationsSlice = createSlice({
   initialState,
   reducers: {
     inProgressMod: (state, action) => {
-      state.adding = action.payload.mod;
+      state.adding.details = action.payload.mod;
+    },
+    resetMod: (state) => {
+      state.adding = initialState;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { inProgressMod } = modificationsSlice.actions;
+export const { inProgressMod, resetMod } = modificationsSlice.actions;
 
 export default modificationsSlice.reducer;

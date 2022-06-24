@@ -42,9 +42,9 @@ export default function ProfileMobileNav() {
           >
             <Dialog.Panel className="fixed bottom-0 w-full p-2 text-left align-middle bg-main rounded-t-[30px] shadow-xl flex flex-col z-50 h-[85%] overflow-y-scroll ">
               <div className="relative h-full p-2 w-fulll">
-                <div className="-mt-3 text-center">
+                <div className="mb-2 -mt-3 text-center">
                   <button
-                    className="px-3 py-1 text-xs text-gray-400 rounded-full outline-none bg-inputMain"
+                    className="px-3 py-0.5 text-xs text-gray-400 rounded-full outline-none bg-inputMain"
                     onClick={() => dispatch(toggleMobileNav({ open: false }))}
                   >
                     Close
