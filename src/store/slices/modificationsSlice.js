@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   adding: {
-    modType: "",
     details: {
       tags: [],
       desc: "",
@@ -27,7 +26,7 @@ export const modificationsSlice = createSlice({
       state.adding.details = action.payload.mod;
     },
     resetMod: (state) => {
-      state.adding = initialState;
+      state.adding.details = initialState.adding.details;
     },
   },
 });

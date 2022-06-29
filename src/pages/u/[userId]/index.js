@@ -61,7 +61,7 @@ export default function UserProfile({ userData }) {
 
   return (
     <>
-      <div className="flex flex-row w-full h-full">
+      <div className="flex flex-row w-full h-full md:h-screen">
         {isValid && <AdminPanel profileUser={profileUser} />}
 
         <div

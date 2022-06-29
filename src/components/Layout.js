@@ -8,10 +8,11 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main className="h-full">{children}</main>
+      <main className="h-full">
+        {children} <MobileNav />
+      </main>
       <AuthModal />
       <Sidebar active={true} />
-      <MobileNav />
     </>
   );
 }

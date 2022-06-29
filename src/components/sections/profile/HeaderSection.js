@@ -28,15 +28,15 @@ export default function HeaderSection({ profileUser, isValid }) {
         ) : (
           <div className="w-full h-full bg-gradient-to-r from-alt to-highlight "></div>
         )}
-        <div className="absolute z-20 flex items-center border-[5px] rounded-full left-4 -bottom-16 md:left-6 border-main">
+        <div className="absolute z-20 flex items-center border-[5px] rounded-full left-2 -bottom-14 md:left-4 border-main">
           {avatarImg ? (
-            <Avatar src={avatarImg} css={{ size: "$20" }} zoomed />
+            <Avatar src={avatarImg} css={{ size: "$24" }} zoomed />
           ) : (
             <Avatar
               text={email.charAt(0).toUpperCase()}
               color="gradient"
               textColor="white"
-              css={{ size: "$20" }}
+              css={{ size: "$24" }}
             />
           )}
         </div>
@@ -54,11 +54,11 @@ export default function HeaderSection({ profileUser, isValid }) {
 
       <div
         className={`${
-          !isValid ? "mt-20" : "mt-12"
-        } mx-6  md:mx-8 md:mt-20 flex justify-between items-center`}
+          !isValid ? "mt-16" : "mt-10 md:mt-16"
+        } mx-4  md:mx-6  flex justify-between items-center`}
       >
         <div className="">
-          <h2 className="flex items-center text-lg font-semibold tracking-wide text-gray-200 md:text-xl">
+          <h2 className="flex items-center text-2xl font-bold text-gray-200 md:tracking-wide">
             {name ? name : email}{" "}
             {vehiclesOwn && (
               <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-gradient-to-r from-selected to-highlight rounded-full text-main">
@@ -67,7 +67,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             )}
           </h2>
           <p className="-mt-0.25 text-xs text-gray-400 flex items-center space-x-1 ">
-            <MdOutlineCalendarToday className="mr-1" />
+            <MdOutlineCalendarToday className="mr-0.25" />
             <span>
               Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
             </span>

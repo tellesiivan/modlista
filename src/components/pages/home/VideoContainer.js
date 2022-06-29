@@ -1,8 +1,8 @@
 export default function VideoContainer() {
   return (
     <>
-      <div className="flex items-center justify-center w-full adminPanelH">
-        <div className="w-[360px] h-[580px] mb-28 md:mb-0">
+      <div className="flex items-center justify-center w-full h-full">
+        <div className="w-[360px] h-[580px] mb-16 md:mb-0">
           <video
             autoPlay
             className="block object-cover object-center w-full h-full rounded-xl"
@@ -13,12 +13,12 @@ export default function VideoContainer() {
           />
         </div>
       </div>
-      <div className="max-w-4xl mx-auto text-center md:py-5">
+      <div className="max-w-3xl mx-auto text-center md:py-5">
         <h2 className="text-3xl font-bold text-white sm:text-5xl md:text-7xl">
-          <span className="text-inputMain">Modifications</span> in one{" "}
-          <span className="text-highlight">place.</span>
+          Modifications in <span className="text-highlight">one</span> place.
         </h2>
       </div>
+      <div className="w-full h-screen bg-black"></div>
     </>
   );
 }

@@ -75,7 +75,7 @@ export default function AddModsContainer({ vehicleModifying }) {
           viewDetails={viewDetails}
           setViewDetails={setViewDetails}
           vehicle={vehicleModifying}
-          mod={addingMod}
+          modType={type}
         />
       )}
     </>
