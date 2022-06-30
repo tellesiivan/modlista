@@ -22,7 +22,6 @@ const formTypes = ["VIN"];
 export default function AdminVehicles() {
   const dispatch = useDispatch();
   const [user] = useAuthState(auth);
-
   const [formType, setFormType] = useState("VIN");
   const [vinValue, setVinValue] = useState("");
   const [loading, setLoading] = useState(false);

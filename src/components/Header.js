@@ -27,7 +27,7 @@ export default function Header() {
         {user ? (
           <>
             <div
-              className="flex items-center justify-between w-20 h-8 pl-2 pr-1 transition ease-in-out rounded-full cursor-pointer bg-highlight hover:bg-opacity-80"
+              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out rounded-full cursor-pointer bg-highlight hover:bg-opacity-80"
               onClick={() => dispatch(toggleSidebar({ open: true }))}
             >
               <p className="text-sm text-main group-hover:text-gray-300">

@@ -2,9 +2,13 @@ import { GrFormDown } from "react-icons/gr";
 import { BsInfo } from "react-icons/bs";
 import CustomAvatar from "../../../../../helpers/CustomAvatar";
 import { useDispatch } from "react-redux";
-import { inProgressMod } from "../../../../../../store/slices/modificationsSlice";
+import {
+  inProgressMod,
+  uploadingMod,
+} from "../../../../../../store/slices/modificationsSlice";
 import ViewVehicleCard from "./ViewVehicleCard";
 import { useRouter } from "next/router";
+import useUploadMod from "../../../../../../Hooks/useUploadMod";
 
 export default function DetailsAndSubmission({
   viewDetails,
@@ -13,6 +17,10 @@ export default function DetailsAndSubmission({
   modType,
 }) {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const { error, uploadMod } = useUploadMod();
+
+  console.log(vehicle.id);
 
   return (
     <div
@@ -34,26 +42,17 @@ export default function DetailsAndSubmission({
           profileLink={`/b/${vehicle.id}?mod=${modType}`}
           Year={vehicle.Year}
         />
-
-        {/* <button
-          className="flex items-center justify-center px-3 py-1.5 mt-2 bg-highlight rounded-lg cursor-pointer"
-          onClick={() =>
-            router.push({
-              pathname: `/b/${vehicle.id}`,
-              query: { mod: `${modType}` },
-            })
-          }
-        >
-          View Modifications
-        </button> */}
       </div>
-      <div className="z-50 flex items-center justify-between w-full ">
+      <div className="z-50 flex items-center justify-between w-full">
         <div className="z-50 flex space-x-1.5 max-h-8 ">
-          <button className="flex items-center px-1 py-1 space-x-2 tracking-wide text-white transition-colors duration-200 cursor-pointer fillBtn hover:bg-main">
+          <button
+            className="flex items-center px-1 py-1 space-x-2 tracking-wide text-white transition-colors duration-200 cursor-pointer fillBtn bg-main"
+            onClick={() => uploadMod(vehicle.id, modType)}
+          >
             <CustomAvatar
               size={{ height: "6", width: "6" }}
               src={vehicle.coverImage}
-              customStyle="mr-3"
+              customStyle="mr-2"
             />
             Add Modification
           </button>

@@ -11,7 +11,7 @@ export default function RadioGroupTemplate({
       <h2 className="mt-0 mb-2 text-sm text-gray-500 ">{label}</h2>
       <div className="w-full ">
         <RadioGroup value={selected} onChange={setSelected}>
-          <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+          <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
           <div className={`grid grid-cols-1 w-full space-x-2 `}>
             {options.map((option) => (
               <RadioGroup.Option

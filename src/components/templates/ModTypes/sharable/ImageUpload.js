@@ -8,10 +8,11 @@ export default function ImageUpload({
   selectedFile,
   setSelectedFile,
   onSelectedFile,
-  loading,
+
   setImage,
 }) {
   const addingMod = useSelector((store) => store.modifications.adding.details);
+  const loading = useSelector((store) => store.modifications.uploading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,10 +55,9 @@ export default function ImageUpload({
         ) : (
           <div className="relative w-full h-full overflow-hidden rounded-md ">
             <input
-              accept="image/*"
+              accept="image/jpeg, image/png"
               type="file"
               className="absolute inset-0 z-10 rounded-md opacity-0 cursor-pointer "
-              capture="environment"
               onChange={onSelectedFile}
             />
             <div className="absolute flex items-center justify-center text-gray-600 border border-gray-600 border-dashed rounded-md cursor-pointer inset-1">
