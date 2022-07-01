@@ -8,7 +8,6 @@ export default function ImageUpload({
   selectedFile,
   setSelectedFile,
   onSelectedFile,
-
   setImage,
 }) {
   const addingMod = useSelector((store) => store.modifications.adding.details);

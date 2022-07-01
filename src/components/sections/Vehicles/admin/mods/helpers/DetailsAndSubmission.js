@@ -4,6 +4,7 @@ import CustomAvatar from "../../../../../helpers/CustomAvatar";
 import { useDispatch } from "react-redux";
 import {
   inProgressMod,
+  resetMod,
   uploadingMod,
 } from "../../../../../../store/slices/modificationsSlice";
 import ViewVehicleCard from "./ViewVehicleCard";
@@ -19,8 +20,6 @@ export default function DetailsAndSubmission({
   const router = useRouter();
   const dispatch = useDispatch();
   const { error, uploadMod } = useUploadMod();
-
-  console.log(vehicle.id);
 
   return (
     <div
@@ -55,6 +54,13 @@ export default function DetailsAndSubmission({
               customStyle="mr-2"
             />
             Add Modification
+          </button>
+
+          <button
+            className="flex items-center justify-center w-20 px-1 py-1 space-x-2 tracking-wide transition-colors duration-200 bg-black cursor-pointer text-alt fillBtn"
+            onClick={() => dispatch(resetMod())}
+          >
+            Clear
           </button>
         </div>
         <button
