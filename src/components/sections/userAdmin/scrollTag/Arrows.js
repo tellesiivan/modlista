@@ -16,7 +16,7 @@ function Arrow({ children, disabled, onClick }) {
         height: "24px",
         width: "24px",
         cursor: "pointer",
-        backgroundColor: "#01151A",
+        backgroundColor: "#000",
         cursor: "pointer",
         borderRadius: "100px",
         display: "flex",
@@ -102,10 +102,8 @@ function Card({ onClick, selected, title, itemId }) {
     <div onClick={() => onClick(visibility)} tabIndex={0}>
       <div
         className={` flex items-center justify-center w-24 h-7 mx-1 rounded-full  text-xs cursor-pointer hover:opacity-75 ${
-          actionSelected === title
-            ? "bg-highlight text-main"
-            : "bg-inputMain text-gray-300 "
-        }`}
+          actionSelected === title ? "bg-ag-green" : "bg-greyDark "
+        } text-black`}
       >
         <div>{title}</div>
       </div>

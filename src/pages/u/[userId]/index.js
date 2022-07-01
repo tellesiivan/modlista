@@ -66,8 +66,7 @@ export default function UserProfile({ userData }) {
 
         <div
           className={`flex-grow h-full ${isValid && "md:ml-96"} ${
-            !isValid &&
-            "lg:max-w-2xl lg:border-l lg:border-r lg:border-alt lg:mx-auto"
+            !isValid && "lg:max-w-2xl border-x lg:border-greyDark lg:mx-auto"
           }`}
         >
           {profileUser ? (

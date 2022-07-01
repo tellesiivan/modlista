@@ -24,12 +24,12 @@ export default function ImageUpload({
   return (
     <div className="space-y-1.5">
       <div className="flex items-center justify-between">
-        <label htmlFor="imageUpload" className="text-xs text-gray-600">
+        <label htmlFor="imageUpload" className="text-xs text-dark">
           Modification Image
         </label>
         {(selectedFile || addingMod?.image) && !loading && (
           <p
-            className="text-xs text-gray-500 cursor-pointer hover:opacity-75"
+            className="text-xs cursor-pointer text-dark hover:opacity-75"
             onClick={() => {
               setSelectedFile("");
               dispatch(inProgressMod({ mod: { ...addingMod, image: "" } }));
@@ -60,7 +60,7 @@ export default function ImageUpload({
               className="absolute inset-0 z-10 rounded-md opacity-0 cursor-pointer "
               onChange={onSelectedFile}
             />
-            <div className="absolute flex items-center justify-center text-gray-600 border border-gray-600 border-dashed rounded-md cursor-pointer inset-1">
+            <div className="absolute flex items-center justify-center text-gray-400 border rounded-md cursor-pointer inset-1">
               <FiImage className="" size="1.2em" />
               <b className="ml-2 text-xs font-normal">Add Image</b>
             </div>

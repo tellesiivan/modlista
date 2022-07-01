@@ -12,15 +12,15 @@ export default function useUploadMod() {
   const [user] = useAuthState(auth);
   const [error, setError] = useState("");
 
-  console.log(user);
-
   const uploadMod = async (vehicleID, modType) => {
-    const modRef = doc(collection(firestore, `vehicles/${vehicleID}/mods`));
+    const modRef = doc(collection(firestore, `vehicles`));
 
     // vehicle mod REF
     const vehicleModRef = doc(
-      collection(firestore, `vehicles/${vehicleID}/mods/${modType}`)
+      firestore,
+      `vehicles/${vehicleID}/${modType}/${modRef.id}`
     );
+
     // Vehicle Ref (increase number of mods + 1) : update
     const VehicleRef = doc(firestore, `vehicles/${vehicleID}`);
 
@@ -29,6 +29,7 @@ export default function useUploadMod() {
       firestore,
       `users/${user.uid}/vehiclePreviews/${vehicleID}`
     );
+
     // storage reference
     const imageStorageRef = ref(
       storage,

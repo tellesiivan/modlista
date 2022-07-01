@@ -8,7 +8,7 @@ export default function RadioGroupTemplate({
 }) {
   return (
     <div className="w-full">
-      <h2 className="mt-0 mb-2 text-sm text-gray-500 ">{label}</h2>
+      <h2 className="mt-0 mb-2 text-sm text-dark ">{label}</h2>
       <div className="w-full ">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
@@ -18,8 +18,7 @@ export default function RadioGroupTemplate({
                 key={option}
                 value={option}
                 className={({ active, checked }) =>
-                  `
-                  ${checked ? "bg-selected  text-main" : "bg-alt "}
+                  `${checked ? "bg-dark  text-main" : "bg-alt text-dark"}
                     relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none h-12 `
                 }
               >
@@ -58,10 +57,10 @@ export default function RadioGroupTemplate({
 function CheckIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <circle cx={12} cy={12} r={12} fill="#111" opacity="0.2" />
+      <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
       <path
         d="M7 13l3 3 7-7"
-        stroke="#000"
+        stroke="#fff"
         strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"

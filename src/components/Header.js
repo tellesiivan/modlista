@@ -12,7 +12,7 @@ export default function Header() {
   const dispatch = useDispatch();
 
   return (
-    <header className="sticky top-0 z-40 items-center justify-between hidden w-full h-16 px-4 bg-alt md:flex bg-opacity-80 bg-blend-saturation backdrop-blur supports-backdrop-blur:bg-alt/95">
+    <header className="sticky top-0 z-40 items-center justify-between hidden w-full h-16 px-4 bg-black md:flex ">
       <Link href="/">
         <Image
           src={logo}
@@ -27,10 +27,10 @@ export default function Header() {
         {user ? (
           <>
             <div
-              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out rounded-full cursor-pointer bg-highlight hover:bg-opacity-80"
+              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out rounded-full cursor-pointer bg-ag-green hover:bg-opacity-80"
               onClick={() => dispatch(toggleSidebar({ open: true }))}
             >
-              <p className="text-sm text-main group-hover:text-gray-300">
+              <p className="text-sm text-dark group-hover:text-gray-300">
                 Menu
               </p>
               <Avatar size={"h-6 w-6"} />
@@ -39,7 +39,7 @@ export default function Header() {
         ) : (
           <>
             <button
-              className="font-semibold text-main bg-highlight fillBtn"
+              className="font-semibold text-dark bg-ag-green fillBtn"
               onClick={() =>
                 dispatch(authModalStatus({ open: true, from: "login" }))
               }
@@ -47,7 +47,7 @@ export default function Header() {
               Login
             </button>
             <button
-              className="font-semibold text-white fillBtn"
+              className="font-semibold text-main fillBtn"
               onClick={() =>
                 dispatch(authModalStatus({ open: true, from: "signup" }))
               }

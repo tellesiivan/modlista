@@ -29,7 +29,7 @@ export default function VehicleCoverImage({
 
   return (
     <div
-      className={`relative flex items-center justify-center w-full h-40 my-3 overflow-hidden border rounded-md bg-alt border-inputMain`}
+      className={`relative flex items-center justify-center w-full h-40 my-3 overflow-hidden border rounded-md bg-alt border-greyDark`}
     >
       {selectedFile || data.coverImage ? (
         <>
@@ -40,7 +40,7 @@ export default function VehicleCoverImage({
           />
           {!loading && (
             <button
-              className="absolute px-3 py-1 text-xs bg-white rounded-full opacity-50 text-main top-1 right-1 hover:opacity-70"
+              className="absolute px-3 py-1 text-xs rounded-full bg-opacity-60 bg-dark text-main top-1 right-1 hover:bg-opacity-80"
               onClick={(e) => {
                 e.preventDefault();
                 setSelectedFile("");

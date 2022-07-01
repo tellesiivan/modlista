@@ -12,7 +12,7 @@ export default function HeaderSection({ profileUser, isValid }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="pb-4 border-b border-alt">
+    <div className="pb-4 border-b border-greyDark">
       <div className="relative h-[125px] md:h-[200px]  ">
         <div className="absolute inset-0 z-10 w-full h-full " />
         {coverImg ? (
@@ -26,7 +26,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             objectFit="cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-alt to-highlight "></div>
+          <div className="w-full h-full bg-ag-green "></div>
         )}
         <div className="absolute z-20 flex items-center border-[5px] rounded-full left-2 -bottom-14 md:left-4 border-main">
           {avatarImg ? (
@@ -44,7 +44,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-400 border border-gray-700 rounded-full w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-500 border rounded-full border-greyDark w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
@@ -58,15 +58,15 @@ export default function HeaderSection({ profileUser, isValid }) {
         } mx-4  md:mx-6  flex justify-between items-center`}
       >
         <div className="">
-          <h2 className="flex items-center text-2xl font-bold text-gray-200 md:tracking-wide">
-            {name ? name : email}{" "}
+          <div className="flex items-center font-bold text-dark">
+            <h2 className="text-2xl ">{name ? name : email} </h2>
             {vehiclesOwn && (
-              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-gradient-to-r from-selected to-highlight rounded-full text-main">
+              <div className="flex items-center justify-center w-4 h-4 ml-1 text-[9.5px] bg-ag-green rounded-full text-dark">
                 {vehiclesOwn}
               </div>
             )}
-          </h2>
-          <p className="-mt-0.25 text-xs text-gray-400 flex items-center space-x-1 ">
+          </div>
+          <p className="-mt-0.25 text-xs text-gray-500 flex items-center space-x-1 ">
             <MdOutlineCalendarToday className="mr-0.25" />
             <span>
               Joined {moment(new Date(createdAt)).format("MMMM YYYY")}

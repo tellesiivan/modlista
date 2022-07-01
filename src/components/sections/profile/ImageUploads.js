@@ -53,8 +53,7 @@ export default function ImageUploads({ userId }) {
     <div className="mt-6 space-y-2.5">
       <div className="flex items-center justify-between ">
         <p className="text-xs text-gray-500">
-          Update{" "}
-          <span className="font-semibold text-gray-300">{uploadType}</span>{" "}
+          Update <span className="font-semibold text-dark">{uploadType}</span>{" "}
           image.
         </p>
         <Toggle getValue={getValue} />
@@ -64,11 +63,11 @@ export default function ImageUploads({ userId }) {
           <UploadPreview src={selectedFile} type={uploadType} />
         ) : (
           <form
-            className="flex items-center justify-center w-full h-full border border-gray-700 border-dashed rounded-lg"
+            className="flex items-center justify-center w-full h-full border border-gray-500 border-dashed rounded-lg"
             onSubmit={uploadImage}
           >
             <button
-              className="flex flex-col items-center justify-center w-full h-full px-3 py-1 text-xs text-gray-300 hover:opacity-60 "
+              className="flex flex-col items-center justify-center w-full h-full px-3 py-1 text-xs text-dark hover:opacity-60 "
               onClick={() => uploadRef.current?.click()}
               type="button"
             >

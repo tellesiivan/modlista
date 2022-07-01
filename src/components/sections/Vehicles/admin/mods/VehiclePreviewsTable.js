@@ -8,11 +8,9 @@ export default function VehiclePreviewsTable({ vehicles }) {
 
   return (
     <div className="pt-2 pb-2.5 space-y-5 ">
-      <div className="p-3 space-y-3 divide-y rounded-md bg-alt divide-main">
+      <div className="p-3 space-y-3 divide-y rounded-md bg-alt divide-greyDark">
         <div className="space-y-3">
-          <h2 className="font-bold tracking-wide text-gray-200 text-md">
-            Garage
-          </h2>
+          <h2 className="font-bold tracking-wide text-dark text-md">Garage</h2>
           <p className="text-xs tracking-wide text-gray-500">
             Start adding modifications to any vehicle by clicking on the vehicle
             card.
