@@ -7,11 +7,11 @@ export default function TrimSelection({ trims, setTrim, trim }) {
 
   return (
     <div className="w-full my-3">
-      <p className="text-sm text-gray-500">Trim</p>
+      <p className="text-sm text-dark">Trim</p>
 
       <Listbox value={trim === "" ? selected : trim} onChange={setTrim}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-lg shadow-md cursor-default bg-alt sm:text-sm">
+          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-lg cursor-default bg-dark sm:text-sm">
             <span className="block text-xs text-gray-300 truncate">
               {trim === "" ? selected : trim}
             </span>
@@ -28,13 +28,13 @@ export default function TrimSelection({ trims, setTrim, trim }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-xs border rounded-md shadow-lg bg-alt max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none border-main">
+            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-xs rounded-md shadow-xl bg-main max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none ">
               {trims.map((trim, trimIdx) => (
                 <Listbox.Option
                   key={trimIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? "bg-inputMain text-gray-300" : "text-gray-500"
+                      active ? "bg-alt text-dark" : "text-gray-500"
                     }`
                   }
                   value={trim.name}

@@ -48,14 +48,14 @@ export default function AddModsContainer({ vehicleModifying }) {
   return (
     <>
       <div className="w-full overflow-hidden rounded-md bg-alt">
-        <div className="relative w-full h-40 ">
+        <div className="relative w-full h-44 ">
           <div className="absolute z-10 w-full h-full bg-gradient-to-t from-alt via-transparent to-transparent " />
-          <div className="absolute z-20 bottom-10 left-3">
-            <h4 className="font-semibold text-white text-md">{Year}</h4>
-            <p className="text-sm text-gray-200">
+          {/* <div className="absolute z-20 bottom-10 left-3">
+            <h4 className="font-semibold text-dark text-md">{Year}</h4>
+            <p className="text-sm text-dark">
               {Make} {Model}
             </p>
-          </div>
+          </div> */}
           <Image
             src={coverImage}
             objectFit="cover"
@@ -75,7 +75,7 @@ export default function AddModsContainer({ vehicleModifying }) {
           viewDetails={viewDetails}
           setViewDetails={setViewDetails}
           vehicle={vehicleModifying}
-          mod={addingMod}
+          modType={type}
         />
       )}
     </>

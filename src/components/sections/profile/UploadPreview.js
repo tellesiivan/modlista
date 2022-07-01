@@ -9,7 +9,7 @@ export default function UploadPreview({ type, src }) {
         {type === "cover" ? (
           <img src={src} alt="" className="object-cover w-full h-full" />
         ) : (
-          <div className="w-full h-full bg-inputMain animate-pulse"></div>
+          <div className="w-full h-full bg-greyDark animate-pulse"></div>
         )}
         {type === "profile" ? (
           <img

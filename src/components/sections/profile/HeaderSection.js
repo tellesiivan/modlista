@@ -12,7 +12,7 @@ export default function HeaderSection({ profileUser, isValid }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="pb-4 border-b border-alt">
+    <div className="pb-4 border-b border-greyDark">
       <div className="relative h-[125px] md:h-[200px]  ">
         <div className="absolute inset-0 z-10 w-full h-full " />
         {coverImg ? (
@@ -26,17 +26,17 @@ export default function HeaderSection({ profileUser, isValid }) {
             objectFit="cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-alt to-highlight "></div>
+          <div className="w-full h-full bg-ag-green "></div>
         )}
-        <div className="absolute z-20 flex items-center border-[5px] rounded-full left-4 -bottom-16 md:left-6 border-main">
+        <div className="absolute z-20 flex items-center border-[5px] rounded-full left-2 -bottom-14 md:left-4 border-main">
           {avatarImg ? (
-            <Avatar src={avatarImg} css={{ size: "$20" }} zoomed />
+            <Avatar src={avatarImg} css={{ size: "$24" }} zoomed />
           ) : (
             <Avatar
               text={email.charAt(0).toUpperCase()}
               color="gradient"
               textColor="white"
-              css={{ size: "$20" }}
+              css={{ size: "$24" }}
             />
           )}
         </div>
@@ -44,7 +44,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-400 border border-gray-700 rounded-full w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-500 border rounded-full border-greyDark w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
@@ -54,20 +54,20 @@ export default function HeaderSection({ profileUser, isValid }) {
 
       <div
         className={`${
-          !isValid ? "mt-20" : "mt-12"
-        } mx-6  md:mx-8 md:mt-20 flex justify-between items-center`}
+          !isValid ? "mt-16" : "mt-10 md:mt-16"
+        } mx-4  md:mx-6  flex justify-between items-center`}
       >
         <div className="">
-          <h2 className="flex items-center text-lg font-semibold tracking-wide text-gray-200 md:text-xl">
-            {name ? name : email}{" "}
+          <div className="flex items-center font-bold text-dark">
+            <h2 className="text-2xl ">{name ? name : email} </h2>
             {vehiclesOwn && (
-              <div className="flex items-center justify-center w-5 h-5 ml-1 text-[9.5px] bg-gradient-to-r from-selected to-highlight rounded-full text-main">
+              <div className="flex items-center justify-center w-4 h-4 ml-1 text-[9.5px] bg-ag-green rounded-full text-dark">
                 {vehiclesOwn}
               </div>
             )}
-          </h2>
-          <p className="-mt-0.25 text-xs text-gray-400 flex items-center space-x-1 ">
-            <MdOutlineCalendarToday className="mr-1" />
+          </div>
+          <p className="-mt-0.25 text-xs text-gray-500 flex items-center space-x-1 ">
+            <MdOutlineCalendarToday className="mr-0.25" />
             <span>
               Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
             </span>

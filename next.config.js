@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com", "firebasestorage.googleapis.com"],
+    domains: [
+      "images.unsplash.com",
+      "firebasestorage.googleapis.com",
+      "speedhunters-wp-production.s3.amazonaws.com",
+    ],
   },
 };
 

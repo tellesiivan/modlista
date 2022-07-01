@@ -1,13 +1,17 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { HiOutlineSelector, HiCheck } from "react-icons/hi";
+import { useDispatch } from "react-redux";
+import { resetMod } from "../../../../../../store/slices/modificationsSlice";
 
 export default function ModTypeDropdown({ mods, setType, type }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="absolute z-30 w-[95%] mt-4 -bottom-6 -translate-x-1/2 left-1/2">
       <Listbox value={type} onChange={setType}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-md cursor-pointer bg-lighterAlt sm:text-sm">
+          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-md cursor-pointer bg-dark sm:text-sm">
             <span className="block text-xs tracking-wide text-gray-200 truncate">
               {type}
             </span>
@@ -28,9 +32,10 @@ export default function ModTypeDropdown({ mods, setType, type }) {
               {mods.map((type, typeIdx) => (
                 <Listbox.Option
                   key={typeIdx}
+                  onClick={() => dispatch(resetMod())}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? "bg-lighterAlt text-gray-200" : "text-gray-500"
+                      active ? "bg-greyDark text-dark" : "text-gray-500"
                     }`
                   }
                   value={type.name}

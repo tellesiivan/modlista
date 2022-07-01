@@ -43,10 +43,10 @@ export default function InteriorMod() {
         setImage={setValues}
         onSelectedFile={onSelectedFile}
       />
-      <div className="grid w-full grid-cols-2 border border-gray-800 divide-x divide-gray-800 rounded-md bg-lighterAlt justify-items-stretch">
+      <div className="grid w-full grid-cols-2 border divide-x rounded-md border-greyDark divide-greyDark bg-main justify-items-stretch">
         <Price price={values.price} setPrice={setValues} />
         <div className="flex flex-col items-center p-2 ">
-          <h3 className="mb-1 text-xs text-gray-500">Rating</h3>
+          <h3 className="mb-1 text-xs text-gray-400">Rating</h3>
           <ModRating
             setRatingValue={setValues}
             ratingValue={values.ratingValue}

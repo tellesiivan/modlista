@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   adding: {
-    modType: "",
     details: {
       tags: [],
       desc: "",
@@ -17,6 +16,7 @@ const initialState = {
     },
   },
   submit: false,
+  uploading: false,
 };
 
 export const modificationsSlice = createSlice({
@@ -27,12 +27,16 @@ export const modificationsSlice = createSlice({
       state.adding.details = action.payload.mod;
     },
     resetMod: (state) => {
-      state.adding = initialState;
+      state.adding.details = initialState.adding.details;
+    },
+    uploadingMod: (state, action) => {
+      state.uploading = action.payload.isUploading;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { inProgressMod, resetMod } = modificationsSlice.actions;
+export const { inProgressMod, resetMod, uploadingMod } =
+  modificationsSlice.actions;
 
 export default modificationsSlice.reducer;

@@ -3,7 +3,9 @@ import VehicleCard from "./VehicleCard";
 
 export default function VehicleSection({ vehicles }) {
   return (
-    <div className="grid grid-cols-2 border-b divide-x divide-alt border-alt">
+    <div
+      className={`grid grid-cols-${vehicles.length} border-b divide-x divide-alt border-greyDark`}
+    >
       {vehicles.map((vehicle) => (
         <VehicleCard
           key={vehicle.Trim.id || vehicle.Trim.name}

@@ -23,8 +23,8 @@ export default function VehicleCard({ vehicle }) {
       </div>
       <div className="text-right">
         <p className="text-xs text-gray-400 md:text-sm">{vehicle.Year}</p>
-        <h2 className="font-bold text-gray-200 md:text-md">{vehicle.Make}</h2>
-        <p className="text-xs text-gray-500 md:text-sm">{vehicle.Model}</p>
+        <h2 className="font-bold text-dark md:text-md">{vehicle.Make}</h2>
+        <p className="text-xs text-gray-400 md:text-sm">{vehicle.Model}</p>
       </div>
     </div>
   );

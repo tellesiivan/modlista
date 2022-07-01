@@ -22,7 +22,6 @@ const formTypes = ["VIN"];
 export default function AdminVehicles() {
   const dispatch = useDispatch();
   const [user] = useAuthState(auth);
-
   const [formType, setFormType] = useState("VIN");
   const [vinValue, setVinValue] = useState("");
   const [loading, setLoading] = useState(false);
@@ -137,7 +136,7 @@ export default function AdminVehicles() {
                       data && data.formType === formType ? "mb-6" : ""
                     }`}
                   >
-                    <h2 className="font-bold text-white text-md">
+                    <h2 className="font-bold text-dark text-md">
                       Nice! We Found Your Car.
                     </h2>
                     <p className="text-sm text-gray-500">
@@ -194,7 +193,7 @@ export default function AdminVehicles() {
               )}
               {showActionBTN &&
                 ((selectedFile || data?.coverImage) && !loading ? (
-                  <div className="sticky grid grid-cols-2 gap-2 text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
+                  <div className="sticky grid grid-cols-2 text-sm divide-x rounded-md bg-ag-green text-dark bottom-3 divide-alt ">
                     <button
                       className="py-3 hover:opacity-80"
                       onClick={(e) => {
@@ -217,7 +216,7 @@ export default function AdminVehicles() {
                     </button>
                   </div>
                 ) : (
-                  <div className="sticky w-full text-sm bg-white border divide-x rounded-md text-main bottom-3 divide-inputMain border-inputMain">
+                  <div className="sticky w-full text-sm divide-x rounded-md bg-ag-green text-dark bottom-3 ">
                     {loading ? (
                       <button
                         className="w-full py-3 text-center hover:opacity-80"
