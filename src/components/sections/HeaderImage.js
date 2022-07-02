@@ -9,7 +9,7 @@ export default function HeaderImage() {
 
   return (
     <div className="relative w-full h-screen">
-      <div className="absolute z-10 w-full h-full bg-gradient-to-t from-alt via-transparent to-transparent " />
+      {/* <div className="absolute z-10 w-full h-full bg-gradient-to-t from-alt via-transparent to-transparent " /> */}
       <Image
         src="http://speedhunters-wp-production.s3.amazonaws.com/wp-content/uploads/2021/05/12190246/IMG_5915Copyrighted-By-Naveed-Yousufzai.jpg"
         alt="banner image"

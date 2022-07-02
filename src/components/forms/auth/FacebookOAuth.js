@@ -29,7 +29,7 @@ export default function FacebookOAuth({ from }) {
 
   return (
     <button
-      className="flex items-center justify-center w-full p-3 bg-gray-200 rounded-lg"
+      className="flex items-center justify-center w-full p-3 bg-black rounded-lg text-main"
       onClick={handleFacebookOAuth}
     >
       {loading ? (
@@ -37,7 +37,7 @@ export default function FacebookOAuth({ from }) {
       ) : (
         <>
           <FaFacebook className="mr-3" />{" "}
-          <p className="text-sm font-semibold text-main">
+          <p className="text-sm font-semibold ">
             {from === "login"
               ? "Continue with Facebook"
               : "Signup with Facebook"}

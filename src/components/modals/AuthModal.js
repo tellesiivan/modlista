@@ -45,7 +45,7 @@ export default function AuthModal() {
                 <Dialog.Panel className="w-full max-w-sm p-6 overflow-hidden text-left align-middle transition-all transform rounded-md shadow-xl bg-main ">
                   <Dialog.Title
                     as="h2"
-                    className="text-xl font-bold leading-6 text-gray-300"
+                    className="text-xl font-bold leading-6 text-black"
                   >
                     {from.charAt(0).toUpperCase() + from.slice(1)}
                   </Dialog.Title>
@@ -69,7 +69,7 @@ export default function AuthModal() {
                       <p>
                         Don&apos;t have an account yet?{" "}
                         <span
-                          className="font-semibold text-gray-300 cursor-pointer hover:opacity-80"
+                          className="font-semibold cursor-pointer text-dark hover:opacity-80"
                           onClick={() =>
                             dispatch(
                               authModalStatus({ open: true, from: "signup" })
@@ -83,7 +83,7 @@ export default function AuthModal() {
                       <p>
                         Already have an account?{" "}
                         <span
-                          className="font-semibold text-gray-300 cursor-pointer hover:opacity-80"
+                          className="font-semibold cursor-pointer text-dark hover:opacity-80"
                           onClick={() =>
                             dispatch(
                               authModalStatus({ open: true, from: "login" })

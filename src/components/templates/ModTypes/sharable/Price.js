@@ -8,9 +8,7 @@ export default function Price({ price, setPrice }) {
         className="w-full h-full font-bold bg-transparent border-0 rounded-md outline-none text-dark text-md placeholder:text-sm placeholder:text-gray-400 placeholder:font-light"
         type="number"
         placeholder="Price"
-        onChange={({ target: { value } }) =>
-          setPrice((prev) => ({ ...prev, price: value }))
-        }
+        onChange={({ target: { value } }) => setPrice("price", value)}
         value={price}
       />
     </div>

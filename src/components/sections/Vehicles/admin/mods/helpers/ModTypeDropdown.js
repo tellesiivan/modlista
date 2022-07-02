@@ -11,13 +11,13 @@ export default function ModTypeDropdown({ mods, setType, type }) {
     <div className="absolute z-30 w-[95%] mt-4 -bottom-6 -translate-x-1/2 left-1/2">
       <Listbox value={type} onChange={setType}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-md cursor-pointer bg-dark sm:text-sm">
-            <span className="block text-xs tracking-wide text-gray-200 truncate">
+          <Listbox.Button className="relative w-full py-4 pl-3 pr-10 text-left rounded-md shadow-md cursor-pointer bg-main sm:text-sm">
+            <span className="block text-xs font-semibold tracking-wide truncate text-dark">
               {type}
             </span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <HiOutlineSelector
-                className="w-5 h-5 text-gray-200"
+                className="w-5 h-5 text-dark"
                 aria-hidden="true"
               />
             </span>
@@ -50,7 +50,7 @@ export default function ModTypeDropdown({ mods, setType, type }) {
                         {type.name}
                       </span>
                       {selected ? (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-selected">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-dark">
                           <HiCheck className="w-5 h-5" aria-hidden="true" />
                         </span>
                       ) : null}
