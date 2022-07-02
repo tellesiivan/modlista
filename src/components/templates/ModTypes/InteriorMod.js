@@ -1,62 +1,52 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import useSelectFile from "../../../Hooks/useSelectFile";
-import { inProgressMod } from "../../../store/slices/modificationsSlice";
 import CategoryInput from "./sharable/CategoryInput";
 import DescTextBox from "./sharable/DescTextBox";
 import ImageUpload from "./sharable/ImageUpload";
 import ModNameInput from "./sharable/ModNameInput";
 import ModRating from "./sharable/ModRating";
 import Price from "./sharable/Price";
+import PriceRateLayout from "./sharable/PriceRateLayout";
 import Url from "./sharable/Url";
+import useReadWriteModSlice from "./useReadWriteModSlice";
 
 export default function InteriorMod() {
-  const dispatch = useDispatch();
-  const addingValues = useSelector(
-    (store) => store.modifications.adding.details
-  );
   const { selectedFile, setSelectedFile, onSelectedFile } = useSelectFile();
-  const [values, setValues] = useState(addingValues);
-
-  useEffect(() => {
-    dispatch(inProgressMod({ mod: values }));
-  }, [values]);
+  const { writeToModSlice, mod } = useReadWriteModSlice();
 
   return (
     <div className="space-y-2.5 -mt-2 w-full">
       <ModNameInput
         placeholder="Carbon Fiber Center Console Trim..."
-        value={values.title}
-        setValue={setValues}
+        value={mod.title}
+        setValue={writeToModSlice}
       />
-      <DescTextBox value={values.desc} setValue={setValues} />
+      <DescTextBox value={mod.desc} setValue={writeToModSlice} />
       <CategoryInput
         placeholder="Door Component, Steering wheel..."
         label="Category Tags"
         id="category"
-        setTags={setValues}
-        tags={values.tags}
+        setTags={writeToModSlice}
+        tags={mod.tags}
       />
       <ImageUpload
         selectedFile={selectedFile}
         setSelectedFile={setSelectedFile}
-        setImage={setValues}
+        setImage={writeToModSlice}
+        Image={mod?.image}
         onSelectedFile={onSelectedFile}
       />
-      <div className="grid w-full grid-cols-2 border divide-x rounded-md border-greyDark divide-greyDark bg-main justify-items-stretch">
-        <Price price={values.price} setPrice={setValues} />
-        <div className="flex flex-col items-center p-2 ">
-          <h3 className="mb-1 text-xs text-gray-400">Rating</h3>
-          <ModRating
-            setRatingValue={setValues}
-            ratingValue={values.ratingValue}
-          />
-        </div>
-      </div>
+      <PriceRateLayout>
+        <Price price={mod.price} setPrice={writeToModSlice} />
+        <ModRating
+          setRatingValue={writeToModSlice}
+          ratingValue={mod.ratingValue}
+        />
+      </PriceRateLayout>
+
       <Url
-        setLink={setValues}
-        link={values.url.link}
-        valid={values.url.isValid}
+        setLink={writeToModSlice}
+        url={mod.url.link}
+        valid={mod.url.isValid}
       />
     </div>
   );

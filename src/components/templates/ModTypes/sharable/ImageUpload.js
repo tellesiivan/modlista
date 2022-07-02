@@ -9,14 +9,13 @@ export default function ImageUpload({
   setSelectedFile,
   onSelectedFile,
   setImage,
+  Image,
 }) {
-  const addingMod = useSelector((store) => store.modifications.adding.details);
   const loading = useSelector((store) => store.modifications.uploading);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (selectedFile) {
-      setImage((prev) => ({ ...prev, image: selectedFile }));
+      setImage("image", selectedFile);
     }
   }, [selectedFile]);
 
@@ -26,12 +25,12 @@ export default function ImageUpload({
         <label htmlFor="imageUpload" className="text-xs text-dark">
           Modification Image
         </label>
-        {(selectedFile || addingMod?.image) && !loading && (
+        {Image && !loading && (
           <p
             className="text-xs cursor-pointer text-dark hover:opacity-75"
             onClick={() => {
               setSelectedFile("");
-              dispatch(inProgressMod({ mod: { ...addingMod, image: "" } }));
+              setImage("image", "");
             }}
           >
             Delete
@@ -43,13 +42,9 @@ export default function ImageUpload({
         id="imageUpload"
       >
         {/* selectedFile || data.coverImage */}
-        {selectedFile || addingMod?.image ? (
+        {Image ? (
           <>
-            <img
-              src={selectedFile || addingMod.image}
-              alt=""
-              className="object-cover w-full h-full"
-            />
+            <img src={Image} alt="" className="object-cover w-full h-full" />
           </>
         ) : (
           <div className="relative w-full h-full overflow-hidden rounded-md ">

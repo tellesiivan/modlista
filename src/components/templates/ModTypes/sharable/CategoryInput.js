@@ -12,12 +12,16 @@ export default function CategoryInput({
 
   const addTag = (e) => {
     if (tags.includes(tag) || CheckSpecialChars(tag)) return;
-    setTags((prev) => ({ ...prev, tags: [tag, ...prev.tags] }));
+    setTags("tags", [tag, ...tags]);
+
     setTag("");
   };
 
   const removeTag = (tag) => {
-    setTags((prev) => ({ ...prev, tags: prev.tags.filter((t) => t !== tag) }));
+    setTags(
+      "tags",
+      tags.filter((t) => t !== tag)
+    );
   };
 
   return (

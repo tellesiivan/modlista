@@ -13,7 +13,7 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>{" "}
       <div className="h-[200vh]">
-        <div className="sticky flex items-center justify-center h-screen top-16">
+        <div className="sticky top-0 flex items-center justify-center h-screen md:top-16">
           <HeaderImage />
         </div>
       </div>

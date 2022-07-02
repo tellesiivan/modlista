@@ -2,7 +2,7 @@ import { Rating } from "react-simple-star-rating";
 
 export default function ModRating({ ratingValue, setRatingValue }) {
   const handleRating = (rate) => {
-    setRatingValue((prev) => ({ ...prev, ratingValue: rate }));
+    setRatingValue("ratingValue", rate);
   };
 
   return (

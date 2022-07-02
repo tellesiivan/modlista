@@ -48,36 +48,32 @@ export default function AdminProfile() {
         Heading="Profile"
         Desc="Here you can update your name, cover and profile image."
       />
-      <form onSubmit={onSubmit}>
-        <label className="text-xs text-gray-500" htmlFor="name">
+      <form onSubmit={onSubmit} className="-mt-2">
+        <label className="text-xs text-dark" htmlFor="name">
           Name
         </label>
-        <div className="flex items-center w-full h-10 px-2 mt-1.5 rounded-md bg-alt">
+        <div className="flex items-center w-full h-12 px-2 mt-1.5 rounded-md bg-alt">
           <NameInput
             setValues={setValues}
             values={values}
             setError={setError}
             error={error}
           />
+          {values.name.trim().length >= 3 && !error && (
+            <button
+              onClick={onSubmit}
+              disabled={values.name.trim().length < 3 || error}
+              className="w-20 h-10 -mr-1 text-xs text-center transition-opacity duration-500 border divide-x rounded-md opacity-100 text-dark hover:opacity-80 bg-ag-green disabled:opacity-0"
+            >
+              Update
+            </button>
+          )}
         </div>
       </form>
       {error && (
-        <div className="p-2 mt-2 text-sm rounded-sm bg-alt text-selected ">
-          {error}
-        </div>
+        <div className="px-2 py-3 mt-2 text-sm rounded-sm bg-alt ">{error}</div>
       )}
       <ImageUploads userId={user?.uid} />
-      {values.name.trim().length >= 3 && !error && (
-        <div className="sticky w-full bottom-2">
-          <button
-            onClick={onSubmit}
-            disabled={values.name.trim().length < 3 || error}
-            className="w-full py-2 text-sm text-center text-gray-200 transition-opacity duration-500 border divide-x rounded-md opacity-100 sm:py-3 hover:opacity-80 bg-selected divide-inputMain border-inputMain disabled:opacity-0"
-          >
-            Update
-          </button>
-        </div>
-      )}
     </>
   );
 }

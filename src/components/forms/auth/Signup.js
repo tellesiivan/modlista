@@ -89,7 +89,7 @@ export default function Signup() {
       {isError && <AlertMessage message={isError} />}
       <LoadingButton
         styling={
-          "inline-flex justify-center w-full p-3 text-sm font-medium tracking-wide text-white bg-selected border border-transparent rounded-md hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 text-main"
+          "inline-flex justify-center w-full p-3 text-sm font-medium tracking-wide text-white bg-ag-green border border-transparent rounded-md hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 text-dark"
         }
         loading={loading}
         text="Create account"

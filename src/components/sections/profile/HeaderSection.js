@@ -58,10 +58,10 @@ export default function HeaderSection({ profileUser, isValid }) {
         } mx-4  md:mx-6  flex justify-between items-center`}
       >
         <div className="">
-          <div className="flex items-center font-bold text-dark">
-            <h2 className="text-2xl ">{name ? name : email} </h2>
+          <div className="flex items-center font-bold tracking-tighter text-dark">
+            <h1 className="text-2xl ">{name ? name : email} </h1>
             {vehiclesOwn && (
-              <div className="flex items-center justify-center w-4 h-4 ml-1 text-[9.5px] bg-ag-green rounded-full text-dark">
+              <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-dark">
                 {vehiclesOwn}
               </div>
             )}

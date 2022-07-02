@@ -49,7 +49,7 @@ export default function AddModsContainer({ vehicleModifying }) {
     <>
       <div className="w-full overflow-hidden rounded-md bg-alt">
         <div className="relative w-full h-44 ">
-          <div className="absolute z-10 w-full h-full bg-gradient-to-t from-alt via-transparent to-transparent " />
+          <div className="absolute z-10 w-full h-full " />
           {/* <div className="absolute z-20 bottom-10 left-3">
             <h4 className="font-semibold text-dark text-md">{Year}</h4>
             <p className="text-sm text-dark">

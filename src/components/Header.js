@@ -27,10 +27,10 @@ export default function Header() {
         {user ? (
           <>
             <div
-              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out rounded-full cursor-pointer bg-ag-green hover:bg-opacity-80"
+              className="flex items-center justify-between w-24 h-8 pl-2 pr-1 transition ease-in-out rounded-full cursor-pointer bg-ag-yellow hover:bg-opacity-80"
               onClick={() => dispatch(toggleSidebar({ open: true }))}
             >
-              <p className="text-sm text-dark group-hover:text-gray-300">
+              <p className="text-sm font-semibold text-dark group-hover:text-gray-300">
                 Menu
               </p>
               <Avatar size={"h-6 w-6"} />
@@ -47,7 +47,7 @@ export default function Header() {
               Login
             </button>
             <button
-              className="font-semibold text-main fillBtn"
+              className="font-semibold text-main fillBtn bg-darkAlt"
               onClick={() =>
                 dispatch(authModalStatus({ open: true, from: "signup" }))
               }
