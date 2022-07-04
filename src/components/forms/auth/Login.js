@@ -39,14 +39,15 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(values.email, values.password);
-      dispatch(authModalStatus({ open: false, from: "login" }));
     } catch (error) {
-      setErrorFound("User not found, check email and password");
+      throw new Error("User not found, check email and password");
     }
     if (error && !loading) {
-      console.log(error.message);
+      console.log(error);
       setErrorFound("User not found, check email and password");
       return;
+    } else {
+      dispatch(authModalStatus({ open: false, from: "login" }));
     }
   };
 

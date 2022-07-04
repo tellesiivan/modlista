@@ -17,6 +17,11 @@ module.exports = {
           green: "#26ec8f",
           yellow: "#ffc107",
         },
+        status: {
+          success: "#4ad493",
+          warning: "#ffc107",
+          fail: "#dc3545",
+        },
       },
     },
   },
