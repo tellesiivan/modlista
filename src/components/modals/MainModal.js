@@ -47,7 +47,7 @@ export default function MainModal() {
               >
                 <Dialog.Panel className="relative w-full max-w-sm overflow-hidden text-left align-middle transition-all transform rounded-md shadow-xl bg-main">
                   <div
-                    className="absolute z-50 flex items-center justify-center w-6 h-6 transition-transform rounded-full cursor-pointer bg-main top-1 right-1 hover:scale-110"
+                    className="absolute z-50 flex items-center justify-center w-6 h-6 transition-transform rounded-full cursor-pointer bg-main top-1 right-1 hover:scale-110 drop-shadow-xl"
                     onClick={() =>
                       dispatch(
                         toggleMainModal({

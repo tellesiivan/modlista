@@ -11,8 +11,8 @@ const initialState = {
   },
   showMobileNav: false,
   mainModal: {
-    open: true,
-    content: <ImageUpload />,
+    open: false,
+    content: "",
   },
 };
 

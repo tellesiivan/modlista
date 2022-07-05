@@ -30,7 +30,13 @@ export default function HeaderSection({ profileUser, isValid }) {
         )}
         <div className="absolute z-20 flex items-center border-[5px] rounded-full left-2 -bottom-14 md:left-4 border-main">
           {avatarImg ? (
-            <Avatar src={avatarImg} css={{ size: "$24" }} zoomed />
+            <Avatar
+              src={avatarImg}
+              css={{ size: "$24" }}
+              zoomed
+              borderWeight="0px"
+              color="white"
+            />
           ) : (
             <Avatar
               text={email.charAt(0).toUpperCase()}
