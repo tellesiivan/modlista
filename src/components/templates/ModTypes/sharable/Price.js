@@ -10,6 +10,7 @@ export default function Price({ price, setPrice }) {
         placeholder="Price"
         onChange={({ target: { value } }) => setPrice("price", value)}
         value={price}
+        pattern="[0-9]*"
       />
     </div>
   );

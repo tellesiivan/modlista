@@ -1,11 +1,33 @@
 import Image from "next/image";
-import { useState } from "react";
+import { BiDotsVertical } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import {
+  toggleMainModal,
+  setMainModalContent,
+} from "../../../../../store/slices/modalsSlice";
+import VehicleEdit from "./helpers/EditVehicle/VehicleEdit";
 
 export default function VehiclePreviewitem({
   vehicle,
   modifying,
   setModifying,
 }) {
+  const dispatch = useDispatch();
+
+  const triggerEditableModal = (e) => {
+    e.stopPropagation();
+    dispatch(
+      setMainModalContent({
+        content: (
+          <>
+            <VehicleEdit vehicle={vehicle} />
+          </>
+        ),
+      })
+    );
+    dispatch(toggleMainModal({ open: true }));
+  };
+
   return (
     <div key={vehicle.Trim.id || vehicle.Trim.name}>
       <div
@@ -24,10 +46,18 @@ export default function VehiclePreviewitem({
             alt=""
           />
         </div>
-        <div className="text-right">
-          <p className="text-xs text-gray-500">{vehicle.Year}</p>
-          <h2 className="text-sm font-semibold text-dark">{vehicle.Make}</h2>
-          <p className="text-xs text-gray-500">{vehicle.Model}</p>
+        <div className="flex items-center space-x-2 ">
+          <div className="text-right">
+            <p className="text-xs text-gray-500">{vehicle.Year}</p>
+            <h2 className="text-sm font-semibold text-dark">{vehicle.Make}</h2>
+            <p className="text-xs text-gray-500">{vehicle.Model}</p>
+          </div>
+          <div
+            className="flex items-center justify-center w-6 h-6 transition-colors duration-300 rounded-full bg-main hover:bg-opacity-80 "
+            onClick={triggerEditableModal}
+          >
+            <BiDotsVertical />
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import ImageUpload from "../../components/templates/ModTypes/sharable/ImageUpload";
 
 const initialState = {
   authModal: {
@@ -9,6 +10,10 @@ const initialState = {
     open: false,
   },
   showMobileNav: false,
+  mainModal: {
+    open: false,
+    content: "",
+  },
 };
 
 export const modalSlice = createSlice({
@@ -25,11 +30,22 @@ export const modalSlice = createSlice({
     toggleMobileNav: (state, action) => {
       state.showMobileNav = action.payload.open;
     },
+    toggleMainModal: (state, action) => {
+      state.mainModal.open = action.payload.open;
+    },
+    setMainModalContent: (state, action) => {
+      state.mainModal.content = action.payload.content;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { authModalStatus, toggleSidebar, toggleMobileNav } =
-  modalSlice.actions;
+export const {
+  authModalStatus,
+  toggleSidebar,
+  toggleMobileNav,
+  toggleMainModal,
+  setMainModalContent,
+} = modalSlice.actions;
 
 export default modalSlice.reducer;

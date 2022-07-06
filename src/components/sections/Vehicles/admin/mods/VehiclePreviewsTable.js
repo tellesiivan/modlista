@@ -1,10 +1,16 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddModsContainer from "./AddModsContainer";
 import VehiclePreviewitem from "./VehiclePreviewitem";
 
 export default function VehiclePreviewsTable({ vehicles }) {
   const [modifying, setModifying] = useState(vehicles[0]);
+
+  useEffect(() => {
+    if (vehicles.length === 1) {
+      setModifying(vehicles[0]);
+    }
+  }, [vehicles]);
 
   return (
     <div className="pt-2 pb-2.5 space-y-5 ">

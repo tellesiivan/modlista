@@ -5,13 +5,12 @@ import { useRouter } from "next/router";
 export default function VehicleCard({ vehicle }) {
   const router = useRouter();
   const { userId } = router.query;
-
   return (
     <div
-      className="relative flex items-center justify-between min-w-full p-3 overflow-hidden border rounded-md cursor-pointer hover:bg-opacity-90 bg-main border-greyDark"
+      className="relative flex items-center justify-start min-w-full p-3 overflow-hidden rounded-md cursor-pointer hover:bg-opacity-90 bg-alt "
       onClick={() => router.push(`/b/${vehicle.id}`)}
     >
-      <div className="relative w-12 h-12 overflow-hidden rounded-full">
+      <div className="relative w-16 h-16 mr-4 overflow-hidden rounded-md">
         <Image
           src={vehicle.coverImage}
           objectFit="cover"
@@ -21,10 +20,17 @@ export default function VehicleCard({ vehicle }) {
           alt=""
         />
       </div>
-      <div className="text-right">
-        <p className="text-xs text-gray-400 md:text-sm">{vehicle.Year}</p>
-        <h2 className="font-bold text-dark md:text-md">{vehicle.Make}</h2>
-        <p className="text-xs text-gray-400 md:text-sm">{vehicle.Model}</p>
+      <div className="truncate text-start">
+        <h2 className="font-bold text-dark md:text-sm">
+          {vehicle.Year} {vehicle.Make} {vehicle.Model}
+        </h2>
+        {vehicle.Mods && (
+          <p className="text-sm text-gray-600">
+            {vehicle.Mods > 1
+              ? `${vehicle.Mods} modifications listed`
+              : `${vehicle.Mods} modification listed`}
+          </p>
+        )}
       </div>
     </div>
   );
