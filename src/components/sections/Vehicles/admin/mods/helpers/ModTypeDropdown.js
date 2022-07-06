@@ -44,7 +44,7 @@ export default function ModTypeDropdown({ mods, setType, type }) {
                     <>
                       <span
                         className={`block truncate ${
-                          selected ? "font-medium text-selected" : "font-normal"
+                          selected ? "font-semibold text-black" : "font-normal"
                         }`}
                       >
                         {type.name}

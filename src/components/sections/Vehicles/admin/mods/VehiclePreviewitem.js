@@ -17,7 +17,13 @@ export default function VehiclePreviewitem({
   const triggerEditableModal = (e) => {
     e.stopPropagation();
     dispatch(
-      setMainModalContent({ content: <VehicleEdit vehicle={vehicle} /> })
+      setMainModalContent({
+        content: (
+          <>
+            <VehicleEdit vehicle={vehicle} />
+          </>
+        ),
+      })
     );
     dispatch(toggleMainModal({ open: true }));
   };

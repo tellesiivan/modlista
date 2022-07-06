@@ -21,6 +21,9 @@ export default function useUploadMod() {
       `vehicles/${vehicleID}/${modType}/${modRef.id}`
     );
 
+    // User Ref (increase number of mods added by user)
+    const userModsRef = doc(firestore, `users/${user.uid}`);
+
     // Vehicle Ref (increase number of mods + 1) : update
     const VehicleRef = doc(firestore, `vehicles/${vehicleID}`);
 
@@ -61,6 +64,8 @@ export default function useUploadMod() {
       batch.update(VehicleRef, { Mods: increment(1) });
       // increment + 1 mod (vehicle preview)
       batch.update(userPreviewsRef, { Mods: increment(1) });
+      // increment + 1 mod (amount of mods a user contributes)
+      batch.update(userModsRef, { addedMods: increment(1) });
 
       // Commit the batch
       await batch.commit();

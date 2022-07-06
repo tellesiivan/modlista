@@ -20,9 +20,8 @@ export default function useVehicleData() {
         throw new Error("Something went wrong, try again!");
       }
       const data = await res.json();
-      console.log(data);
 
-      if (!data) {
+      if (data.status === "NOT_FOUND") {
         throw new Error("No information for this vehicle was found");
       }
 

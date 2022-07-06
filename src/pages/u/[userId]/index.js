@@ -43,8 +43,9 @@ export default function UserProfile({ userData }) {
             id: doc.id,
           });
         });
+        console.log(previews);
         setVehiclePreviews(previews);
-        if (isValid && previews.length !== 0) {
+        if (isValid && previews) {
           dispatch(addVehiclePreviews({ previews }));
         }
       };
@@ -73,7 +74,9 @@ export default function UserProfile({ userData }) {
             <>
               <HeaderSection profileUser={profileUser} isValid={isValid} />
 
-              {vehiclePreviews && <VehicleSection vehicles={vehiclePreviews} />}
+              {vehiclePreviews && vehiclePreviews.length !== 0 && (
+                <VehicleSection vehicles={vehiclePreviews} />
+              )}
             </>
           ) : (
             <>

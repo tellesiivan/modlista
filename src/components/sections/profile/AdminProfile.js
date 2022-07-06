@@ -43,7 +43,7 @@ export default function AdminProfile() {
   };
 
   return (
-    <>
+    <div className="pb-6">
       <AdminHeading
         Heading="Profile"
         Desc="Here you can update your name, cover and profile image."
@@ -73,7 +73,8 @@ export default function AdminProfile() {
       {error && (
         <div className="px-2 py-3 mt-2 text-sm rounded-sm bg-alt ">{error}</div>
       )}
+      <div className="w-full h-48 mt-3 rounded-md bg-alt"></div>
       <ImageUploads userId={user?.uid} />
-    </>
+    </div>
   );
 }
