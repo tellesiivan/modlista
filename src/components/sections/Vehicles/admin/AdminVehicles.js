@@ -7,7 +7,13 @@ import RadioGroupTemplate from "../../../helpers/RadioGroupTemp";
 import TrimSelection from "./TrimSelectionVin";
 import VehicleItem from "./VehicleItem";
 import VinInput from "./VinInput";
-import { writeBatch, doc, collection, increment } from "firebase/firestore";
+import {
+  writeBatch,
+  doc,
+  collection,
+  increment,
+  serverTimestamp,
+} from "firebase/firestore";
 import { auth, firestore, storage } from "../../../../firebase/clientApp";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -90,6 +96,7 @@ export default function AdminVehicles() {
         Year: data.Year,
         Trim: data.Trim[0],
         coverImage: downloadedUrl,
+        createAt: serverTimestamp.fromDate(new Date()),
       });
       batch.update(userRef, { vehiclesOwn: increment(1) });
 

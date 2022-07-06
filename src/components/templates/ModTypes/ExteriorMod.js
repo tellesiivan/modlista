@@ -16,13 +16,13 @@ export default function ExteriorMod() {
   return (
     <div className="space-y-2.5 -mt-2 w-full">
       <ModNameInput
-        placeholder="Front Lip..."
+        placeholder="Akrapovic Rear Carbon Fiber Diffuser..."
         value={mod.title}
         setValue={writeToModSlice}
       />
       <DescTextBox value={mod.desc} setValue={writeToModSlice} />
       <CategoryInput
-        placeholder="Door Component, Steering wheel..."
+        placeholder="Diffuser, Carbon Fiber..."
         label="Category Tags"
         id="category"
         setTags={writeToModSlice}
@@ -42,7 +42,6 @@ export default function ExteriorMod() {
           ratingValue={mod.ratingValue}
         />
       </PriceRateLayout>
-
       <Url
         setLink={writeToModSlice}
         url={mod.url.link}

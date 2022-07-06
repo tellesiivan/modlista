@@ -8,14 +8,14 @@ module.exports = {
       colors: {
         main: "#fff",
         alt: "#eeeef0",
-        dark: "#181c1d",
+        dark: "#0f1419",
         greyDark: "#d2d2d2",
         darkAlt: "#252627",
         inputMain: "#34494E",
-        highlight: "#e4c754",
+        highlight: "#",
         ag: {
           green: "#26ec8f",
-          yellow: "#ffc107",
+          yellow: "#e4c754",
         },
         status: {
           success: "#4ad493",

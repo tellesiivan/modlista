@@ -25,14 +25,14 @@ export default function ViewVehicleCard({
       </div>
       <div className="flex-1 space-y-1">
         <Link href={profileLink}>
-          <a className="flex items-center mt-2 space-x-1.5 hover:text-blue-900">
-            <h2 className="font-semibold truncate md:text-[15px]">
+          <a className="flex items-center mt-2 space-x-1.5 text-main cursor-pointer">
+            <h2 className="font-semibold truncate md:text-[15px] ">
               {Year} {Make} {Model}
             </h2>
             <FiExternalLink />
           </a>
         </Link>
-        {Trim.name && <p className="text-xs text-alt">{Trim.name}</p>}
+        {Trim.name && <p className="text-xs text-greyDark">{Trim.name}</p>}
       </div>
     </div>
   );

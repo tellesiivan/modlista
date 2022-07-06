@@ -18,8 +18,6 @@ export default function VehicleEdit({ vehicle }) {
   const router = useRouter();
   const [user] = useAuthState(auth);
 
-  console.log(vehicle);
-
   const deleteVehicle = async () => {
     // user previews db REF
     const decrementUserModsRef = doc(
@@ -71,17 +69,16 @@ export default function VehicleEdit({ vehicle }) {
           Quick Actions.
         </h2>
 
-        <div className="flex items-center w-full h-16 p-2 my-6 text-xs text-gray-600 rounded bg-alt">
-          By deleting your vehicle, you will also be deleting all the
-          modifications.
+        <div className="flex items-center w-full h-12 p-2 my-6 text-xs text-gray-500 rounded bg-alt">
+          Looking to delete this vehicle? Visit the vehicle&#39;s profile page.
         </div>
 
         <div className="grid w-full grid-cols-2 gap-2 ">
           <button
             className="w-full text-black bg-greyDark fillBtn"
-            onClick={deleteVehicle}
+            // onClick={deleteVehicle}
           >
-            Delete
+            Share
           </button>
 
           <button

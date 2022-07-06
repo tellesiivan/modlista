@@ -49,7 +49,10 @@ export default function useUploadMod() {
 
       // format data
       const modData = {
-        primaryImage: downloadedUrl,
+        primaryImage: {
+          url: downloadedUrl,
+          path: `vehicles/${vehicleID}/${modType}/${vehicleModRef.id}`,
+        },
         tags: mod.tags,
         title: mod.title,
         desc: mod.desc,

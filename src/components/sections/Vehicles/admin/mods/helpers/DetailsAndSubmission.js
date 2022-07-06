@@ -1,7 +1,7 @@
 import { GrFormDown } from "react-icons/gr";
 import { BsInfo } from "react-icons/bs";
 import CustomAvatar from "../../../../../helpers/CustomAvatar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   inProgressMod,
   resetMod,
@@ -10,6 +10,7 @@ import {
 import ViewVehicleCard from "./ViewVehicleCard";
 import { useRouter } from "next/router";
 import useUploadMod from "../../../../../../Hooks/useUploadMod";
+import { Loading } from "@nextui-org/react";
 
 export default function DetailsAndSubmission({
   viewDetails,
@@ -20,6 +21,7 @@ export default function DetailsAndSubmission({
   const router = useRouter();
   const dispatch = useDispatch();
   const { error, uploadMod } = useUploadMod();
+  const uploading = useSelector((store) => store.modifications.uploading);
 
   return (
     <div
@@ -44,24 +46,34 @@ export default function DetailsAndSubmission({
       </div>
       <div className="z-50 flex items-center justify-between w-full">
         <div className="z-50 flex space-x-1.5 max-h-8 ">
-          <button
-            className="flex items-center px-1 py-1 space-x-2 tracking-wide transition-colors duration-200 cursor-pointer text-dark fillBtn bg-main"
-            onClick={() => uploadMod(vehicle.id, modType)}
-          >
-            <CustomAvatar
-              size={{ height: "6", width: "6" }}
-              src={vehicle.coverImage}
-              customStyle="mr-2"
+          {uploading ? (
+            <Loading
+              type="points-opacity"
+              size="sm"
+              color="white"
+              className="w-16 h-4"
             />
-            Add Modification
-          </button>
-
-          <button
-            className="flex items-center justify-center w-20 px-1 py-1 space-x-2 tracking-wide transition-colors duration-200 bg-black cursor-pointer text-alt fillBtn"
-            onClick={() => dispatch(resetMod())}
-          >
-            Clear
-          </button>
+          ) : (
+            <>
+              <button
+                className="flex items-center px-1 py-1 space-x-2 tracking-wide transition-colors duration-200 cursor-pointer text-dark fillBtn bg-main"
+                onClick={() => uploadMod(vehicle.id, modType)}
+              >
+                <CustomAvatar
+                  size={{ height: "6", width: "6" }}
+                  src={vehicle.coverImage}
+                  customStyle="mr-2"
+                />
+                Add Modification
+              </button>
+              <button
+                className="flex items-center justify-center w-20 px-1 py-1 space-x-2 tracking-wide transition-colors duration-200 bg-black cursor-pointer text-alt fillBtn"
+                onClick={() => dispatch(resetMod())}
+              >
+                Clear
+              </button>
+            </>
+          )}
         </div>
         <button
           className="z-50 flex items-center justify-center w-6 h-6 rounded-full cursor-pointer bg-main"
