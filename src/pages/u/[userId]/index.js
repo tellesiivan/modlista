@@ -18,6 +18,7 @@ import AdminPanelLoading from "../../../components/helpers/loading/AdminPanelLoa
 import { useDispatch } from "react-redux";
 import { addVehiclePreviews } from "../../../store/slices/uiSlice";
 import ProfileLoading from "../../../components/helpers/loading/ProfileLoading";
+import ModTabs from "../../../components/sections/Vehicles/public/ModTabs";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
@@ -66,7 +67,7 @@ export default function UserProfile({ userData }) {
         {isValid && <AdminPanel profileUser={profileUser} />}
 
         <div
-          className={`flex-grow h-full ${isValid && "md:ml-96"} ${
+          className={`h-full ${isValid && "profileWidth"} ${
             !isValid && "lg:max-w-2xl border-x lg:border-greyDark lg:mx-auto"
           }`}
         >
@@ -74,9 +75,7 @@ export default function UserProfile({ userData }) {
             <>
               <HeaderSection profileUser={profileUser} isValid={isValid} />
 
-              {vehiclePreviews && vehiclePreviews.length !== 0 && (
-                <VehicleSection vehicles={vehiclePreviews} />
-              )}
+              {vehiclePreviews && vehiclePreviews.length !== 0 && <ModTabs />}
             </>
           ) : (
             <>

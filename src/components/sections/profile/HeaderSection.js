@@ -14,7 +14,7 @@ export default function HeaderSection({ profileUser, isValid }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="pb-4 border-b border-greyDark">
+    <div className="pb-4">
       <div className="relative h-[125px] md:h-[200px]">
         <div className="absolute inset-0 z-10 w-full h-full " />
         {coverImg ? (
@@ -69,7 +69,7 @@ export default function HeaderSection({ profileUser, isValid }) {
           <div className="flex items-center font-bold tracking-tighter text-dark">
             <h1 className="text-2xl ">{name ? name : email} </h1>
             {vehiclesOwn > 0 && (
-              <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-dark">
+              <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-main">
                 {vehiclesOwn}
               </div>
             )}

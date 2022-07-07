@@ -14,7 +14,7 @@ module.exports = {
         inputMain: "#34494E",
         highlight: "#",
         ag: {
-          green: "#26ec8f",
+          green: "#7856ff",
           yellow: "#e4c754",
         },
         status: {

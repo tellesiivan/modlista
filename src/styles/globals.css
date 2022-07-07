@@ -13,6 +13,9 @@
   .select2-results__group {
     @apply text-lg font-bold text-gray-900;
   }
+  .profileWidth {
+    @apply w-screen md:w-[calc(100%_-_24rem)] md:ml-auto;
+  }
   /* ... */
 }
 @layer base {
@@ -53,4 +56,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+.profile-width {
+  width: calc(100% - 24em);
 }

@@ -76,9 +76,9 @@ export default function VehicleEdit({ vehicle }) {
         <div className="grid w-full grid-cols-2 gap-2 ">
           <button
             className="w-full text-black bg-greyDark fillBtn"
-            // onClick={deleteVehicle}
+            onClick={deleteVehicle}
           >
-            Share
+            Delete
           </button>
 
           <button
