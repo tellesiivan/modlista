@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
 import { IoLocationOutline } from "react-icons/io5";
-
 import { MdOutlineCalendarToday } from "react-icons/md";
 import placeholdeImge from "../../../../public/blurPlaceholder.png";
 import { useDispatch } from "react-redux";

@@ -63,12 +63,13 @@ export default function UserProfile({ userData }) {
 
   return (
     <>
-      <div className="flex flex-row w-full h-full md:h-screen">
+      <div className="w-full h-full md:flex md:flex-row md:h-screen">
         {isValid && <AdminPanel profileUser={profileUser} />}
 
         <div
           className={`h-full ${isValid && "profileWidth"} ${
-            !isValid && "lg:max-w-2xl border-x lg:border-greyDark lg:mx-auto"
+            !isValid &&
+            " lg:max-w-2xl w-full md:border-x lg:border-greyDark lg:mx-auto"
           }`}
         >
           {profileUser ? (
