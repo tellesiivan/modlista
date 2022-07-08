@@ -41,7 +41,7 @@ export default function AdminVehicles() {
     (store) => store.userUI.vehicles.previews
   );
 
-  const vehiclesOwn = useSelector((store) => store.userUI.user.vehiclesOwn);
+  const vehiclesOwn = useSelector((store) => store.userUI.user?.vehiclesOwn);
 
   const [selectedTab, setSelectedTab] = useState(
     vehiclePreviews.length === 0 ? "Add Vehicle" : "Garage"
@@ -89,6 +89,7 @@ export default function AdminVehicles() {
         Owner: user.uid,
         coverImage: downloadedUrl,
       };
+      console.log(data.Trim[0]);
       batch.set(vehicleRef, format);
       batch.set(userPreviewsRef, {
         Make: data.Make,
@@ -96,7 +97,6 @@ export default function AdminVehicles() {
         Year: data.Year,
         Trim: data.Trim[0],
         coverImage: downloadedUrl,
-        createAt: serverTimestamp.fromDate(new Date()),
       });
       batch.update(userRef, { vehiclesOwn: increment(1) });
 
@@ -125,8 +125,6 @@ export default function AdminVehicles() {
   const showVinDefault =
     vehiclePreviews.length === 0 ||
     (vehiclePreviews.length < 2 && selectedTab === "Add Vehicle");
-
-  console.log(selectedTab);
 
   return (
     <>

@@ -28,7 +28,10 @@ export default function useVehicleData() {
       const formatData = {
         ...(data.make.name && { Make: data.make.name }),
         ...(data.model && { Model: data.model.name }),
-        Transmission: data.transmission.transmissionType,
+        ...(data.transmission.transmissionType && {
+          Transmission: data.transmission.transmissionType,
+        }),
+
         Category: data.categories.vehicleStyle ?? data.categories.vehicleType,
         ...(data.years && { Year: data.years[0].year }),
         ...(data.years[0].styles && { Trim: data.years[0].styles }),
@@ -39,6 +42,7 @@ export default function useVehicleData() {
         //   trim: data.years[0].styles[0],
         // }),
       };
+      console.log(formatData);
       dispatch(addingVehicle({ vehicle: formatData }));
       setData(formatData);
     } catch (error) {

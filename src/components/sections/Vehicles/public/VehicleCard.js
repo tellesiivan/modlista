@@ -7,10 +7,12 @@ export default function VehicleCard({ vehicle }) {
   const { userId } = router.query;
   return (
     <div
-      className="relative flex items-center justify-start min-w-full p-3 overflow-hidden rounded-md cursor-pointer hover:bg-opacity-90 bg-alt "
+      className={`relative flex items-center justify-start p-1 overflow-hidden border rounded-full cursor-pointer hover:bg-opacity-90 bg-alt border-greyDark ${
+        vehicle.Mods ? "w-48" : "w-44"
+      }`}
       onClick={() => router.push(`/b/${vehicle.id}`)}
     >
-      <div className="relative w-16 h-16 mr-4 overflow-hidden rounded-md">
+      <div className="relative w-8 h-8 mr-3 overflow-hidden rounded-full">
         <Image
           src={vehicle.coverImage}
           objectFit="cover"
@@ -21,11 +23,11 @@ export default function VehicleCard({ vehicle }) {
         />
       </div>
       <div className="truncate text-start">
-        <h2 className="font-bold text-dark md:text-sm">
+        <h2 className="text-xs font-bold text-dark">
           {vehicle.Year} {vehicle.Make} {vehicle.Model}
         </h2>
         {vehicle.Mods && (
-          <p className="text-sm text-gray-600">
+          <p className="text-xs text-gray-600">
             {vehicle.Mods > 1
               ? `${vehicle.Mods} modifications listed`
               : `${vehicle.Mods} modification listed`}
