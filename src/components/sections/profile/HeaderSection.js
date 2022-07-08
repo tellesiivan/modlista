@@ -15,12 +15,13 @@ export default function HeaderSection({ profileUser, isValid }) {
   return (
     <div className="pb-4">
       <div className="relative h-[125px] md:h-[200px]">
-        <div className="absolute inset-0 z-10 w-full h-full " />
+        <div className="absolute inset-0 z-10 w-full h-full" />
         {coverImg ? (
           <Image
             onLoadingComplete={() => console.log("complete")}
             src={coverImg}
             alt="banner image"
+            className="w-full h-full"
             layout="fill"
             placeholder="blur"
             blurDataURL={placeholdeImge}

@@ -34,13 +34,13 @@ export default function ModTabs() {
   return (
     <div>
       <div className="relative w-full overflow-x-scroll snap-x snap-mandatory scroll-p-0">
-        <div className="inline-flex ">
+        <div className="inline-flex w-full">
           {modsTypes.map((tab, idx) => {
             return (
               <button
                 key={idx}
                 ref={(el) => (tabsRef.current[idx] = el)}
-                className={`flex items-center justify-center min-w-[135px] h-12 text-sm text-center snap-end font-semibold ${
+                className={`flex-1 items-center justify-center px-4 h-12 text-sm text-center snap-end font-semibold ${
                   activeTabIndex === idx ? "text-ag-green" : "text-gray-500"
                 } cursor-pointer hover:bg-alt border-b border-greyDark `}
                 onClick={() => setActiveTabIndex(idx)}
@@ -51,7 +51,7 @@ export default function ModTabs() {
           })}
         </div>
         <span
-          className="absolute bottom-0 block h-0.5 transition-all duration-300 bg-ag-green "
+          className="absolute bottom-0 block h-1 transition-all duration-300 rounded-full bg-ag-green"
           style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
         />
       </div>

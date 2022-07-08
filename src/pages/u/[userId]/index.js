@@ -76,7 +76,12 @@ export default function UserProfile({ userData }) {
             <>
               <HeaderSection profileUser={profileUser} isValid={isValid} />
 
-              {vehiclePreviews && vehiclePreviews.length !== 0 && <ModTabs />}
+              {vehiclePreviews && vehiclePreviews.length !== 0 && (
+                <>
+                  <VehicleSection vehicles={vehiclePreviews} />
+                  <ModTabs />
+                </>
+              )}
             </>
           ) : (
             <>
