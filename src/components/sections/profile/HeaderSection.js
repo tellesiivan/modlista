@@ -68,11 +68,11 @@ export default function HeaderSection({ profileUser, isValid }) {
         <div>
           <div className="flex items-center font-bold tracking-tighter text-dark">
             <h1 className="text-2xl ">{name ? name : email} </h1>
-            {vehiclesOwn > 0 && (
+            {/* {vehiclesOwn > 0 && (
               <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-main">
                 {vehiclesOwn}
               </div>
-            )}
+            )} */}
           </div>
           <div className="grid grid-cols-3 gap-2 mt-1">
             <div className="-mt-0.25 text-xs text-gray-500 flex items-center space-x-1 ">

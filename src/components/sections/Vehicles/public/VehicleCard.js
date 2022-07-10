@@ -2,17 +2,23 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/router";
 
-export default function VehicleCard({ vehicle }) {
+export default function VehicleCard({
+  vehicle,
+  activeVehicle,
+  setActiveVehicle,
+}) {
   const router = useRouter();
-  const { userId } = router.query;
+
   return (
     <div
-      className={`relative flex items-center justify-start p-1 overflow-hidden border rounded-full cursor-pointer hover:bg-opacity-90 bg-alt border-greyDark ${
-        vehicle.Mods ? "w-48" : "w-44"
+      className={`relative flex items-center justify-start pl-1 py-0.5 overflow-hidden border rounded-full cursor-pointer w-fit pr-3 ${
+        activeVehicle.id === vehicle.id
+          ? "bg-dark border-black"
+          : "bg-alt border-greyDark"
       }`}
-      onClick={() => router.push(`/b/${vehicle.id}`)}
+      onClick={() => setActiveVehicle(vehicle)}
     >
-      <div className="relative w-8 h-8 mr-3 overflow-hidden rounded-full">
+      <div className="relative mr-3 overflow-hidden rounded-full w-7 h-7">
         <Image
           src={vehicle.coverImage}
           objectFit="cover"
@@ -23,11 +29,21 @@ export default function VehicleCard({ vehicle }) {
         />
       </div>
       <div className="truncate text-start">
-        <h2 className="text-xs font-bold text-dark">
+        <h2
+          className={`text-xs font-bold ${
+            activeVehicle.id === vehicle.id ? "text-main" : "text-dark"
+          }`}
+        >
           {vehicle.Year} {vehicle.Make} {vehicle.Model}
         </h2>
         {vehicle.Mods && (
-          <p className="text-xs text-gray-600">
+          <p
+            className={`text-[11px]  ${
+              activeVehicle.id === vehicle.id
+                ? "text-gray-300"
+                : "text-gray-700"
+            }`}
+          >
             {vehicle.Mods > 1
               ? `${vehicle.Mods} modifications listed`
               : `${vehicle.Mods} modification listed`}

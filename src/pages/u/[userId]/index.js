@@ -79,7 +79,6 @@ export default function UserProfile({ userData }) {
               {vehiclePreviews && vehiclePreviews.length !== 0 && (
                 <>
                   <VehicleSection vehicles={vehiclePreviews} />
-                  <ModTabs />
                 </>
               )}
             </>
