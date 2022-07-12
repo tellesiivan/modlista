@@ -6,8 +6,6 @@ import Menu from "./scrollTag/Menu";
 export default function AdminPanel({ profileUser }) {
   const actionSelected = useSelector((store) => store.userUI.actionSelected);
 
-  console.log(profileUser);
-
   if (!profileUser) {
     return <AdminPanelLoading />;
   }

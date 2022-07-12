@@ -9,16 +9,18 @@ export default function VehicleCard({
 }) {
   const router = useRouter();
 
+  // console.log(vehicle.Mods);
+
   return (
     <div
-      className={`relative flex items-center justify-start pl-1 py-0.5 overflow-hidden border rounded-full cursor-pointer w-fit pr-3 ${
+      className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden border rounded-full cursor-pointer pr-4 ${
         activeVehicle.id === vehicle.id
-          ? "bg-dark border-black"
-          : "bg-alt border-greyDark"
+          ? "bg-darkAlt border-darkAlt"
+          : "bg-main border-greyDark hover:bg-alt hover:border-alt"
       }`}
       onClick={() => setActiveVehicle(vehicle)}
     >
-      <div className="relative mr-3 overflow-hidden rounded-full w-7 h-7">
+      <div className="relative w-8 h-8 mr-2.5 overflow-hidden rounded-full">
         <Image
           src={vehicle.coverImage}
           objectFit="cover"
@@ -29,24 +31,24 @@ export default function VehicleCard({
         />
       </div>
       <div className="truncate text-start">
-        <h2
-          className={`text-xs font-bold ${
+        <h4
+          className={`text-[11px] font-bold -mb-0.5 ${
             activeVehicle.id === vehicle.id ? "text-main" : "text-dark"
           }`}
         >
           {vehicle.Year} {vehicle.Make} {vehicle.Model}
-        </h2>
+        </h4>
         {vehicle.Mods && (
           <p
             className={`text-[11px]  ${
               activeVehicle.id === vehicle.id
-                ? "text-gray-300"
+                ? "text-gray-100"
                 : "text-gray-700"
             }`}
           >
             {vehicle.Mods > 1
-              ? `${vehicle.Mods} modifications listed`
-              : `${vehicle.Mods} modification listed`}
+              ? `${vehicle.Mods} mods `
+              : `${vehicle.Mods} mod `}
           </p>
         )}
       </div>

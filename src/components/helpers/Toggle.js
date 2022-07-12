@@ -19,10 +19,8 @@ export default function Toggle({ getValue }) {
       <span className="sr-only">Toggle</span>
       <span
         aria-hidden="true"
-        className={`${
-          enabled ? "translate-x-6 bg-dark" : "translate-x-0 bg-white"
-        }
-            pointer-events-none inline-block h-5 w-5 transform rounded-full  shadow-lg ring-0 transition duration-200 ease-in-out`}
+        className={`${enabled ? "translate-x-6 " : "translate-x-0"}
+          bg-white  pointer-events-none inline-block h-5 w-5 transform rounded-full  shadow-lg ring-0 transition duration-200 ease-in-out`}
       />
     </Switch>
   );

@@ -15,10 +15,9 @@ import HeaderSection from "../../../components/sections/profile/HeaderSection";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
 import VehicleSection from "../../../components/sections/Vehicles/public/VehicleSection";
 import AdminPanelLoading from "../../../components/helpers/loading/AdminPanelLoading";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addVehiclePreviews } from "../../../store/slices/uiSlice";
 import ProfileLoading from "../../../components/helpers/loading/ProfileLoading";
-import ModTabs from "../../../components/sections/Vehicles/public/ModTabs";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
@@ -28,6 +27,7 @@ export default function UserProfile({ userData }) {
   const [user] = useAuthState(auth);
   const isValid = user?.uid === userId;
   const dispatch = useDispatch();
+  const uploading = useSelector((store) => store.modifications.uploading);
 
   // profile changes from DB
   useEffect(() => {
@@ -44,9 +44,8 @@ export default function UserProfile({ userData }) {
             id: doc.id,
           });
         });
-        console.log(previews);
         setVehiclePreviews(previews);
-        if (isValid && previews) {
+        if (previews) {
           dispatch(addVehiclePreviews({ previews }));
         }
       };
@@ -59,7 +58,9 @@ export default function UserProfile({ userData }) {
       setProfileUser(userData);
       getSubs();
     });
-  }, [userId, userData.uid]);
+  }, [userId, userData.uid, uploading]);
+
+  // We trigger a re render when {{ uploading }} changes due to a new mod been added so it can show the incremented value
 
   return (
     <>
@@ -75,10 +76,9 @@ export default function UserProfile({ userData }) {
           {profileUser ? (
             <>
               <HeaderSection profileUser={profileUser} isValid={isValid} />
-
               {vehiclePreviews && vehiclePreviews.length !== 0 && (
                 <>
-                  <VehicleSection vehicles={vehiclePreviews} />
+                  <VehicleSection vehicles={vehiclePreviews} userId={userId} />
                 </>
               )}
             </>

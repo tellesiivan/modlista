@@ -7,14 +7,16 @@ module.exports = {
     extend: {
       colors: {
         main: "#fff",
-        alt: "#eeeef0",
+        alt: "#f0f1f2",
         dark: "#0f1419",
         greyDark: "#d2d2d2",
         darkAlt: "#252627",
         inputMain: "#34494E",
+        textGray: "#536471",
         highlight: "#",
         ag: {
-          green: "#7856ff",
+          green: "#ffd400",
+          hover: "#f918801a",
           yellow: "#e4c754",
         },
         status: {

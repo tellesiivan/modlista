@@ -76,9 +76,7 @@ export default function useUploadMod() {
       dispatch(uploadingMod({ isUploading: false }));
       console.log(error.message);
     }
-
     dispatch(resetMod()); // clear values
-    alert("Uploaded successfully");
     dispatch(uploadingMod({ isUploading: false }));
   };
 
