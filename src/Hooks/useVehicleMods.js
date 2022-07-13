@@ -33,11 +33,11 @@ export default function useVehicleMods() {
           });
           console.log(previews);
         };
-        const cities = [];
+        const mods = [];
         doc.forEach((doc) => {
-          cities.push(doc.data());
+          mods.push(doc.data());
         });
-        console.log("Current cities in CA: ", cities);
+        console.log("Current mods: ", mods);
       }
     );
   };

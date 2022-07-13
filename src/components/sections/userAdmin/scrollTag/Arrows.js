@@ -101,8 +101,10 @@ function Card({ onClick, selected, title, itemId }) {
   return (
     <div onClick={() => onClick(visibility)} tabIndex={0}>
       <div
-        className={` flex items-center justify-center w-24 h-7 mx-1 rounded-full  text-xs cursor-pointer hover:bg-greyDark text-dark ${
-          actionSelected === title ? "bg-ag-green " : "bg-alt "
+        className={` flex items-center justify-center w-24 h-7 mx-1 rounded-full  text-xs cursor-pointer hover:bg-greyDark  ${
+          actionSelected === title
+            ? "bg-ag-green text-main"
+            : "bg-alt text-dark"
         } `}
       >
         <div>{title}</div>

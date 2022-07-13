@@ -2,13 +2,12 @@ import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
 import { HomeIcon, CalendarIcon } from "@heroicons/react/outline";
-
 import placeholdeImge from "../../../../public/blurPlaceholder.png";
 import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 
 export default function HeaderSection({ profileUser, isValid }) {
-  const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn } =
+  const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn, location } =
     profileUser;
   const dispatch = useDispatch();
 
@@ -38,7 +37,7 @@ export default function HeaderSection({ profileUser, isValid }) {
           {avatarImg ? (
             <Avatar
               src={avatarImg}
-              css={{ size: "$28" }}
+              css={{ size: "$24" }}
               zoomed
               borderWeight="0px"
               color="white"
@@ -84,15 +83,19 @@ export default function HeaderSection({ profileUser, isValid }) {
                 className="-ml-0.5 mr-1 h-4 w-4"
                 aria-hidden="true"
               />
-              <span>
+              <span className="whitespace-nowrap">
                 Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
               </span>
             </div>
             {/* List user website link && favorite shop */}
-            <div className="inline-flex items-end text-xs text-textGray">
-              <HomeIcon className="-ml-0.5 mr-1 h-4 w-4" aria-hidden="true" />
-              <span>Fullerton, CA</span>
-            </div>
+            {location && (
+              <div className="inline-flex items-end text-xs text-textGray">
+                <HomeIcon className="-ml-0.5 mr-1 h-4 w-4" aria-hidden="true" />
+                <span className="whitespace-nowrap">
+                  {location.city}, {location.stateAbbr}
+                </span>
+              </div>
+            )}
           </div>
         </div>
         <div>Share</div>

@@ -15,7 +15,7 @@ module.exports = {
         textGray: "#536471",
         highlight: "#",
         ag: {
-          green: "#ffd400",
+          green: "#f91880",
           hover: "#f918801a",
           yellow: "#e4c754",
         },
