@@ -20,7 +20,7 @@
 }
 @layer base {
   html {
-    @apply bg-[#fff];
+    @apply bg-[#121417];
   }
 }
 * {

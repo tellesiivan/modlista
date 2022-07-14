@@ -13,7 +13,7 @@ export default function NameInput({ setValues, values, error, setError }) {
 
   return (
     <input
-      className="w-full h-full text-gray-600 bg-transparent border-0 outline-none text-md md:text-xs placeholder:text-xs placeholder:text-gray-400"
+      className="w-full h-full bg-transparent border-0 outline-none text-textGray text-md md:text-xs placeholder:text-xs placeholder:text-textGray"
       placeholder="Update your name here..."
       type="text"
       value={values.name}

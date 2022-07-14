@@ -69,7 +69,7 @@ export default function HeaderSection({ profileUser, isValid }) {
         } mx-4  md:mx-6  flex justify-between items-center`}
       >
         <div>
-          <div className="flex items-center font-bold tracking-tighter text-dark">
+          <div className="flex items-center font-bold tracking-tighter text-white">
             <h1 className="text-2xl ">{name ? name : email} </h1>
             {/* {vehiclesOwn > 0 && (
               <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-main">
