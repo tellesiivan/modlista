@@ -59,10 +59,10 @@ export default function AuthModal() {
                       <FacebookOAuth from={from} />
                       <GoogleOauth from={from} />
                     </div>
-                    <h3 className="py-4 text-sm font-bold text-center text-slate-600">
+                    {/* <h3 className="py-4 text-sm font-bold text-center text-slate-600">
                       OR
-                    </h3>
-                    {from === "login" ? <Login /> : <Signup />}
+                    </h3> */}
+                    {/* {from === "login" ? <Login /> : <Signup />} */}
                   </div>
                   <div className="mt-6 text-sm text-center text-slate-600">
                     {from === "login" ? (

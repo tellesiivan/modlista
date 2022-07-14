@@ -10,7 +10,6 @@ export default function ViewVehicleCard({
   coverImage,
   profileLink,
 }) {
-  console.log(Trim);
   return (
     <div className="flex items-center p-1.5 h-full ">
       <div className="relative w-12 h-12 mr-2 rounded-full">

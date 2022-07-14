@@ -1,19 +1,22 @@
 import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
-import { IoLocationOutline } from "react-icons/io5";
-import { MdOutlineCalendarToday } from "react-icons/md";
+import { HomeIcon, CalendarIcon } from "@heroicons/react/outline";
 import placeholdeImge from "../../../../public/blurPlaceholder.png";
 import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 
 export default function HeaderSection({ profileUser, isValid }) {
-  const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn } =
+  const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn, location } =
     profileUser;
   const dispatch = useDispatch();
 
   return (
-    <div className="pb-4">
+    <div
+      className={` ${
+        vehiclesOwn === 0 && "border-b border-greyDark pb-2"
+      } pb-4`}
+    >
       <div className="relative h-[125px] md:h-[200px]">
         <div className="absolute inset-0 z-10 w-full h-full" />
         {coverImg ? (
@@ -68,24 +71,31 @@ export default function HeaderSection({ profileUser, isValid }) {
         <div>
           <div className="flex items-center font-bold tracking-tighter text-dark">
             <h1 className="text-2xl ">{name ? name : email} </h1>
-            {vehiclesOwn > 0 && (
+            {/* {vehiclesOwn > 0 && (
               <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-main">
                 {vehiclesOwn}
               </div>
-            )}
+            )} */}
           </div>
-          <div className="grid grid-cols-3 gap-2 mt-1">
-            <div className="-mt-0.25 text-xs text-gray-500 flex items-center space-x-1 ">
-              <MdOutlineCalendarToday className="mr-0.25" />
-              <p className="whitespace-nowrap">
+          <div className="grid grid-cols-3 gap-4 mt-1">
+            <div className="inline-flex items-end text-xs text-textGray">
+              <CalendarIcon
+                className="-ml-0.5 mr-1 h-4 w-4"
+                aria-hidden="true"
+              />
+              <span className="whitespace-nowrap">
                 Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
-              </p>
+              </span>
             </div>
             {/* List user website link && favorite shop */}
-            <p className="-mt-0.25 text-xs text-gray-500 flex items-center space-x-1 ">
-              <IoLocationOutline className="" />
-              <span>Fullerton, CA</span>
-            </p>
+            {location && (
+              <div className="inline-flex items-end text-xs text-textGray">
+                <HomeIcon className="-ml-0.5 mr-1 h-4 w-4" aria-hidden="true" />
+                <span className="whitespace-nowrap">
+                  {location.city}, {location.stateAbbr}
+                </span>
+              </div>
+            )}
           </div>
         </div>
         <div>Share</div>

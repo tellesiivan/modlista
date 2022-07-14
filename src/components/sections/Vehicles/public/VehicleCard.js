@@ -2,17 +2,25 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/router";
 
-export default function VehicleCard({ vehicle }) {
+export default function VehicleCard({
+  vehicle,
+  activeVehicle,
+  setActiveVehicle,
+}) {
   const router = useRouter();
-  const { userId } = router.query;
+
+  // console.log(vehicle.Mods);
+
   return (
     <div
-      className={`relative flex items-center justify-start p-1 overflow-hidden border rounded-full cursor-pointer hover:bg-opacity-90 bg-alt border-greyDark ${
-        vehicle.Mods ? "w-48" : "w-44"
+      className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden border rounded-full cursor-pointer pr-4 ${
+        activeVehicle.id === vehicle.id
+          ? "bg-dark border-black "
+          : "bg-main border-greyDark hover:bg-alt hover:border-alt"
       }`}
-      onClick={() => router.push(`/b/${vehicle.id}`)}
+      onClick={() => setActiveVehicle(vehicle)}
     >
-      <div className="relative w-8 h-8 mr-3 overflow-hidden rounded-full">
+      <div className="relative w-8 h-8 mr-2.5 overflow-hidden rounded-full">
         <Image
           src={vehicle.coverImage}
           objectFit="cover"
@@ -23,14 +31,24 @@ export default function VehicleCard({ vehicle }) {
         />
       </div>
       <div className="truncate text-start">
-        <h2 className="text-xs font-bold text-dark">
+        <h4
+          className={`text-[11px] font-bold -mb-0.5 ${
+            activeVehicle.id === vehicle.id ? "text-main" : "text-dark"
+          }`}
+        >
           {vehicle.Year} {vehicle.Make} {vehicle.Model}
-        </h2>
+        </h4>
         {vehicle.Mods && (
-          <p className="text-xs text-gray-600">
+          <p
+            className={`text-[11px]  ${
+              activeVehicle.id === vehicle.id
+                ? "text-gray-400"
+                : "text-gray-700"
+            }`}
+          >
             {vehicle.Mods > 1
-              ? `${vehicle.Mods} modifications listed`
-              : `${vehicle.Mods} modification listed`}
+              ? `${vehicle.Mods} mods `
+              : `${vehicle.Mods} mod `}
           </p>
         )}
       </div>

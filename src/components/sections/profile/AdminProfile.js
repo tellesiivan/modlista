@@ -8,6 +8,7 @@ import ImageUploads from "./ImageUploads";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 import { useDispatch } from "react-redux";
 import CheckSpecialChars from "../../../utils/CheckSpecialChars";
+import UserLocation from "./UserLocation";
 
 export default function AdminProfile() {
   const dispatch = useDispatch();
@@ -73,7 +74,7 @@ export default function AdminProfile() {
       {error && (
         <div className="px-2 py-3 mt-2 text-sm rounded-sm bg-alt ">{error}</div>
       )}
-      <div className="w-full h-48 mt-3 rounded-md bg-alt"></div>
+      <UserLocation user={user.uid} />
       <ImageUploads userId={user?.uid} />
     </div>
   );

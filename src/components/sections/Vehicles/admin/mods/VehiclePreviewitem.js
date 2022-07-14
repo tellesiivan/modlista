@@ -48,9 +48,9 @@ export default function VehiclePreviewitem({
         </div>
         <div className="flex items-center space-x-2 ">
           <div className="text-right">
-            <p className="text-xs text-gray-300">{vehicle.Year}</p>
-            <h2 className="text-sm font-semibold text-main">{vehicle.Make}</h2>
-            <p className="text-xs text-gray-300">{vehicle.Model}</p>
+            <p className="text-xs text-textGray">{vehicle.Year}</p>
+            <h2 className="text-sm font-semibold text-dark">{vehicle.Make}</h2>
+            <p className="text-xs text-textGray">{vehicle.Model}</p>
           </div>
           <div
             className="flex items-center justify-center w-6 h-6 transition-colors duration-300 rounded-full bg-main hover:bg-opacity-80 "
