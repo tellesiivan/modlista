@@ -23,7 +23,23 @@
     @apply bg-[#fff];
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  overflow-y: scroll;
+  overscroll-behavior-y: none;
+}
+body {
+  min-height: 100vh;
+}
 
+html,
+body {
+  height: 100%;
+}
 .sidebarH {
   height: calc(100% - 1rem);
 }
@@ -43,9 +59,7 @@ body::-webkit-scrollbar {
 .react-horizontal-scrolling-menu--wrapper {
   position: relative !important;
 }
-#__next {
-  height: 100%;
-}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

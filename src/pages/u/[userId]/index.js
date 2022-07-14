@@ -64,11 +64,11 @@ export default function UserProfile({ userData }) {
 
   return (
     <>
-      <div className="w-full h-full md:flex md:flex-row md:h-screen">
+      <div className="min-h-screen md:flex md:flex-row">
         {isValid && <AdminPanel profileUser={profileUser} />}
 
         <div
-          className={`h-full ${isValid && "profileWidth"} ${
+          className={` ${isValid && "profileWidth"} ${
             !isValid &&
             " lg:max-w-2xl w-full md:border-x lg:border-greyDark lg:mx-auto"
           }`}

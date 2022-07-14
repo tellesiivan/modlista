@@ -15,7 +15,7 @@ export default function VehicleCard({
     <div
       className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden border rounded-full cursor-pointer pr-4 ${
         activeVehicle.id === vehicle.id
-          ? "bg-darkAlt border-darkAlt"
+          ? "bg-dark border-black "
           : "bg-main border-greyDark hover:bg-alt hover:border-alt"
       }`}
       onClick={() => setActiveVehicle(vehicle)}
@@ -42,7 +42,7 @@ export default function VehicleCard({
           <p
             className={`text-[11px]  ${
               activeVehicle.id === vehicle.id
-                ? "text-gray-100"
+                ? "text-gray-400"
                 : "text-gray-700"
             }`}
           >

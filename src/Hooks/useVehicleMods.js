@@ -19,6 +19,7 @@ export default function useVehicleMods() {
     onSnapshot(
       collection(firestore, `vehicles/${vehicleID}/${type}`),
       (doc) => {
+        setLoading(true);
         const getSubs = async () => {
           let previews = [];
           // get snippets || path to that specific collection
@@ -33,11 +34,13 @@ export default function useVehicleMods() {
           });
           console.log(previews);
         };
-        const mods = [];
+        const modsArr = [];
         doc.forEach((doc) => {
-          mods.push(doc.data());
+          modsArr.push(doc.data());
         });
-        console.log("Current mods: ", mods);
+        setMods(modsArr);
+        // console.log(modsArr);
+        setLoading(false);
       }
     );
   };
