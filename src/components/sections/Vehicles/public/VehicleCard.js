@@ -13,10 +13,10 @@ export default function VehicleCard({
 
   return (
     <div
-      className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden border rounded-full cursor-pointer pr-4 ${
+      className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden rounded-full cursor-pointer pr-4 border ${
         activeVehicle.id === vehicle.id
-          ? "bg-dark border-black "
-          : "bg-main border-greyDark hover:bg-alt hover:border-alt"
+          ? "bg-inputMain  border-transparent"
+          : "bg-main hover:bg-alt border-greyDark"
       }`}
       onClick={() => setActiveVehicle(vehicle)}
     >
@@ -33,7 +33,7 @@ export default function VehicleCard({
       <div className="truncate text-start">
         <h4
           className={`text-[11px] font-bold -mb-0.5 ${
-            activeVehicle.id === vehicle.id ? "text-main" : "text-dark"
+            activeVehicle.id === vehicle.id ? "text-white" : "text-textGray"
           }`}
         >
           {vehicle.Year} {vehicle.Make} {vehicle.Model}
@@ -43,7 +43,7 @@ export default function VehicleCard({
             className={`text-[11px]  ${
               activeVehicle.id === vehicle.id
                 ? "text-gray-400"
-                : "text-gray-700"
+                : "text-gray-600"
             }`}
           >
             {vehicle.Mods > 1

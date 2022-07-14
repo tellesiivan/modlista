@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import useVehicleMods from "../../../../Hooks/useVehicleMods";
 import ModList from "./modContent/ModList";
+import NoMods from "./modContent/NoMods";
 
 const modsTypes = [
   "Interior",
@@ -47,7 +48,7 @@ export default function ModTabs({ vehicle }) {
                 key={idx}
                 ref={(el) => (tabsRef.current[idx] = el)}
                 className={`flex-1 flex items-center justify-center px-4 h-11 text-sm text-center snap-end font-semibold ${
-                  activeTabIndex === idx ? "text-black" : "text-gray-500"
+                  activeTabIndex === idx ? "text-white" : "text-gray-500"
                 } cursor-pointer md:hover:bg-alt border-b border-greyDark  whitespace-nowrap`}
                 onClick={() => setActiveTabIndex(idx)}
               >
@@ -57,15 +58,17 @@ export default function ModTabs({ vehicle }) {
           })}
         </ul>
         <span
-          className="absolute bottom-0 block h-[0.2em] transition-all duration-500 bg-black rounded-full"
+          className="absolute bottom-0 block h-[0.2em] transition-all duration-500 bg-white rounded-full"
           style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
         />
       </div>
-      <div className="p-2 -mt-4 ">
-        {mods && mods.length !== 0 && (
+      <div className="p-2 ">
+        {mods && mods.length !== 0 ? (
           <>
             <ModList mods={mods} />
           </>
+        ) : (
+          <NoMods mod={modsTypes[activeTabIndex]} />
         )}
       </div>
     </div>

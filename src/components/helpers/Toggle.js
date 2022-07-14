@@ -13,7 +13,7 @@ export default function Toggle({ getValue }) {
     <Switch
       checked={enabled}
       onChange={onToggle}
-      className={`${enabled ? "bg-ag-green " : "bg-dark"}
+      className={`${enabled ? "bg-ag-green " : "bg-inputMain"}
           relative inline-flex h-6 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
     >
       <span className="sr-only">Toggle</span>

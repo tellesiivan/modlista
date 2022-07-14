@@ -44,7 +44,7 @@ function UserLocation({ user }) {
   return (
     <div className="my-4 rounded-md bg-alt">
       <div className="p-2 ">
-        <h3 className="text-xs font-medium leading-6 text-dark">Location</h3>
+        <h3 className="text-xs font-medium leading-6 text-white">Location</h3>
         <form className="my-2 ">
           {location && !editing ? (
             <div className="flex items-center justify-between w-full">
@@ -63,13 +63,13 @@ function UserLocation({ user }) {
               <input
                 pattern="[0-9]{5}"
                 onChange={onChange}
-                className="flex-1 h-8 px-2 py-5 border-none rounded-md outline-none bg-main sm:flex sm:items-start sm:justify-between placeholder:text-xs text-md md:text-xs"
+                className="flex-1 h-8 px-2 py-5 border-none rounded-md outline-none bg-main sm:flex sm:items-start sm:justify-between placeholder:text-xs text-md md:text-xs text-textGray"
                 type="number"
                 value={zip}
                 placeholder="Zip code..."
               />
               <button
-                className="flex-1 px-2 py-3 text-xs font-medium tracking-wide rounded-md bg-ag-hover text-ag-green disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex-1 px-2 py-3 text-xs font-medium tracking-wide rounded-md bg-ag-hover text-ag-green disabled:opacity-50 disabled:cursor-not-allowed"
                 type="button"
                 disabled={zip.length !== 5}
                 onClick={handleSubmit}

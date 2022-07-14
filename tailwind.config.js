@@ -7,18 +7,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: "#fff",
-        alt: "#f0f1f2",
+        main: "#121417",
+        alt: "#1b1f25",
         dark: "#0f1419",
-        greyDark: "#d2d2d2",
-        darkAlt: "#252627",
-        inputMain: "#34494E",
+        greyDark: "#2c323b",
+        darkAlt: "#242424",
+        inputMain: "#434953",
         textGray: "#536471",
         highlight: "#",
         ag: {
-          green: "#f91880",
-          hover: "#f918801a",
-          yellow: "#e4c754",
+          green: "#03c19a",
+          hover: "#18f9991a",
+          yellow: "#fed156",
         },
         status: {
           success: "#4ad493",

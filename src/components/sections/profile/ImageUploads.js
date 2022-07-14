@@ -52,8 +52,8 @@ export default function ImageUploads({ userId }) {
   return (
     <div className="mt-6 space-y-2.5">
       <div className="flex items-center justify-between ">
-        <p className="text-xs text-gray-500">
-          Update <span className="font-semibold text-dark">{uploadType}</span>{" "}
+        <p className="text-xs text-textGray">
+          Update <span className="font-bold text-ag-green">{uploadType}</span>{" "}
           image.
         </p>
         <Toggle getValue={getValue} />
@@ -63,11 +63,11 @@ export default function ImageUploads({ userId }) {
           <UploadPreview src={selectedFile} type={uploadType} />
         ) : (
           <form
-            className="flex items-center justify-center w-full h-full border border-gray-500 border-dashed rounded-lg"
+            className="flex items-center justify-center w-full h-full border border-dashed rounded-lg border-inputMain"
             onSubmit={uploadImage}
           >
             <button
-              className="flex flex-col items-center justify-center w-full h-full px-3 py-1 text-xs text-dark hover:opacity-60 "
+              className="flex flex-col items-center justify-center w-full h-full px-3 py-1 text-xs text-textGray hover:opacity-60 "
               onClick={() => uploadRef.current?.click()}
               type="button"
             >
@@ -86,7 +86,7 @@ export default function ImageUploads({ userId }) {
         <div
           className={`absolute px-4 flex items-center justify-center py-2 text-xs text-main transform -translate-x-1/2 ${
             selectedFile ? "-translate-y-2" : "translate-y-[50px]"
-          } divide-x rounded-full shadow-2xl bg-dark bottom-1 left-1/2 transition duration-700`}
+          } divide-x rounded-full shadow-2xl bg-ag-green bottom-1 left-1/2 transition duration-700`}
         >
           {uploading ? (
             <Loading
@@ -96,7 +96,7 @@ export default function ImageUploads({ userId }) {
               className="w-16 h-4"
             />
           ) : (
-            <div className="grid w-32 grid-cols-2 text-white divide-x divide-inputMain">
+            <div className="grid w-32 grid-cols-2 divide-x text-main divide-inputMain">
               <button
                 className="font-medium "
                 onClick={() => setSelectedFile("")}

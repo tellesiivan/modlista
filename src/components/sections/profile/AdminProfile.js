@@ -50,7 +50,7 @@ export default function AdminProfile() {
         Desc="Here you can update your name, cover and profile image."
       />
       <form onSubmit={onSubmit} className="-mt-2">
-        <label className="text-xs text-dark" htmlFor="name">
+        <label className="text-xs text-white" htmlFor="name">
           Name
         </label>
         <div className="flex items-center w-full h-12 px-2 mt-1.5 rounded-md bg-alt">
@@ -64,7 +64,7 @@ export default function AdminProfile() {
             <button
               onClick={onSubmit}
               disabled={values.name.trim().length < 3 || error}
-              className="w-20 h-10 -mr-1 text-xs text-center transition-opacity duration-500 border divide-x rounded-md opacity-100 text-dark hover:opacity-80 bg-ag-green disabled:opacity-0"
+              className="w-20 h-8 -mr-1 text-xs text-center text-white transition-opacity duration-500 divide-x rounded-md opacity-100 hover:opacity-80 bg-greyDark disabled:opacity-0"
             >
               Update
             </button>
@@ -72,7 +72,9 @@ export default function AdminProfile() {
         </div>
       </form>
       {error && (
-        <div className="px-2 py-3 mt-2 text-sm rounded-sm bg-alt ">{error}</div>
+        <div className="px-2 py-3 mt-2 text-xs rounded-sm bg-alt text-textGray">
+          {error}
+        </div>
       )}
       <UserLocation user={user.uid} />
       <ImageUploads userId={user?.uid} />

@@ -16,9 +16,9 @@ export default function ModList({ mods }) {
       {mods.map((mod) => (
         <li
           key={mod.primaryImage.path}
-          className="relative flex items-center p-2 space-x-4 overflow-hidden rounded-lg bg-alt "
+          className="relative flex items-center p-2 space-x-4 overflow-hidden rounded-md bg-alt "
         >
-          <div className="block w-32 h-32 overflow-hidden bg-gray-100 rounded-md group">
+          <div className="block w-32 h-32 overflow-hidden rounded-md bg-main group">
             <img
               src={mod.primaryImage.url}
               alt=""
@@ -33,7 +33,7 @@ export default function ModList({ mods }) {
           </div>
           <div className="flex-1">
             <div>
-              <p className="block font-semibold tracking-tight text-md text-dark">
+              <p className="block text-sm font-semibold tracking-tight text-gray-300">
                 {mod.title}
               </p>
               <p className="block my-2 text-xs text-textGray">{mod.price}</p>
