@@ -1,16 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Paaartly:
 
-## Getting Started
+- Share your vehicles modifications, add events, save your favorite builds and more.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-First, run the development server:
+![image](https://user-images.githubusercontent.com/59785454/179124297-9e306bd1-921d-4c12-b3e6-6226b6e4a313.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
