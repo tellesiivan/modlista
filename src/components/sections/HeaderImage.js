@@ -1,5 +1,5 @@
 import Image from "next/image";
-import placeholderImge from "../../../public/blurPlaceholder.png";
+import blurImgUrl from "../../../public/media/blurImgUrl";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/clientApp";
@@ -15,7 +15,7 @@ export default function HeaderImage() {
         alt="banner image"
         layout="fill"
         placeholder="blur"
-        blurDataURL={placeholderImge}
+        blurDataURL={blurImgUrl}
         objectFit="cover"
       />
     </div>
