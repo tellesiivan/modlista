@@ -1,28 +1,24 @@
+import Image from "next/image";
 import React from "react";
-
-const files = [
-  {
-    title: "IMG_4985.HEIC",
-    size: "3.9 MB",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  // More files...
-];
+import blurImgUrl from "../../../../../../public/media/blurImgUrl";
 
 export default function ModList({ mods }) {
   return (
-    <ul role="list" className="space-y-2">
+    <ul role="list" className="space-y-3">
       {mods.map((mod) => (
         <li
           key={mod.primaryImage.path}
-          className="relative flex items-center p-2 space-x-4 overflow-hidden rounded-md bg-alt "
+          className="relative flex items-center p-2 space-x-4 overflow-hidden rounded bg-dark "
         >
-          <div className="block w-32 h-32 overflow-hidden rounded-md bg-main group">
-            <img
+          <div className="block overflow-hidden rounded w-28 h-28 group">
+            <Image
               src={mod.primaryImage.url}
-              alt=""
-              className="w-full h-full pointer-events-none"
+              alt={mod.title}
+              width={120}
+              height={120}
+              layout="responsive"
+              placeholder="blur"
+              blurDataURL={blurImgUrl}
             />
             <button
               type="button"
@@ -48,7 +44,7 @@ export default function ModList({ mods }) {
                 </span>
               ))}
             </div>
-            <div className="w-full rounded-md bg-main h-11 "></div>
+            <div className="w-full border-t border-alt"></div>
           </div>
         </li>
       ))}
