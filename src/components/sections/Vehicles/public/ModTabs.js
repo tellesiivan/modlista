@@ -39,7 +39,7 @@ export default function ModTabs({ vehicle }) {
   }, [vehicle, activeTabIndex]);
 
   return (
-    <div className="py-3">
+    <div className="pt-2">
       <div className="relative w-full overflow-x-scroll snap-x snap-mandatory scroll-p-0">
         <ul className="sticky inline-flex w-full top-96">
           {modsTypes.map((tab, idx) => {
@@ -63,6 +63,7 @@ export default function ModTabs({ vehicle }) {
         />
       </div>
       <div className="p-2 ">
+        {/* TODO: Add loading state UI */}
         {mods && mods.length !== 0 ? (
           <>
             <ModList mods={mods} />

@@ -33,7 +33,7 @@ export default function NoMods({ mod }) {
         </div>
       </div>
       <div>
-        <h2 className="font-medium text-textGray">
+        <h2 className="font-medium text-center text-textGray">
           No {mod} modifications have been added yet.
         </h2>
       </div>
