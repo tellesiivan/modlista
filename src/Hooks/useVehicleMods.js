@@ -20,20 +20,6 @@ export default function useVehicleMods() {
       collection(firestore, `vehicles/${vehicleID}/${type}`),
       (doc) => {
         setLoading(true);
-        const getSubs = async () => {
-          let previews = [];
-          // get snippets || path to that specific collection
-          const snippetDocs = await getDocs(
-            collection(firestore, `vehicles/${vehicleID}/${type}`)
-          );
-          snippetDocs.docs.map((doc) => {
-            previews.push({
-              ...doc.data(),
-              id: doc.id,
-            });
-          });
-          console.log(previews);
-        };
         const modsArr = [];
         doc.forEach((doc) => {
           modsArr.push(doc.data());

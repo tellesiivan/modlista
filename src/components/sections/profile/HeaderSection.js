@@ -55,7 +55,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold text-gray-500 border rounded-full border-greyDark w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold border rounded-full text-textGray border-inputMain w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
