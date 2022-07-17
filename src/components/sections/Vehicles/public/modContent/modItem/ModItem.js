@@ -6,19 +6,19 @@ import Reactions from "./Reactions";
 
 export default function ModItem({ mod }) {
   return (
-    <li className="relative flex items-center p-2 space-x-4 overflow-hidden border rounded bg-dark border-alt">
-      <div className="block overflow-hidden rounded-lg w-28 h-28 group">
+    <li className="relative flex flex-col items-center p-2 overflow-hidden border rounded sm:space-x-4 sm:flex-row bg-dark border-alt">
+      <div className="relative block w-full overflow-hidden rounded sm:rounded-lg sm:w-28 sm:h-28 group h-60">
         <Image
           src={mod.primaryImage.url}
           alt={mod.title}
-          width={120}
-          height={120}
-          layout="responsive"
+          className=""
+          layout="fill"
+          objectFit="cover"
           placeholder="blur"
           blurDataURL={blurImgUrl}
         />
       </div>
-      <div className="flex-1 h-full space-y-3">
+      <div className="w-full h-full mt-3 sm:space-y-3 sm:flex-1 sm:mt-0">
         <div>
           <div className="flex items-center justify-between mb-3">
             <p className="block text-sm font-semibold tracking-tight text-gray-300">
@@ -28,7 +28,7 @@ export default function ModItem({ mod }) {
               ${mod.price}
             </p>
           </div>
-          <p className="block text-xs text-textGray">{mod.desc}</p>
+          <p className="block mb-3 text-xs text-textGray sm:mb-0">{mod.desc}</p>
         </div>
         <div className="flex flex-wrap pb-3">
           {mod.tags.map((tag) => (

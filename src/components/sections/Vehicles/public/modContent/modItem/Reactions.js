@@ -1,6 +1,6 @@
 import { useState } from "react";
 import EmojiReaction from "./EmojiReaction";
-import { EmojiHappyIcon } from "@heroicons/react/outline";
+import { HeartIcon } from "@heroicons/react/outline";
 
 export default function Reactions() {
   const [visible, setVisible] = useState(false); // initiate it at false
@@ -13,7 +13,7 @@ export default function Reactions() {
           className="h-10 text-gray-500"
           onClick={() => setVisible(!visible)}
         >
-          <EmojiHappyIcon className="w-6 h-6 mr-1" />
+          <HeartIcon className="w-5 h-5 mr-1" />
         </button>
       }
       {visible && (
