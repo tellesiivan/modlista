@@ -22,7 +22,7 @@ export default function useVehicleMods() {
         setLoading(true);
         const modsArr = [];
         doc.forEach((doc) => {
-          modsArr.push(doc.data());
+          modsArr.push({ modId: doc.id, ...doc.data() });
         });
         setMods(modsArr);
         // console.log(modsArr);
