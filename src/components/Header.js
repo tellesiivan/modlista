@@ -12,7 +12,7 @@ export default function Header() {
   const dispatch = useDispatch();
 
   return (
-    <header className="sticky top-0 z-40 items-center justify-between hidden w-full h-16 px-4 border-b bg-alt md:flex border-greyDark">
+    <header className="sticky top-0 z-40 items-center justify-between hidden w-full h-16 px-4 bg-opacity-50 border-b bg-alt md:flex border-greyDark backdrop-filter backdrop-blur-lg">
       <Link href="/">
         <Image
           src={logo}
