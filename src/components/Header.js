@@ -14,13 +14,18 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 items-center justify-between hidden w-full h-16 px-4 bg-opacity-50 border-b bg-alt md:flex border-greyDark backdrop-filter backdrop-blur-lg">
       <Link href="/">
-        <Image
-          src={logo}
-          alt="logo"
-          height="26"
-          width="26"
-          className="cursor-pointer"
-        />
+        <a className="relative">
+          <Image
+            src={logo}
+            alt="logo"
+            height="26"
+            width="26"
+            className="cursor-pointer"
+          />
+          <span className="text-white -tracking-wide absolute px-2.5 py-0.5 text-[9px] rounded-full top-0.5 -right-9 bg-gradient-to-r from-violet-500 to-fuchsia-500 font-mono">
+            BETA
+          </span>
+        </a>
       </Link>
 
       <div className="flex items-center h-full space-x-2">
