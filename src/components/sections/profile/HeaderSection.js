@@ -15,16 +15,16 @@ export default function HeaderSection({ profileUser, isValid }) {
     <div
       className={` ${
         vehiclesOwn === 0 && "border-b border-greyDark pb-2"
-      } pb-4`}
+      } pb-4 `}
     >
-      <div className="relative h-[125px] md:h-[200px]">
-        <div className="absolute inset-0 z-10 w-full h-full" />
+      <div className="relative h-[125px] md:h-[200px] ">
+        <div className="absolute inset-0 z-10 w-full h-full " />
         {coverImg ? (
           <Image
             onLoadingComplete={() => console.log("complete")}
             src={coverImg}
             alt="banner image"
-            className="w-full h-full"
+            className="w-full h-full "
             layout="fill"
             placeholder="blur"
             blurDataURL={placeholdeImge}
@@ -78,7 +78,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             )} */}
           </div>
           <div className="grid grid-cols-3 gap-4 mt-1">
-            <div className="inline-flex items-end text-xs text-textGray">
+            <div className="inline-flex items-end text-xs text-inputGray">
               <CalendarIcon
                 className="-ml-0.5 mr-1 h-4 w-4"
                 aria-hidden="true"
@@ -89,7 +89,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             </div>
             {/* List user website link && favorite shop */}
             {location && (
-              <div className="inline-flex items-end text-xs text-textGray">
+              <div className="inline-flex items-end text-xs text-inputGray">
                 <HomeIcon className="-ml-0.5 mr-1 h-4 w-4" aria-hidden="true" />
                 <span className="whitespace-nowrap">
                   {location.city}, {location.stateAbbr}

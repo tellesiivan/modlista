@@ -63,7 +63,7 @@ function UserLocation({ user }) {
               <input
                 pattern="[0-9]{5}"
                 onChange={onChange}
-                className="flex-1 h-8 px-2 py-5 border-none rounded-md outline-none bg-main sm:flex sm:items-start sm:justify-between placeholder:text-xs text-md md:text-xs text-textGray"
+                className="flex-1 h-8 px-2 py-5 border-none rounded-md outline-none bg-main sm:flex sm:items-start sm:justify-between placeholder:text-xs text-md md:text-xs placeholder:text-textGray text-inputGray "
                 type="number"
                 value={zip}
                 placeholder="Zip code..."

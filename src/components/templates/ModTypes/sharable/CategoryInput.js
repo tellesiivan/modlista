@@ -26,12 +26,12 @@ export default function CategoryInput({
 
   return (
     <>
-      <label htmlFor={id} className="text-xs text-dark">
+      <label htmlFor={id} className="text-xs text-white">
         {label}
       </label>
       <div className="flex flex-row px-2 rounded-md h-11 bg-main">
         <input
-          className="w-full h-full text-gray-600 bg-transparent border-0 outline-none text-md md:text-xs placeholder:text-xs placeholder:text-gray-400"
+          className="w-full h-full bg-transparent border-0 outline-none text-inputGray text-md md:text-xs placeholder:text-xs placeholder:text-textGray"
           placeholder={placeholder}
           type="text"
           value={tag}
@@ -50,12 +50,12 @@ export default function CategoryInput({
         <div className="pt-2  flex overflow-x-scroll space-x-1.5 ">
           {tags.map((t) => (
             <div
-              className="px-1.5 py-1 text-xs text-dark rounded-full bg-ag-yellow flex items-center whitespace-nowrap"
+              className="px-1.5 py-1 text-xs rounded-full  bg-greyDark bg-opacity flex items-center whitespace-nowrap text-inputGray"
               key={t}
             >
               {t}
               <span
-                className="flex items-center justify-center w-5 h-5 ml-2 rounded-full cursor-pointer bg-main hover:opacity-60 "
+                className="flex items-center justify-center w-5 h-5 ml-2 bg-white rounded-full cursor-pointer text-alt opacity-30 "
                 onClick={() => removeTag(t)}
               >
                 <HiX />

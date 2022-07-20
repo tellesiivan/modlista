@@ -22,12 +22,12 @@ export default function ImageUpload({
   return (
     <div className="space-y-1.5">
       <div className="flex items-center justify-between">
-        <label htmlFor="imageUpload" className="text-xs text-dark">
+        <label htmlFor="imageUpload" className="text-xs text-white">
           Modification Image
         </label>
         {Image && !loading && (
           <p
-            className="text-xs cursor-pointer text-dark hover:opacity-75"
+            className="text-xs text-white cursor-pointer hover:opacity-75"
             onClick={() => {
               setSelectedFile("");
               setImage("image", "");
@@ -54,7 +54,7 @@ export default function ImageUpload({
               className="absolute inset-0 z-10 rounded-md opacity-0 cursor-pointer "
               onChange={onSelectedFile}
             />
-            <div className="absolute flex items-center justify-center text-gray-400 border rounded-md cursor-pointer inset-1">
+            <div className="absolute flex items-center justify-center border rounded-md cursor-pointer text-textGray border-alt inset-1">
               <FiImage className="" size="1.2em" />
               <b className="ml-2 text-xs font-normal">Add Image</b>
             </div>

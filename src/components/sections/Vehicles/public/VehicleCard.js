@@ -7,17 +7,13 @@ export default function VehicleCard({
   activeVehicle,
   setActiveVehicle,
 }) {
-  const router = useRouter();
-
-  // console.log(vehicle.Mods);
-
   return (
     <div
       className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden rounded-full cursor-pointer pr-4 border ${
         activeVehicle.id === vehicle.id
-          ? "bg-inputMain  border-transparent"
-          : "bg-main hover:bg-alt border-greyDark"
-      }`}
+          ? "bg-accent-purple "
+          : "bg-main hover:bg-alt"
+      } border-greyDark`}
       onClick={() => setActiveVehicle(vehicle)}
     >
       <div className="relative w-8 h-8 mr-2.5 overflow-hidden rounded-full">
@@ -42,7 +38,7 @@ export default function VehicleCard({
           <p
             className={`text-[11px]  ${
               activeVehicle.id === vehicle.id
-                ? "text-gray-400"
+                ? "text-gray-300"
                 : "text-gray-600"
             }`}
           >

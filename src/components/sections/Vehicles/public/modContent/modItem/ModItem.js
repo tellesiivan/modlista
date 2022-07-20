@@ -5,10 +5,13 @@ import Link from "next/link";
 import Reactions from "./Reactions";
 import ReactionTag from "./ReactionTag";
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../../../../firebase/clientApp";
 
 export default function ModItem({ mod }) {
   const reactionPath = `vehicles/${mod.vehicleID}/${mod.modType}/${mod.modId}`;
   const [showReaction, setShowReaction] = useState(false);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     if (mod.reactions) {
@@ -36,18 +39,18 @@ export default function ModItem({ mod }) {
         />
       </div>
       <div className="w-full h-full mt-3 sm:flex-1 sm:mt-0">
-        <div>
-          <div className="flex items-center justify-between pt-1 mb-3">
+        <div className="pt-1 space-y-3">
+          <div className="flex items-center justify-between">
             <p className="block text-sm font-semibold tracking-tight text-gray-300">
               {mod.title}
             </p>
-            <p className="block text-sm font-medium text-gray-400">
+            <p className="block ml-10 text-sm font-medium text-gray-400 md:ml-8">
               ${mod.price}
             </p>
           </div>
           <p className="block mb-3 text-xs text-textGray sm:mb-0">{mod.desc}</p>
         </div>
-        <div className="flex flex-wrap py-3">
+        <div className="flex flex-wrap my-3">
           {mod.tags.map((tag) => (
             <span
               className="inline-flex items-center px-3 py-1 text-xs tracking-wide text-ag-yellow rounded-full bg-accent-yellow mr-1.5 mt-1.5"
@@ -67,6 +70,9 @@ export default function ModItem({ mod }) {
                     return (
                       <ReactionTag
                         key={key}
+                        reacted={
+                          !!mod.reactions[key].find((r) => r == user?.uid)
+                        }
                         reactionType={key}
                         reactionCount={mod.reactions[key].length}
                         path={reactionPath}

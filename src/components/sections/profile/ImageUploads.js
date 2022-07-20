@@ -52,7 +52,7 @@ export default function ImageUploads({ userId }) {
   return (
     <div className="mt-6 space-y-2.5">
       <div className="flex items-center justify-between ">
-        <p className="text-xs text-textGray">
+        <p className="text-xs text-inputGray">
           Update <span className="font-bold text-ag-green">{uploadType}</span>{" "}
           image.
         </p>

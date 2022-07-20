@@ -20,7 +20,7 @@ export default function Url({ url, setLink, valid }) {
         value={url}
         onChange={onChangeHandler}
         type="text"
-        className="w-full px-2 text-gray-600 border-0 rounded-md outline-none h-11 bg-main text-md md:text-xs placeholder:text-xs placeholder:text-gray-400"
+        className="w-full px-2 border-0 rounded-md outline-none text-inputGray h-11 bg-main text-md md:text-xs placeholder:text-xs placeholder:text-textGray"
       />
     </div>
   );

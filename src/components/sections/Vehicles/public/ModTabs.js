@@ -68,6 +68,8 @@ export default function ModTabs({ vehicle }) {
           <>
             <ModList mods={mods} />
           </>
+        ) : loading ? (
+          <p>Loading...</p>
         ) : (
           <NoMods mod={modsTypes[activeTabIndex]} />
         )}
