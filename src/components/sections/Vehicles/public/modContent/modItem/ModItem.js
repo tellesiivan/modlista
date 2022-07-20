@@ -47,7 +47,7 @@ export default function ModItem({ mod }) {
           </div>
           <p className="block mb-3 text-xs text-textGray sm:mb-0">{mod.desc}</p>
         </div>
-        <div className="flex flex-wrap pb-3">
+        <div className="flex flex-wrap py-3">
           {mod.tags.map((tag) => (
             <span
               className="inline-flex items-center px-3 py-1 text-xs tracking-wide text-ag-yellow rounded-full bg-accent-yellow mr-1.5 mt-1.5"
@@ -58,7 +58,26 @@ export default function ModItem({ mod }) {
           ))}
         </div>
         <div className="flex items-center justify-between w-full py-3 border-t border-alt">
-          <Reactions path={reactionPath} />
+          <div className="flex items-center justify-center ">
+            <Reactions path={reactionPath} />
+            {mod.reactions && showReaction && (
+              <div className="flex flex-wrap ">
+                {Object.keys(mod.reactions).map((key) => {
+                  if (mod.reactions[key].length > 0) {
+                    return (
+                      <ReactionTag
+                        key={key}
+                        reactionType={key}
+                        reactionCount={mod.reactions[key].length}
+                        path={reactionPath}
+                      />
+                    );
+                  }
+                })}
+              </div>
+            )}
+          </div>
+
           <Link href={mod.link}>
             <a
               className="flex items-center p-1 rounded-full text-ag-green text-opacity-70 hover:text-opacity-90 "
@@ -69,20 +88,6 @@ export default function ModItem({ mod }) {
             </a>
           </Link>
         </div>
-        {mod.reactions && showReaction && (
-          <div className="flex flex-wrap pb-3">
-            {Object.keys(mod.reactions).map((key) => {
-              return (
-                <ReactionTag
-                  key={key}
-                  reactionType={key}
-                  reactionCount={mod.reactions[key].length}
-                  path={reactionPath}
-                />
-              );
-            })}
-          </div>
-        )}
       </div>
     </li>
   );

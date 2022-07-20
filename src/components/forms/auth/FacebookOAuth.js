@@ -29,7 +29,7 @@ export default function FacebookOAuth({ from }) {
 
   return (
     <button
-      className="flex items-center justify-center w-full p-3 bg-black rounded-lg text-main"
+      className="flex items-center justify-center w-full p-3 text-white bg-black rounded-lg"
       onClick={handleFacebookOAuth}
     >
       {loading ? (

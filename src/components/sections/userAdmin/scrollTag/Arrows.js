@@ -104,7 +104,7 @@ function Card({ onClick, selected, title, itemId }) {
         className={` flex items-center justify-center w-24 h-7 mx-1 rounded-full  text-xs cursor-pointer border border-darkAlt  ${
           actionSelected === title
             ? "bg-ag-green text-main"
-            : "bg-alt text-textGray"
+            : "bg-alt text-gray-300"
         } `}
       >
         <div>{title}</div>
