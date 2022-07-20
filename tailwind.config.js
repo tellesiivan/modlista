@@ -14,6 +14,7 @@ module.exports = {
         darkAlt: "#232529",
         inputMain: "#333",
         textGray: "#536471",
+        inputGray: "#b8bbc0",
         ag: {
           green: "#03c19a",
           hover: "#18f9991a",

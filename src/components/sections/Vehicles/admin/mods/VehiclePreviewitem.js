@@ -53,7 +53,7 @@ export default function VehiclePreviewitem({
             <p className="text-xs text-textGray">{vehicle.Model}</p>
           </div>
           <div
-            className="flex items-center justify-center w-6 h-6 transition-colors duration-300 rounded-full bg-main hover:bg-opacity-80 "
+            className="flex items-center justify-center w-6 h-6 transition-colors duration-300 bg-white rounded-full bg-opacity-30 text-alt"
             onClick={triggerEditableModal}
           >
             <BiDotsVertical />

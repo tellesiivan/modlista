@@ -27,9 +27,8 @@ export default function VehicleSection({ vehicles, userId }) {
       });
       console.log("Current cities in CA: ", cities.join(", "));
     });
-  }, [userId]);
-
-  // console.log(vehicles);
+    setActiveVehicle(vehicles[0]);
+  }, [userId, vehicles]);
 
   // get data based on vehicle selected and pass on the data to the tabs that will fitered into each tab
 

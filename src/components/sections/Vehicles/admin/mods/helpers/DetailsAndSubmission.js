@@ -27,7 +27,7 @@ export default function DetailsAndSubmission({
     <div
       className={`sticky w-full px-1 py-1.5 rounded-md ${
         viewDetails ? "space-y-2" : "h-auto cursor-default"
-      } bottom-2 bg-dark transition-all duration-700 z-40  overflow-hidden shadow-lg`}
+      } bottom-2 bg-white transition-all duration-700 z-40  overflow-hidden shadow-lg`}
     >
       <div
         className={`w-full ${
@@ -56,7 +56,7 @@ export default function DetailsAndSubmission({
           ) : (
             <>
               <button
-                className="flex items-center px-1 py-1 space-x-2 tracking-wide transition-colors duration-200 cursor-pointer text-dark fillBtn bg-main"
+                className="flex items-center px-1 py-1 space-x-2 font-medium tracking-wide transition-colors duration-200 cursor-pointer text-dark fillBtn bg-ag-yellow"
                 onClick={() => uploadMod(vehicle.id, modType)}
               >
                 <CustomAvatar
@@ -67,7 +67,7 @@ export default function DetailsAndSubmission({
                 Add Modification
               </button>
               <button
-                className="flex items-center justify-center w-20 px-1 py-1 space-x-2 tracking-wide transition-colors duration-200 bg-black cursor-pointer text-alt fillBtn"
+                className="flex items-center justify-center w-20 px-1 py-1 space-x-2 tracking-wide text-white transition-colors duration-200 cursor-pointer bg-alt fillBtn"
                 onClick={() => dispatch(resetMod())}
               >
                 Clear
@@ -76,7 +76,7 @@ export default function DetailsAndSubmission({
           )}
         </div>
         <button
-          className="z-50 flex items-center justify-center w-6 h-6 rounded-full cursor-pointer bg-main"
+          className="z-50 flex items-center justify-center w-6 h-6 bg-gray-300 rounded-full cursor-pointer"
           onClick={() => setViewDetails(!viewDetails)}
         >
           {viewDetails ? <GrFormDown /> : <BsInfo />}
