@@ -24,32 +24,32 @@ export default function Manage() {
   return <div className="text-white">manage page</div>;
 }
 
-// export const getServerSideProps = async (ctx) => {
-//   const { userId } = ctx.query;
+export const getServerSideProps = async (ctx) => {
+  const { userId } = ctx.query;
 
-//   try {
-//     const docRef = doc(firestore, `users/${userId}`);
-//     const docSnap = await getDoc(docRef);
-//     if (docSnap.exists()) {
-//       console.log("Document data:", docSnap.data());
-//     } else {
-//       // doc.data() will be undefined in this case
-//       console.log("No such document!");
-//     }
-//     return {
-//       props: {
-//         message: `Your email is ${docSnap.data().email} and your UID is ${
-//           docSnap.data().uid
-//         }.`,
-//       },
-//     };
-//   } catch (err) {
-//     console.log(err);
-//     return {
-//       redirect: {
-//         destination: "/hello-nextjs",
-//         permanent: false,
-//       },
-//     };
-//   }
-// };
+  try {
+    const docRef = doc(firestore, `users/${userId}`);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+    return {
+      props: {
+        message: `Your email is ${docSnap.data().email} and your UID is ${
+          docSnap.data().uid
+        }.`,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      redirect: {
+        destination: "/hello-nextjs",
+        permanent: false,
+      },
+    };
+  }
+};

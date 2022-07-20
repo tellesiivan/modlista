@@ -13,13 +13,12 @@ import { firestore } from "../firebase/clientApp";
 
 export default function useVehicleMods() {
   const [mods, setMods] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const vehicleSelectedMods = (vehicleID, type) => {
     onSnapshot(
       collection(firestore, `vehicles/${vehicleID}/${type}`),
       (doc) => {
-        setLoading(true);
         const modsArr = [];
         doc.forEach((doc) => {
           modsArr.push({ modId: doc.id, ...doc.data() });

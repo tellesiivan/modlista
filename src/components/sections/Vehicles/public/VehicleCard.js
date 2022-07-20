@@ -11,9 +11,9 @@ export default function VehicleCard({
     <div
       className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden rounded-full cursor-pointer pr-4 border ${
         activeVehicle.id === vehicle.id
-          ? "bg-ag-green  border-transparent"
-          : "bg-main hover:bg-alt border-greyDark"
-      }`}
+          ? "bg-accent-purple "
+          : "bg-main hover:bg-alt"
+      } border-greyDark`}
       onClick={() => setActiveVehicle(vehicle)}
     >
       <div className="relative w-8 h-8 mr-2.5 overflow-hidden rounded-full">
@@ -29,7 +29,7 @@ export default function VehicleCard({
       <div className="truncate text-start">
         <h4
           className={`text-[11px] font-bold -mb-0.5 ${
-            activeVehicle.id === vehicle.id ? "text-alt" : "text-textGray"
+            activeVehicle.id === vehicle.id ? "text-white" : "text-textGray"
           }`}
         >
           {vehicle.Year} {vehicle.Make} {vehicle.Model}
@@ -38,7 +38,7 @@ export default function VehicleCard({
           <p
             className={`text-[11px]  ${
               activeVehicle.id === vehicle.id
-                ? "text-gray-800"
+                ? "text-gray-300"
                 : "text-gray-600"
             }`}
           >

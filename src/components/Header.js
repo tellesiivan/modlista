@@ -22,7 +22,7 @@ export default function Header() {
             width="26"
             className="cursor-pointer"
           />
-          <span className="text-white -tracking-wide absolute px-2.5 py-0.5 text-[9px] rounded-full top-0.5 -right-9 bg-gradient-to-r from-violet-500 to-fuchsia-500 font-mono">
+          <span className="text-white -tracking-wide absolute px-2.5 py-0.5 text-[9px] rounded-full top-0.5 -right-9 bg-accent-purple font-mono border border-greyDark">
             BETA
           </span>
         </a>

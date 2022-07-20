@@ -8,7 +8,7 @@ export default function EmojiReaction({ emoji, name, path, setVisible }) {
   return (
     <>
       <div
-        className={`flex items-center justify-center space-x-1 rounded-md w-8 h-8 hover:bg-alt text-[13px] cursor-pointer transition-all duration-300 relative`}
+        className={`flex items-center justify-center space-x-1 rounded-md w-8 h-8 md:hover:bg-alt text-[13px] cursor-pointer transition-all duration-300 relative`}
         role="img"
         aria-label={name ? name : ""}
         aria-hidden={name ? "false" : "true"}

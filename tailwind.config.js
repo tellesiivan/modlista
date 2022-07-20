@@ -22,6 +22,7 @@ module.exports = {
         },
         accent: {
           yellow: "#f1c5520d",
+          purple: "#290e44",
         },
         status: {
           success: "#4ad493",

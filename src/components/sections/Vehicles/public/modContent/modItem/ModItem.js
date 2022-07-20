@@ -5,10 +5,13 @@ import Link from "next/link";
 import Reactions from "./Reactions";
 import ReactionTag from "./ReactionTag";
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../../../../firebase/clientApp";
 
 export default function ModItem({ mod }) {
   const reactionPath = `vehicles/${mod.vehicleID}/${mod.modType}/${mod.modId}`;
   const [showReaction, setShowReaction] = useState(false);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     if (mod.reactions) {
@@ -67,6 +70,9 @@ export default function ModItem({ mod }) {
                     return (
                       <ReactionTag
                         key={key}
+                        reacted={
+                          !!mod.reactions[key].find((r) => r == user?.uid)
+                        }
                         reactionType={key}
                         reactionCount={mod.reactions[key].length}
                         path={reactionPath}

@@ -73,6 +73,8 @@ export default function UserProfile({ userData }) {
             " lg:max-w-2xl w-full md:border-x lg:border-greyDark lg:mx-auto"
           }`}
         >
+        {/* TODO: ADD user info (sticky at the top) after scrolling user name {{headerSection}} */}
+          {/* <div className="sticky top-0 z-50 w-3/4 h-16 bg-alt "></div> */}
           {profileUser ? (
             <>
               <HeaderSection profileUser={profileUser} isValid={isValid} />

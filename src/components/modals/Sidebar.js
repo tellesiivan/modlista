@@ -42,14 +42,17 @@ export default function Sidebar({ active }) {
   }, [user]);
 
   const Logout = async () => {
-    await signOut(auth);
-    dispatch(
-      addUser({
-        user: null,
-      })
-    );
-
     dispatch(toggleSidebar({ open: false }));
+
+    // give time for sidebar to close
+    setTimeout(async () => {
+      await signOut(auth);
+      dispatch(
+        addUser({
+          user: null,
+        })
+      );
+    }, [1050]);
   };
 
   return (
