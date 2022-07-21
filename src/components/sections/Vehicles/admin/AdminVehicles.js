@@ -155,10 +155,10 @@ export default function AdminVehicles() {
                     data && data.formType === formType ? "mb-6" : ""
                   }`}
                 >
-                  <h2 className="font-bold text-dark text-md">
+                  <h2 className="font-bold text-white text-md">
                     Nice! We Found Your Car.
                   </h2>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-textGray">
                     Here are a few details...
                   </p>
                   <VehicleCoverImage

@@ -2,10 +2,10 @@ import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
 import { HomeIcon, CalendarIcon } from "@heroicons/react/outline";
-import placeholdeImge from "../../../../public/blurPlaceholder.png";
 import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
 
+const pathBlur = "/public/blurPlaceholder.png";
 export default function HeaderSection({ profileUser, isValid }) {
   const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn, location } =
     profileUser;
@@ -14,7 +14,7 @@ export default function HeaderSection({ profileUser, isValid }) {
   return (
     <div
       className={` ${
-        vehiclesOwn === 0 && "border-b border-greyDark pb-2"
+        (vehiclesOwn === 0 || !vehiclesOwn) && "border-b border-greyDark pb-2"
       } pb-4 `}
     >
       <div className="relative h-[125px] md:h-[200px] ">
@@ -27,11 +27,11 @@ export default function HeaderSection({ profileUser, isValid }) {
             className="w-full h-full "
             layout="fill"
             placeholder="blur"
-            blurDataURL={placeholdeImge}
+            blurDataURL={pathBlur}
             objectFit="cover"
           />
         ) : (
-          <div className="w-full h-full bg-ag-green "></div>
+          <div className="w-full h-full bg-gradient-to-r from-ag-green to-ag-yellow"></div>
         )}
         <div className="absolute z-20 flex items-center border-[5px] rounded-full left-2 -bottom-14 md:left-4 border-main">
           {avatarImg ? (
