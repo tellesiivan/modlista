@@ -23,6 +23,7 @@ export default function Sidebar({ active }) {
 
   // profile changes from DB
   useEffect(() => {
+    // cosole.log(user);
     if (user) {
       onSnapshot(doc(firestore, `users/${user.uid}`), (doc) => {
         const userData = {

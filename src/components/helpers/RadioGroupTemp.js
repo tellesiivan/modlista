@@ -8,7 +8,7 @@ export default function RadioGroupTemplate({
 }) {
   return (
     <div className="w-full">
-      <h2 className="mt-0 mb-2 text-sm text-dark ">{label}</h2>
+      <h2 className="mt-0 mb-2 text-sm text-inputGray ">{label}</h2>
       <div className="w-full ">
         <RadioGroup value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
@@ -18,7 +18,7 @@ export default function RadioGroupTemplate({
                 key={option}
                 value={option}
                 className={({ active, checked }) =>
-                  `${checked ? "bg-dark  text-main" : "bg-alt text-dark"}
+                  `${checked ? "bg-dark  text-textGray" : "bg-alt text-dark"}
                     relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none h-12 `
                 }
               >
@@ -30,7 +30,7 @@ export default function RadioGroupTemplate({
                           <RadioGroup.Label
                             as="p"
                             className={`font-medium  ${
-                              checked ? "text-main" : "text-gray-400"
+                              checked ? "text-textGray" : "text-gray-400"
                             }`}
                           >
                             {option}

@@ -9,7 +9,9 @@ export default function Tab({ selectedTab, setSelectedTab }) {
         <p
           key={index}
           className={`${
-            selectedTab === option.opt ? "text-main bg-dark " : "text-dark "
+            selectedTab === option.opt
+              ? "text-inputGray bg-dark "
+              : "text-gray-400 "
           }  py-2 w-full text-center cursor-pointer text-xs duration-200 transition-colors rounded-full`}
           onClick={() => setSelectedTab(option.opt)}
         >

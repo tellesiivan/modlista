@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
-import blurImgUrl from "../../../../../../../public/media/blurImgUrl";
+
 import Link from "next/link";
 import Reactions from "./Reactions";
 import ReactionTag from "./ReactionTag";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../../../../firebase/clientApp";
+
+const pathBlur = "/public/blurPlaceholder.png";
 
 export default function ModItem({ mod }) {
   const reactionPath = `vehicles/${mod.vehicleID}/${mod.modType}/${mod.modId}`;
@@ -35,7 +37,7 @@ export default function ModItem({ mod }) {
           layout="fill"
           objectFit="cover"
           placeholder="blur"
-          blurDataURL={blurImgUrl}
+          blurDataURL={pathBlur}
         />
       </div>
       <div className="w-full h-full mt-3 sm:flex-1 sm:mt-0">
@@ -86,7 +88,7 @@ export default function ModItem({ mod }) {
 
           <Link href={mod.link}>
             <a
-              className="flex items-center p-1 rounded-full text-ag-green text-opacity-70 hover:text-opacity-90 "
+              className="flex items-center p-1 rounded-full text-ag-green text-opacity-90 hover:text-opacity-100 "
               target="_blank"
             >
               <ExternalLinkIcon className="w-4 h-4 mr-1" />{" "}

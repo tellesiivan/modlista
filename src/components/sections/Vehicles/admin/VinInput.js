@@ -9,7 +9,7 @@ export default function VinInput({
   return (
     <div className="flex items-center h-12 px-2 py-2 mt-4 rounded-md bg-alt">
       <input
-        className="flex-grow text-gray-600 bg-transparent border-none outline-none sm:text-sm placeholder:text-xs placeholder:text-gray-400 "
+        className="flex-grow bg-transparent border-none outline-none text-inputGray sm:text-sm placeholder:text-xs placeholder:text-textGray "
         placeholder="Enter VIN number..."
         type="text"
         value={vinValue}
@@ -19,7 +19,7 @@ export default function VinInput({
         }}
       />
       <button
-        className="px-3 py-1 text-xs transition-opacity duration-500 rounded-full opacity-100 text-dark bg-ag-yellow disabled:opacity-0"
+        className="h-full px-3 py-1 text-xs text-white transition-opacity duration-500 rounded-md opacity-100 bg-textGray disabled:opacity-0"
         disabled={vinValue.trim().length < 17}
         onClick={clickAction}
       >

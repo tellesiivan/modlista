@@ -73,7 +73,7 @@ export default function UserProfile({ userData }) {
             " lg:max-w-2xl w-full md:border-x lg:border-greyDark lg:mx-auto"
           }`}
         >
-        {/* TODO: ADD user info (sticky at the top) after scrolling user name {{headerSection}} */}
+          {/* TODO: ADD user info (sticky at the top) after scrolling user name {{headerSection}} */}
           {/* <div className="sticky top-0 z-50 w-3/4 h-16 bg-alt "></div> */}
           {profileUser ? (
             <>
@@ -120,9 +120,10 @@ export const getServerSideProps = async (ctx) => {
     }
   } catch (err) {
     console.log(err);
+    // TODO: Redirect to correct page
     return {
       redirect: {
-        destination: "/nf",
+        destination: "/u/pRufKEb4bMVvih2hLPdn9uDdoJI3",
         permanent: false,
       },
     };

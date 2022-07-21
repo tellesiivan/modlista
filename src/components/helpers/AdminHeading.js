@@ -7,7 +7,7 @@ export default function AdminHeading({ Heading, Desc }) {
         <h2 className="text-lg font-bold text-white">{Heading}</h2>
         <span className="w-2 h-2 rounded-full bg-selected"></span>
       </div>
-      <p className="text-sm text-gray-500">{Desc}</p>
+      <p className="text-sm text-textGray">{Desc}</p>
     </div>
   );
 }
