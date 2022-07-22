@@ -4,12 +4,26 @@ import moment from "moment";
 import { HomeIcon, CalendarIcon } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../store/slices/modalsSlice";
+import { useRef } from "react";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import { triggerStickyUserInfo } from "../../../store/slices/profileSlice";
 
 const pathBlur = "/public/blurPlaceholder.png";
 export default function HeaderSection({ profileUser, isValid }) {
+  const stickyInfoRef = useRef();
   const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn, location } =
     profileUser;
   const dispatch = useDispatch();
+
+  useScrollPosition(
+    ({ currPos }) => {
+      currPos.y < 30
+        ? dispatch(triggerStickyUserInfo({ show: true }))
+        : dispatch(triggerStickyUserInfo({ show: false }));
+    },
+    [],
+    stickyInfoRef
+  );
 
   return (
     <div
@@ -55,7 +69,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold border rounded-full text-textGray border-inputMain w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold rounded-full text-inputGray bg-alt w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
@@ -68,7 +82,7 @@ export default function HeaderSection({ profileUser, isValid }) {
           !isValid ? "mt-16" : "mt-10 md:mt-16"
         } mx-4  md:mx-6  flex justify-between items-center`}
       >
-        <div>
+        <div ref={stickyInfoRef}>
           <div className="flex items-center font-bold tracking-tighter text-white">
             <h1 className="text-2xl ">{name ? name : email} </h1>
             {/* {vehiclesOwn > 0 && (

@@ -19,6 +19,7 @@ export default function ModTabs({ vehicle }) {
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
   const tabsRef = useRef([]);
   const { mods, vehicleSelectedMods, loading } = useVehicleMods();
+
   useEffect(() => {
     function setTabPosition() {
       const currentTab = tabsRef.current[activeTabIndex];
