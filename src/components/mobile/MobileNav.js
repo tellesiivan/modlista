@@ -20,7 +20,7 @@ export default function MobileNav({}) {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="fixed bottom-0 grid content-center w-full h-16 grid-cols-3 text-xs text-center text-white transition -translate-x-1/2 bg-opacity-50 border-t shadow-xl bg-alt md:hidden left-1/2 place-content-center border-greyDark backdrop-filter backdrop-blur-lg">
+    <div className="fixed bottom-0 grid content-center w-full h-16 grid-cols-3 text-xs text-center text-white transition -translate-x-1/2 border-t shadow-xl bg-alt md:hidden left-1/2 place-content-center border-greyDark backdrop-filter backdrop-blur-lg bg-opacity-50 ">
       {user ? (
         <>
           <div

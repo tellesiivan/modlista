@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import AdminPanel from "../../../components/sections/userAdmin/AdminPanel";
 import { auth } from "../../../firebase/clientApp";
 import { useEffect, useState } from "react";
+
 import {
   doc,
   getDoc,
@@ -14,10 +15,11 @@ import { firestore } from "../../../firebase/clientApp";
 import HeaderSection from "../../../components/sections/profile/HeaderSection";
 import ProfileMobileNav from "../../../components/mobile/ProfileMobileNav";
 import VehicleSection from "../../../components/sections/Vehicles/public/VehicleSection";
-import AdminPanelLoading from "../../../components/helpers/loading/AdminPanelLoading";
 import { useDispatch, useSelector } from "react-redux";
 import { addVehiclePreviews } from "../../../store/slices/uiSlice";
 import ProfileLoading from "../../../components/helpers/loading/ProfileLoading";
+import Avatar from "../../../components/helpers/Avatar";
+import CustomAvatar from "../../../components/helpers/CustomAvatar";
 
 export default function UserProfile({ userData }) {
   const router = useRouter();
@@ -28,6 +30,9 @@ export default function UserProfile({ userData }) {
   const isValid = user?.uid === userId;
   const dispatch = useDispatch();
   const uploading = useSelector((store) => store.modifications.uploading);
+  const showStickyInfo = useSelector(
+    (store) => store.profileUI.showStickyUserInfo
+  );
 
   // profile changes from DB
   useEffect(() => {
@@ -59,7 +64,6 @@ export default function UserProfile({ userData }) {
       getSubs();
     });
   }, [userId, userData.uid, uploading]);
-
   // We trigger a re render when {{ uploading }} changes due to a new mod been added so it can show the incremented value
 
   return (
@@ -74,7 +78,22 @@ export default function UserProfile({ userData }) {
           }`}
         >
           {/* TODO: ADD user info (sticky at the top) after scrolling user name {{headerSection}} */}
-          {/* <div className="sticky top-0 z-50 w-3/4 h-16 bg-alt "></div> */}
+          {showStickyInfo && (
+            <div
+              className={`sticky top-0 z-50 ${
+                isValid ? "w-full sm:w-3/4 " : "w-full"
+              } h-14 sm:h-16 flex px-2 items-center bg-alt sm:bg-transparent backdrop-filter backdrop-blur-lg bg-opacity-50 sm:backdrop-blur-none sm:bg-opacity-none`}
+            >
+              <CustomAvatar
+                src={profileUser?.avatarImg}
+                size={{ width: "10", height: "10" }}
+              />
+              <h1 className="ml-2 font-medium text-white text-md">
+                {profileUser?.name ? profileUser.name : profileUser.email}
+              </h1>
+            </div>
+          )}
+
           {profileUser ? (
             <>
               <HeaderSection profileUser={profileUser} isValid={isValid} />
