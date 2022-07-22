@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import ActionToShow from "../helpers/ActionToShow";
-import Menu from "../sections/userAdmin/scrollTag/Menu";
+import Menu from "../pages/userProfile/userAdmin/scrollTag/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMobileNav } from "../../store/slices/modalsSlice";
 

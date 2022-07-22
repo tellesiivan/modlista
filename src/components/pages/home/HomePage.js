@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import HeaderImage from "../../sections/HeaderImage";
-import VideoContainer from "./VideoContainer";
 
 export default function HomePage() {
   return (
