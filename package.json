@@ -33,6 +33,7 @@
     "react-redux": "^8.0.2",
     "react-simple-star-rating": "^3.0.0",
     "react-spinners": "^0.12.0",
+    "social-links": "^1.4.5",
     "vin-validator": "^1.0.0"
   },
   "devDependencies": {

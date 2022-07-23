@@ -15,7 +15,9 @@ export default function StickyUserInfo({ user, isValid }) {
       className={`sticky top-0 z-50 duration-300 ease-in-out ${
         isValid ? "w-full sm:w-3/4 " : "w-full"
       } h-14 sm:h-16 flex px-2 items-center justify-between bg-alt sm:bg-transparent backdrop-filter backdrop-blur-lg bg-opacity-50 sm:backdrop-blur-none sm:bg-opacity-0 ${
-        showStickyInfo ? "translate-y-0" : "-translate-y-[300%]"
+        showStickyInfo
+          ? "translate-y-0 opacity-100"
+          : "-translate-y-[300%] opacity-50"
       }`}
     >
       <div className="flex items-center">
@@ -23,7 +25,7 @@ export default function StickyUserInfo({ user, isValid }) {
           src={user?.avatarImg}
           size={{ width: "10", height: "10" }}
         />
-        <h1 className="ml-2 font-medium text-white text-md">
+        <h1 className="ml-2 font-medium tracking-tight text-white text-md">
           {user?.name ? user.name : user.email}
         </h1>
       </div>
