@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
-import { HomeIcon, CalendarIcon } from "@heroicons/react/outline";
+import { BiRocket } from "react-icons/bi";
+
+import { RiMapPin2Line } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../../store/slices/modalsSlice";
 import { useRef } from "react";
@@ -78,7 +80,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold rounded-full text-inputGray bg-accent-purple w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold bg-white rounded-full text-alt w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
@@ -89,11 +91,11 @@ export default function HeaderSection({ profileUser, isValid }) {
       <div
         className={`${
           !isValid ? "mt-16" : "mt-10 md:mt-16"
-        } mx-4  md:mx-6  flex justify-between items-start`}
+        } mx-4  md:mx-6 flex justify-between items-start flex-col md:flex-row`}
       >
         <div ref={stickyInfoRef}>
           <div className="flex items-center font-bold tracking-tighter text-white">
-            <h1 className="text-2xl ">{name ? name : email} </h1>
+            <h1 className="text-3xl md:text-2xl">{name ? name : email} </h1>
             {/* {vehiclesOwn > 0 && (
               <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-main">
                 {vehiclesOwn}
@@ -101,22 +103,27 @@ export default function HeaderSection({ profileUser, isValid }) {
             )} */}
           </div>
           <div className="grid grid-cols-3 gap-4 mt-1">
-            <div className="inline-flex items-end text-xs text-inputGray">
-              <CalendarIcon
-                className="-ml-0.5 mr-1 h-4 w-4"
+            <div className="inline-flex items-center text-inputGray w-fit">
+              <BiRocket
+                className="-ml-0.5 mr-1.5 text-inputGray "
+                size="1em"
                 aria-hidden="true"
               />
-              <span className="whitespace-nowrap">
+              <p className="text-xs whitespace-nowrap">
                 Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
-              </span>
+              </p>
             </div>
             {/* List user website link && favorite shop */}
             {location && (
-              <div className="inline-flex items-end text-xs text-inputGray">
-                <HomeIcon className="-ml-0.5 mr-1 h-4 w-4" aria-hidden="true" />
-                <span className="whitespace-nowrap">
+              <div className="inline-flex items-center text-inputGray w-fit">
+                <RiMapPin2Line
+                  className="-ml-0.5 mr-1.5 "
+                  aria-hidden="true"
+                  size="1em"
+                />
+                <p className="text-xs whitespace-nowrap">
                   {location.city}, {location.stateAbbr}
-                </span>
+                </p>
               </div>
             )}
           </div>
