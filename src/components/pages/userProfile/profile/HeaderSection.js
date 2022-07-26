@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
-import { BsCalendarWeek, BsPinAngle } from "react-icons/bs";
+import { BiRocket } from "react-icons/bi";
+
+import { RiMapPin2Line } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../../store/slices/modalsSlice";
 import { useRef } from "react";
@@ -102,8 +104,8 @@ export default function HeaderSection({ profileUser, isValid }) {
           </div>
           <div className="grid grid-cols-3 gap-4 mt-1">
             <div className="inline-flex items-center text-inputGray w-fit">
-              <BsCalendarWeek
-                className="-ml-0.5 mr-1.5"
+              <BiRocket
+                className="-ml-0.5 mr-1.5 text-inputGray "
                 size="1em"
                 aria-hidden="true"
               />
@@ -114,7 +116,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             {/* List user website link && favorite shop */}
             {location && (
               <div className="inline-flex items-center text-inputGray w-fit">
-                <BsPinAngle
+                <RiMapPin2Line
                   className="-ml-0.5 mr-1.5 "
                   aria-hidden="true"
                   size="1em"
