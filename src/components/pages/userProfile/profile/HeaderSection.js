@@ -7,12 +7,21 @@ import { toggleMobileNav } from "../../../../store/slices/modalsSlice";
 import { useRef } from "react";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { triggerStickyUserInfo } from "../../../../store/slices/profileSlice";
+import SocialLinks from "../links/SocialLinks";
 
 const pathBlur = "/public/blurPlaceholder.png";
 export default function HeaderSection({ profileUser, isValid }) {
   const stickyInfoRef = useRef();
-  const { name, email, createdAt, coverImg, avatarImg, vehiclesOwn, location } =
-    profileUser;
+  const {
+    name,
+    email,
+    createdAt,
+    coverImg,
+    avatarImg,
+    vehiclesOwn,
+    location,
+    links,
+  } = profileUser;
   const dispatch = useDispatch();
 
   useScrollPosition(
@@ -69,7 +78,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       {isValid && (
         <div className="flex justify-end mt-2 mr-4 md:hidden">
           <button
-            className="px-3 py-1 ml-auto text-xs font-semibold rounded-full text-inputGray bg-alt w-fit hover:opacity-80"
+            className="px-3 py-1 ml-auto text-xs font-semibold rounded-full text-inputGray bg-accent-purple w-fit hover:opacity-80"
             onClick={() => dispatch(toggleMobileNav({ open: true }))}
           >
             Edit Profile
@@ -80,7 +89,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       <div
         className={`${
           !isValid ? "mt-16" : "mt-10 md:mt-16"
-        } mx-4  md:mx-6  flex justify-between items-center`}
+        } mx-4  md:mx-6  flex justify-between items-start`}
       >
         <div ref={stickyInfoRef}>
           <div className="flex items-center font-bold tracking-tighter text-white">
@@ -112,7 +121,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             )}
           </div>
         </div>
-        <div>Share</div>
+        {links && <SocialLinks links={links} />}
       </div>
     </div>
   );

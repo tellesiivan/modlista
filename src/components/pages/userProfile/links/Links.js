@@ -5,6 +5,8 @@ import { ImLink } from "react-icons/im";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { doc, runTransaction } from "firebase/firestore";
 import { auth, firestore } from "../../../../firebase/clientApp";
+import { useSelector } from "react-redux";
+import { Loading } from "@nextui-org/react";
 
 const linkTypes = [
   { type: "Website", placeholder: "http://example.com/", icon: <ImLink /> },
@@ -27,29 +29,40 @@ const linkTypes = [
 ];
 
 export default function Links() {
+  const userLinks = useSelector((store) => store.userUI.user?.links);
   const [links, setLinks] = useState({
-    Website: null,
-    Instagram: null,
-    Facebook: null,
-    YouTube: null,
-    Twitter: null,
+    Website: "",
+    Instagram: "",
+    Facebook: "",
+    YouTube: "",
+    Twitter: "",
   });
   const [user] = useAuthState(auth);
+  const [loading, setLoading] = useState(false);
+
+  const [showSubmit, setShowSubmit] = useState(false);
+
+  function removeEmpty(obj) {
+    return Object.fromEntries(
+      Object.entries(obj).filter(([key, val]) => val !== "")
+    );
+  }
 
   const saveLinks = async (e) => {
     e.preventDefault();
     // user Ref
     const userRef = doc(firestore, `users/${user.uid}`);
-
+    setLoading(true);
     try {
       await runTransaction(firestore, async (transaction) => {
         const userDoc = await transaction.get(userRef);
 
         const hasLinkObjct = userDoc.data().links;
+        const filteredLinks = removeEmpty(links);
 
         if (hasLinkObjct) {
           transaction.update(userRef, {
-            links: { ...hasLinkObjct, ...links },
+            links: { ...hasLinkObjct, ...filteredLinks },
           });
         } else {
           transaction.update(userRef, {
@@ -57,7 +70,19 @@ export default function Links() {
           });
         }
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message, "saveLinks");
+    }
+    setLoading(false);
+    setShowSubmit(false);
+
+    setLinks({
+      Website: "",
+      Instagram: "",
+      Facebook: "",
+      YouTube: "",
+      Twitter: "",
+    });
   };
 
   return (
@@ -70,18 +95,35 @@ export default function Links() {
         {linkTypes.map((link) => (
           <LinkInput
             type={link.type}
+            value={links[link.type]}
+            setShowSubmit={setShowSubmit}
             key={link.type}
-            defaultPlaceholder={link.placeholder}
+            defaultPlaceholder={
+              userLinks && userLinks[link.type] !== ""
+                ? userLinks[link.type]
+                : link.placeholder
+            }
             setLinks={setLinks}
             links={links}
+            loading={loading}
           />
         ))}
       </form>
       <button
-        className="sticky w-full p-4 mb-5 text-sm font-semibold tracking-wider text-center text-white transition-colors duration-500 border rounded-md mt-7 bg-main bottom-4 border-darkAlt hover:bg-greyDark"
+        className="sticky w-full p-4 mb-5 text-sm font-semibold tracking-wider text-center text-white transition-colors duration-500 border rounded-md mt-7 bg-accent-purple bottom-4 border-darkAlt hover:bg-opacity-90 disabled:opacity-70 disabled:cursor-not-allowed"
         onClick={saveLinks}
+        disabled={!showSubmit}
       >
-        Save
+        {loading ? (
+          <Loading
+            type="points-opacity"
+            size="sm"
+            color="white"
+            className="w-16 h-4"
+          />
+        ) : (
+          "Update"
+        )}
       </button>
     </div>
   );
