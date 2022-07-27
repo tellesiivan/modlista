@@ -11,7 +11,7 @@ export default function VehicleCard({
     <div
       className={`relative flex items-center justify-start pl-0.5 py-0.5 overflow-hidden rounded-full cursor-pointer pr-4 border ${
         activeVehicle.id === vehicle.id
-          ? "bg-ag-yellow "
+          ? "bg-accent-green "
           : "bg-main hover:bg-alt"
       } border-greyDark`}
       onClick={() => setActiveVehicle(vehicle)}

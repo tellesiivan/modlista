@@ -65,7 +65,7 @@ export default function HeaderSection({ profileUser, isValid }) {
     >
       <div className="relative h-[125px] md:h-[200px] ">
         <div
-          className="absolute z-30 flex items-center justify-center w-8 h-8 transition-transform duration-300 bg-white rounded-full cursor-pointer text-alt right-2 bottom-2 hover:scale-110 bg-opacity-60"
+          className="absolute z-30 flex items-center justify-center w-8 h-8 text-white transition-transform duration-300 rounded-full cursor-pointer bg-main right-2 bottom-2 hover:scale-110 bg-opacity-60"
           onClick={() =>
             profilePreview(
               <QRcode
