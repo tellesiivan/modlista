@@ -16,7 +16,7 @@ module.exports = {
         textGray: "#536471",
         inputGray: "#b8bbc0",
         ag: {
-          green: "#03c19a",
+          green: "#88f1b6",
           hover: "#18f9991a",
           yellow: "#fed156",
         },
@@ -24,6 +24,7 @@ module.exports = {
           yellow: "#f1c5520d",
           purple: "#290e44",
           red: "#37011c",
+          green: "#cbf1d6",
         },
         status: {
           success: "#4ad493",

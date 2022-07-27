@@ -44,7 +44,7 @@ export default function ProfileMobileNav() {
               <div className="relative h-full p-2 w-fulll">
                 <div className="mb-2 -mt-3 text-center">
                   <button
-                    className="px-3 py-0.5 text-xs text-dark rounded-full outline-none bg-alt"
+                    className="px-3 py-0.5 text-xs text-inputGray rounded-full outline-none bg-alt"
                     onClick={() => dispatch(toggleMobileNav({ open: false }))}
                   >
                     Close

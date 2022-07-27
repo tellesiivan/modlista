@@ -32,7 +32,7 @@ export default function VehiclePreviewitem({
     <div key={vehicle.Trim.id || vehicle.Trim.name}>
       <div
         className={`relative transition-colors duration-700 flex items-center justify-between min-w-full p-2 overflow-hidden rounded-md cursor-pointer ${
-          modifying.id === vehicle.id ? "bg-ag-yellow" : "bg-accent-yellow"
+          modifying.id === vehicle.id ? "bg-accent-green" : "bg-accent-yellow"
         }`}
         onClick={() => setModifying(vehicle)}
       >
@@ -53,7 +53,7 @@ export default function VehiclePreviewitem({
             <p className="text-xs text-textGray">{vehicle.Model}</p>
           </div>
           <div
-            className="flex items-center justify-center w-6 h-6 transition-colors duration-300 bg-white rounded-full bg-opacity-30 text-alt"
+            className="flex items-center justify-center w-6 h-6 transition-colors duration-300 bg-white rounded-full bg-opacity-80 text-alt"
             onClick={triggerEditableModal}
           >
             <BiDotsVertical />
