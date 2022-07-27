@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, firestore, storage } from "../firebase/clientApp";
-import { writeBatch, doc, increment, collection } from "firebase/firestore";
+import {
+  writeBatch,
+  doc,
+  increment,
+  collection,
+  serverTimestamp,
+} from "firebase/firestore";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { resetMod, uploadingMod } from "../store/slices/modificationsSlice";
 
@@ -60,6 +66,7 @@ export default function useUploadMod() {
         link: mod.url.link,
         vehicleID,
         modType,
+        createdAt: serverTimestamp(),
       };
       // add data to specific mod
       batch.set(vehicleModRef, modData);

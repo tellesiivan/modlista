@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../../../../../firebase/clientApp";
 
-const pathBlur = "/public/blurPlaceholder.png";
+const pathBlur = "/blurPlaceholder.png";
 
 export default function ModItem({ mod }) {
   const reactionPath = `vehicles/${mod.vehicleID}/${mod.modType}/${mod.modId}`;

@@ -110,7 +110,7 @@ export default function Links() {
         ))}
       </form>
       <button
-        className="sticky w-full p-4 mb-5 text-sm font-semibold tracking-wider text-center text-white transition-colors duration-500 border rounded-md mt-7 bg-accent-purple bottom-4 border-darkAlt hover:bg-opacity-90 disabled:opacity-70 disabled:cursor-not-allowed"
+        className="sticky w-full p-4 mb-5 text-sm font-semibold tracking-wider text-center text-white transition-colors duration-500 border rounded-md mt-7 bg-dark bottom-4 border-darkAlt hover:bg-opacity-90 disabled:opacity-70 disabled:cursor-not-allowed"
         onClick={saveLinks}
         disabled={!showSubmit}
       >

@@ -1,18 +1,28 @@
 import Image from "next/image";
 import { Avatar } from "@nextui-org/react";
 import moment from "moment";
-import { BiRocket } from "react-icons/bi";
+import { useRouter } from "next/router";
 
-import { RiMapPin2Line } from "react-icons/ri";
+import { BiRocket } from "react-icons/bi";
+import {
+  toggleMainModal,
+  setMainModalContent,
+} from "../../../../store/slices/modalsSlice";
+import { RiMapPin2Line, RiQrCodeLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { toggleMobileNav } from "../../../../store/slices/modalsSlice";
 import { useRef } from "react";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { triggerStickyUserInfo } from "../../../../store/slices/profileSlice";
 import SocialLinks from "../links/SocialLinks";
+import QRcode from "../../../../utils/QRcode";
 
-const pathBlur = "/public/blurPlaceholder.png";
+const pathBlur = "/blurPlaceholder.png";
+const placeholderHeadImg = "/media/placeholders/header_placeholder.jpeg";
+
 export default function HeaderSection({ profileUser, isValid }) {
+  const router = useRouter();
+
   const stickyInfoRef = useRef();
   const {
     name,
@@ -23,8 +33,18 @@ export default function HeaderSection({ profileUser, isValid }) {
     vehiclesOwn,
     location,
     links,
+    uid,
   } = profileUser;
   const dispatch = useDispatch();
+
+  const profilePreview = (content) => {
+    dispatch(
+      setMainModalContent({
+        content: content,
+      })
+    );
+    dispatch(toggleMainModal({ open: true }));
+  };
 
   useScrollPosition(
     ({ currPos }) => {
@@ -35,6 +55,7 @@ export default function HeaderSection({ profileUser, isValid }) {
     [],
     stickyInfoRef
   );
+  console.log(router);
 
   return (
     <div
@@ -43,22 +64,53 @@ export default function HeaderSection({ profileUser, isValid }) {
       } pb-4 overflow-hidden`}
     >
       <div className="relative h-[125px] md:h-[200px] ">
+        <div
+          className="absolute z-30 flex items-center justify-center w-8 h-8 transition-transform duration-300 bg-white rounded-full cursor-pointer text-alt right-2 bottom-2 hover:scale-110 bg-opacity-60"
+          onClick={() =>
+            profilePreview(
+              <QRcode
+                valueLink={
+                  window.location.href ?? `${window.location.hostname}/u/${uid}`
+                }
+                userName={name}
+              />
+            )
+          }
+        >
+          <RiQrCodeLine aria-hidden="true" size="1em" />
+        </div>
         <div className="absolute inset-0 z-10 w-full h-full " />
-        {coverImg ? (
-          <Image
-            onLoadingComplete={() => console.log("complete")}
-            src={coverImg}
-            alt="banner image"
-            className="w-full h-full "
-            layout="fill"
-            placeholder="blur"
-            blurDataURL={pathBlur}
-            objectFit="cover"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-r from-ag-green to-ag-yellow"></div>
-        )}
-        <div className="absolute z-20 flex items-center border-[5px] rounded-full left-2 -bottom-14 md:left-4 border-main">
+        <Image
+          onLoadingComplete={() => console.log("complete")}
+          src={coverImg ? coverImg : placeholderHeadImg}
+          alt="banner image"
+          className="w-full h-full "
+          layout="fill"
+          placeholder="blur"
+          blurDataURL={pathBlur}
+          objectFit="cover"
+        />
+        <div
+          className="absolute z-20 flex items-center border-[5px] rounded-full left-2 -bottom-14 md:left-4 border-main cursor-pointer"
+          onClick={() =>
+            profilePreview(
+              <>
+                <div className="relative h-[384px] w-[384px]">
+                  <Image
+                    src={avatarImg}
+                    alt="banner image"
+                    className="w-full h-full "
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL={pathBlur}
+                    objectFit="cover"
+                    objectPosition="center center"
+                  />
+                </div>
+              </>
+            )
+          }
+        >
           {avatarImg ? (
             <Avatar
               src={avatarImg}
@@ -66,6 +118,7 @@ export default function HeaderSection({ profileUser, isValid }) {
               zoomed
               borderWeight="0px"
               color="white"
+              className="cursor-pointer"
             />
           ) : (
             <Avatar
@@ -91,21 +144,23 @@ export default function HeaderSection({ profileUser, isValid }) {
       <div
         className={`${
           !isValid ? "mt-16" : "mt-10 md:mt-16"
-        } mx-4  md:mx-6 flex justify-between items-start flex-col md:flex-row`}
+        } mx-4  md:mx-6 flex justify-between items-start flex-row`}
       >
         <div ref={stickyInfoRef}>
-          <div className="flex items-center font-bold tracking-tighter text-white">
-            <h1 className="text-3xl md:text-2xl">{name ? name : email} </h1>
+          <div className="flex items-center font-extrabold tracking-tight text-white md:font-bold">
+            <h1 className="text-3xl md:text-2xl">
+              {name ? name : email.split("@")[0]}
+            </h1>
             {/* {vehiclesOwn > 0 && (
               <div className="flex items-center justify-center w-6 h-6 ml-1 text-xs rounded-full bg-ag-green text-main">
                 {vehiclesOwn}
               </div>
             )} */}
           </div>
-          <div className="grid grid-cols-3 gap-4 mt-1">
+          <div className="grid grid-cols-2 gap-3 mt-1">
             <div className="inline-flex items-center text-inputGray w-fit">
               <BiRocket
-                className="-ml-0.5 mr-1.5 text-inputGray "
+                className="-ml-0.5 mr-1 text-inputGray "
                 size="1em"
                 aria-hidden="true"
               />
@@ -117,7 +172,7 @@ export default function HeaderSection({ profileUser, isValid }) {
             {location && (
               <div className="inline-flex items-center text-inputGray w-fit">
                 <RiMapPin2Line
-                  className="-ml-0.5 mr-1.5 "
+                  className="-ml-0.5 mr-1 "
                   aria-hidden="true"
                   size="1em"
                 />

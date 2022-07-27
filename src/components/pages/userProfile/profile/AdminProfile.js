@@ -25,7 +25,7 @@ export default function AdminProfile() {
     const userRef = doc(firestore, `users/${user.uid}`);
 
     if (CheckSpecialChars(values.name)) {
-      setError("Special characters not allowed");
+      setError("Special characters are not allowed");
       return;
     }
     try {
@@ -72,7 +72,7 @@ export default function AdminProfile() {
         </div>
       </form>
       {error && (
-        <div className="px-2 py-3 mt-2 text-xs rounded-sm bg-alt text-textGray">
+        <div className="px-2 py-3 mt-2 text-xs font-semibold tracking-wide text-white rounded-md bg-accent-red">
           {error}
         </div>
       )}
