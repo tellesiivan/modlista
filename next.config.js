@@ -6,6 +6,7 @@ const nextConfig = {
       "images.unsplash.com",
       "firebasestorage.googleapis.com",
       "speedhunters-wp-production.s3.amazonaws.com",
+      "lh3.googleusercontent.com",
     ],
   },
 };

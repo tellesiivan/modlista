@@ -4,14 +4,14 @@ const tabOptions = [{ opt: "Garage" }, { opt: "Add Vehicle" }];
 
 export default function Tab({ selectedTab, setSelectedTab }) {
   return (
-    <div className="grid grid-cols-2 p-1 my-2 rounded-md place-items-center bg-greyDark">
+    <div className="grid grid-cols-2 p-1 my-2 rounded-md place-items-center bg-alt">
       {tabOptions.map((option, index) => (
         <p
           key={index}
           className={`${
             selectedTab === option.opt
-              ? "text-inputGray bg-dark "
-              : "text-gray-400 "
+              ? "text-white bg-dark "
+              : "text-inputGray "
           }  py-2 w-full text-center cursor-pointer text-xs duration-200 transition-colors rounded-md`}
           onClick={() => setSelectedTab(option.opt)}
         >

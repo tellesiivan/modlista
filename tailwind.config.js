@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         main: "#0d1213",
-        alt: "#1b1f25",
+        alt: "#1d1f21",
         dark: "#0e0f10",
         greyDark: "#2c323b",
         darkAlt: "#232529",
@@ -23,6 +23,7 @@ module.exports = {
         accent: {
           yellow: "#f1c5520d",
           purple: "#290e44",
+          red: "#37011c",
         },
         status: {
           success: "#4ad493",

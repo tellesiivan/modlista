@@ -11,14 +11,16 @@ export default function RadioGroupTemplate({
       <h2 className="mt-0 mb-2 text-sm text-inputGray ">{label}</h2>
       <div className="w-full ">
         <RadioGroup value={selected} onChange={setSelected}>
-          <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
+          <RadioGroup.Label className="text-white sr-only">
+            {label}
+          </RadioGroup.Label>
           <div className={`grid grid-cols-1 w-full space-x-2 `}>
             {options.map((option) => (
               <RadioGroup.Option
                 key={option}
                 value={option}
                 className={({ active, checked }) =>
-                  `${checked ? "bg-dark  text-textGray" : "bg-alt text-dark"}
+                  `${checked ? "bg-alt  text-textGray" : "bg-alt text-dark"}
                     relative flex cursor-pointer rounded-md px-4 py-2  focus:outline-none h-12 `
                 }
               >
@@ -30,7 +32,7 @@ export default function RadioGroupTemplate({
                           <RadioGroup.Label
                             as="p"
                             className={`font-medium  ${
-                              checked ? "text-textGray" : "text-gray-400"
+                              checked ? "text-white" : "text-gray-400"
                             }`}
                           >
                             {option}

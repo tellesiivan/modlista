@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import useVehicleMods from "../../../../../Hooks/useVehicleMods";
 import ModList from "./modContent/ModList";
 import NoMods from "./modContent/NoMods";
+import { Loading } from "@nextui-org/react";
 
 const modsTypes = [
   "Interior",
@@ -70,7 +71,14 @@ export default function ModTabs({ vehicle }) {
             <ModList mods={mods} />
           </>
         ) : loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center w-full mt-3">
+            <Loading
+              type="points-opacity"
+              size="sm"
+              color="white"
+              className="w-16 h-4"
+            />
+          </div>
         ) : (
           <NoMods mod={modsTypes[activeTabIndex]} />
         )}
