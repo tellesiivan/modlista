@@ -10,8 +10,8 @@ const modType = [
   { name: "Exterior" },
   { name: "Suspension" },
   { name: "Exhaust" },
-  { name: "Wheels/Tires" },
-  { name: "Accessories/Other" },
+  { name: "Wheels & Tires" },
+  { name: "Accessories" },
   { name: "Lighting" },
 ];
 
