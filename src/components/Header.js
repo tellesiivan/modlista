@@ -2,7 +2,6 @@ import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
 import { auth } from "../firebase/clientApp";
-import logo from "../../public/logo-white.png";
 import { authModalStatus, toggleSidebar } from "../store/slices/modalsSlice";
 import Link from "next/link";
 import Avatar from "./helpers/Avatar";
@@ -16,13 +15,13 @@ export default function Header() {
       <Link href="/">
         <a className="relative">
           <Image
-            src={logo}
+            src="/logo-512.png"
             alt="logo"
-            height="26"
-            width="26"
+            height="42"
+            width="42"
             className="cursor-pointer"
           />
-          <span className="text-white -tracking-wide absolute px-2.5 py-0.5 text-[9px] rounded-full top-0.5 -right-9 bg-accent-purple font-mono border border-greyDark">
+          <span className="text-white -tracking-wide absolute px-2.5 py-0.5 text-[9px] rounded-full top-0.5 -right-9 bg-main font-mono border border-greyDark">
             BETA
           </span>
         </a>

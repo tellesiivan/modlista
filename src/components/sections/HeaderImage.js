@@ -8,9 +8,9 @@ export default function HeaderImage() {
 
   return (
     <div className="relative m-3 h-[500px] w-[calc(100%_-_24px)]  bg-main">
-      <div className="absolute z-20 hidden md:inline-flex bottom-2 right-2 bg-opacity-80">
+      <div className="absolute z-20 hidden p-3 rounded-lg md:inline-flex bottom-2 right-2 bg-opacity-80 bg-main">
         {" "}
-        <h2 className="mx-auto font-bold tracking-wider text-center text-white md:text-2xl group ">
+        <h2 className="mx-auto font-semibold tracking-wider text-center text-white md:text-xl group ">
           Your{" "}
           <span className="italic font-light text-ag-green group-hover:text-ag-yellow">
             mods
