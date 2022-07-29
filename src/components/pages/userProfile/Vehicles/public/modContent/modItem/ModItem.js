@@ -87,7 +87,7 @@ export default function ModItem({ mod }) {
 
           <Link href={mod.link}>
             <a
-              className="flex items-center p-1 rounded-full text-ag-green text-opacity-90 hover:text-opacity-100 "
+              className="flex items-center p-1 rounded-full text-ag-green text-opacity-60 hover:text-opacity-100 "
               target="_blank"
             >
               <ExternalLinkIcon className="w-4 h-4 mr-1" />{" "}

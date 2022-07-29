@@ -11,7 +11,7 @@ export default function ModRating({ ratingValue, setRatingValue }) {
       onClick={handleRating}
       ratingValue={ratingValue}
       size={20}
-      fillColor="#fed156"
+      fillColor="#88f1b6"
     />
   );
 }

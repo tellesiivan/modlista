@@ -1,5 +1,8 @@
-import React from "react";
-
+import Image from "next/image";
 export default function AdminEvents() {
-  return <div className="text-white">This is the events section</div>;
+  return (
+    <>
+      <section className="relative w-full p-2 mt-2 rounded-lg h-72 bg-alt"></section>
+    </>
+  );
 }

@@ -55,7 +55,6 @@ export default function HeaderSection({ profileUser, isValid }) {
     [],
     stickyInfoRef
   );
-  console.log(router);
 
   return (
     <div
@@ -63,7 +62,7 @@ export default function HeaderSection({ profileUser, isValid }) {
         (vehiclesOwn === 0 || !vehiclesOwn) && "border-b border-greyDark pb-2"
       } pb-4 overflow-hidden`}
     >
-      <div className="relative h-[125px] md:h-[200px] ">
+      <div className="relative h-[155px] md:h-[280px] ">
         <div
           className="absolute z-30 flex items-center justify-center w-8 h-8 text-white transition-transform duration-300 rounded-full cursor-pointer bg-main right-2 bottom-2 hover:scale-110 bg-opacity-60"
           onClick={() =>
@@ -144,7 +143,7 @@ export default function HeaderSection({ profileUser, isValid }) {
       <div
         className={`${
           !isValid ? "mt-16" : "mt-10 md:mt-16"
-        } mx-4  md:mx-6 flex justify-between items-start flex-row`}
+        } ml-4 mr-2  md:mx-6 flex justify-between items-start flex-row`}
       >
         <div ref={stickyInfoRef}>
           <div className="flex items-center font-extrabold tracking-tight text-white md:font-bold">
@@ -157,33 +156,37 @@ export default function HeaderSection({ profileUser, isValid }) {
               </div>
             )} */}
           </div>
-          <div className="grid grid-cols-2 gap-3 mt-1">
-            <div className="inline-flex items-center text-inputGray w-fit">
-              <BiRocket
-                className="-ml-0.5 mr-1 text-inputGray "
-                size="1em"
-                aria-hidden="true"
-              />
-              <p className="text-xs whitespace-nowrap">
-                Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
-              </p>
-            </div>
-            {/* List user website link && favorite shop */}
-            {location && (
-              <div className="inline-flex items-center text-inputGray w-fit">
-                <RiMapPin2Line
-                  className="-ml-0.5 mr-1 "
-                  aria-hidden="true"
-                  size="1em"
-                />
-                <p className="text-xs whitespace-nowrap">
-                  {location.city}, {location.stateAbbr}
-                </p>
-              </div>
-            )}
-          </div>
         </div>
         {links && <SocialLinks links={links} />}
+      </div>
+      <div
+        className={`flex mx-4 mb-2 space-x-4 ${
+          links ? "md:-mt-1 mt-0" : "mt-1"
+        } md:mx-6`}
+      >
+        <div className="inline-flex items-center text-inputGray w-fit">
+          <BiRocket
+            className="-ml-0.5 mr-1 text-inputGray "
+            size="1em"
+            aria-hidden="true"
+          />
+          <p className="text-xs whitespace-nowrap">
+            Joined {moment(new Date(createdAt)).format("MMMM YYYY")}
+          </p>
+        </div>
+        {/* List user website link && favorite shop */}
+        {location && (
+          <div className="inline-flex items-center text-inputGray w-fit">
+            <RiMapPin2Line
+              className="-ml-0.5 mr-1 "
+              aria-hidden="true"
+              size="1em"
+            />
+            <p className="text-xs whitespace-nowrap">
+              {location.city}, {location.stateAbbr}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -45,9 +45,9 @@ export default function MainModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-sm overflow-hidden text-left align-middle transition-all transform rounded-md shadow-xl bg-main">
+                <Dialog.Panel className="relative w-auto overflow-hidden text-left align-middle transition-all transform rounded-md shadow-xl bg-main">
                   <div
-                    className="absolute z-50 flex items-center justify-center w-6 h-6 transition-transform bg-white rounded-full cursor-pointer top-1 right-1 hover:scale-110 drop-shadow-xl"
+                    className="absolute z-50 flex items-center justify-center w-6 h-6 transition-transform bg-gray-200 rounded-full cursor-pointer top-1 right-1 hover:scale-110 "
                     onClick={() =>
                       dispatch(
                         toggleMainModal({
