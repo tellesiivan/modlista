@@ -21,7 +21,6 @@ function UserLocation({ user }) {
       const req = await fetch(`https://api.zippopotam.us/us/${zip}`);
       if (!req.ok) throw new Error("Unable to find location.");
       const res = await req.json();
-      // TODO: format
 
       const formatLoc = {
         city: res.places[0]["place name"],

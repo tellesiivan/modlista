@@ -65,7 +65,6 @@ export default function ModTabs({ vehicle }) {
         />
       </div>
       <div className="p-2 ">
-        {/* TODO: Add loading state UI */}
         {mods && mods.length !== 0 ? (
           <>
             <ModList mods={mods} />
