@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* COLORS */
+
+:root {
+  --main: #080b0b;
+  --alt: #131819;
+  --darkAlpha: #0b0b0b;
+  --white: #ffffff;
+  --grey: #bdbdbd;
+}
+
 @layer components {
   .outlineBtn {
     @apply px-6 py-1.5 text-xs border-2 border-black rounded-full;
@@ -20,7 +30,7 @@
 }
 @layer base {
   html {
-    @apply bg-[#0d1213];
+    @apply bg-[#080b0b];
   }
 }
 * {
@@ -73,4 +83,42 @@ input[type="number"] {
 }
 .profile-width {
   width: calc(100% - 24em);
+}
+
+/* Calendar Colors*/
+.rdrDateDisplayWrapper {
+  background-color: var(--main) !important;
+}
+.rdrDateDisplayItem {
+  border-radius: 4px;
+  background-color: var(--alt) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--alt) !important;
+}
+.rdrDateDisplayItemActive {
+  border: 1px solid var(--main) !important;
+}
+.rdrCalendarWrapper {
+  background-color: var(--darkAlpha) !important;
+}
+.rdrNextPrevButton {
+  background-color: var(--alt) !important;
+}
+.rdrNextButton i {
+  border-color: transparent transparent transparent #fff !important;
+}
+.rdrPprevButton i {
+  border-color: transparent #fff transparent transparent !important;
+}
+.rdrDayNumber span {
+  color: var(--grey) !important;
+}
+.rdrMonth {
+  width: 100% !important;
+}
+.rdrDateDisplayItemActive input {
+  color: #fffbf0 !important;
+}
+.rdrMonthAndYearPickers select {
+  filter: contrast(0.25) !important;
 }

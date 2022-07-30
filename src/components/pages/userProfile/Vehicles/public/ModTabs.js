@@ -51,7 +51,7 @@ export default function ModTabs({ vehicle }) {
                 ref={(el) => (tabsRef.current[idx] = el)}
                 className={`flex-1 flex items-center justify-center px-4 h-11 text-sm text-center snap-end font-semibold ${
                   activeTabIndex === idx ? "text-white" : "text-gray-500"
-                } cursor-pointer md:hover:bg-alt border-b border-greyDark  whitespace-nowrap`}
+                } cursor-pointer md:hover:bg-dark border-b border-greyDark  whitespace-nowrap`}
                 onClick={() => setActiveTabIndex(idx)}
               >
                 {tab}

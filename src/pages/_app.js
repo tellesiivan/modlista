@@ -1,4 +1,6 @@
 import "../styles/globals.css";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 import { Provider } from "react-redux";
 import { store } from "../store/index";
 import Layout from "../components/Layout";
