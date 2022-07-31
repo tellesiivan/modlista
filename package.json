@@ -25,6 +25,7 @@
     "next-transpile-modules": "^9.0.0",
     "npm": "^8.12.2",
     "react": "18.1.0",
+    "react-date-range": "^1.4.0",
     "react-dom": "18.1.0",
     "react-firebase-hooks": "^5.0.3",
     "react-horizontal-scrolling-menu": "^2.8.2",
