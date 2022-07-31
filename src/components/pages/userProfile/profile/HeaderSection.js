@@ -62,7 +62,7 @@ export default function HeaderSection({ profileUser, isValid }) {
         (vehiclesOwn === 0 || !vehiclesOwn) && "border-b border-greyDark pb-2"
       } pb-4 overflow-hidden`}
     >
-      <div className="relative h-[155px] md:h-[280px] ">
+      <div className="relative h-[135px] md:h-[280px] ">
         <div
           className="absolute z-30 flex items-center justify-center w-8 h-8 text-white transition-transform duration-300 rounded-full cursor-pointer bg-main right-2 bottom-2 hover:scale-110 bg-opacity-60"
           onClick={() =>

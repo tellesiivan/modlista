@@ -122,3 +122,8 @@ input[type="number"] {
 .rdrMonthAndYearPickers select {
   filter: contrast(0.25) !important;
 }
+.rdrDayDisabled {
+  background-color: transparent !important;
+  opacity: 0.3 !important;
+  color: black !important;
+}
