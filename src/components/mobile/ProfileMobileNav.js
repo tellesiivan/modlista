@@ -41,7 +41,7 @@ export default function ProfileMobileNav() {
             leaveTo="translate-y-full"
           >
             <Dialog.Panel className="fixed bottom-0 w-full p-1 text-left align-middle bg-main rounded-t-[30px] shadow-xl flex flex-col z-50 h-[85%] overflow-y-scroll ">
-              <div className="relative h-full p-2 w-fulll">
+              <div className="relative w-full p-2 pb-6 md:pb-2">
                 <div className="mb-2 -mt-3 text-center">
                   <button
                     className="px-3 py-0.5 text-xs text-inputGray rounded-full outline-none bg-alt"

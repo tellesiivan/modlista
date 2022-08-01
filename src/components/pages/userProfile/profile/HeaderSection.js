@@ -143,11 +143,11 @@ export default function HeaderSection({ profileUser, isValid }) {
       <div
         className={`${
           !isValid ? "mt-16" : "mt-10 md:mt-16"
-        } ml-4 mr-2  md:mx-6 flex justify-between items-start flex-row`}
+        } ml-4 mr-2  md:mx-6 flex justify-between items-center flex-row`}
       >
         <div ref={stickyInfoRef}>
           <div className="flex items-center font-extrabold tracking-tight text-white md:font-bold">
-            <h1 className="text-3xl md:text-2xl">
+            <h1 className="text-xl md:text-2xl">
               {name ? name : email.split("@")[0]}
             </h1>
             {/* {vehiclesOwn > 0 && (
