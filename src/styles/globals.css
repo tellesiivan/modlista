@@ -10,6 +10,9 @@
   --darkAlpha: #0b0b0b;
   --white: #ffffff;
   --grey: #bdbdbd;
+  --darkAlt: #232529;
+  --inputGray: #b8bbc0;
+  --textGray: #536471;
 }
 
 @layer components {
@@ -126,4 +129,61 @@ input[type="number"] {
   background-color: transparent !important;
   opacity: 0.3 !important;
   color: black !important;
+}
+
+/* MAPBOX */
+
+.search {
+  width: 100% !important;
+  outline: none !important;
+}
+.react-mapbox-ac-menu {
+  width: calc(100% - 16px) !important;
+  position: absolute;
+  z-index: 9999;
+  background-color: var(--darkAlt) !important;
+  border: none !important;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  margin-top: 4px !important;
+}
+
+.react-mapbox-ac-input {
+  background-color: var(--darkAlt) !important;
+  height: 2.75rem;
+  padding-left: 0.5rem /* 8px */;
+  padding-right: 0.5rem /* 8px */;
+  color: var(--inputGray);
+  border-radius: 0.375rem;
+}
+.react-mapbox-ac-input::placeholder {
+  font-size: 0.875rem /* 14px */ !important;
+  line-height: 1.25rem /* 20px */ !important;
+  color: var(--textGray);
+}
+
+.react-mapbox-ac-suggestion {
+  font-size: 0.875rem /* 14px */ !important;
+  line-height: 1.25rem /* 20px */ !important;
+  color: var(--inputGray);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.react-mapbox-ac-suggestion:last-child {
+  border-bottom: none !important;
+}
+
+.react-mapbox-ac-suggestion:hover {
+  background-color: var(--alt) !important;
+}
+
+@media (min-width: 600px) {
+  .react-mapbox-ac-input {
+    font-size: 0.875rem /* 14px */ !important;
+    line-height: 1.25rem /* 20px */ !important;
+  }
 }

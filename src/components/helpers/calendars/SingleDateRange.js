@@ -14,7 +14,7 @@ export default function SingleDateRange({ title }) {
     <div>
       <label
         htmlFor="email"
-        className="block mb-1 text-xs font-medium text-inputGray"
+        className="block mb-1.5 text-xs font-medium text-inputGray"
       >
         {title}
       </label>
