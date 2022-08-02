@@ -25,7 +25,6 @@ export default function SocialLinks({ links }) {
       return type;
     }
   };
-  console.log(links);
 
   return (
     <div className="flex p-1 space-x-0.5 md:border rounded-full md:bg-dark md:border-alt  -ml-3 md:mt-0 md:ml-0">

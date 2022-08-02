@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function InputWithLabel({ title, type, placeholder }) {
+export default function InputWithLabel({
+  title,
+  type,
+  placeholder,
+  onChange,
+  value,
+}) {
   return (
     <div>
       <label
@@ -13,6 +19,8 @@ export default function InputWithLabel({ title, type, placeholder }) {
         <input
           type={type}
           name="email"
+          onChange={onChange}
+          value={value}
           id="email"
           className="block w-full h-full bg-transparent border-none rounded-md text-inputGray sm:text-sm placeholder:text-xs outline-hidden focus:border-none focus:outline-none placeholder:text-textGray"
           placeholder={placeholder}

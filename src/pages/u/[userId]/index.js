@@ -72,7 +72,7 @@ export default function UserProfile({ userData }) {
       <Head>
         <title>
           {profileUser
-            ? `${profileUser.name} profile: Modifications, Events & more.`
+            ? `SimpliMods | ${profileUser.name} profile`
             : `simpli mods`}
         </title>
         <meta
