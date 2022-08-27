@@ -23,6 +23,7 @@ export default function AddressSearch() {
               className="px-2 py-4 text-xs cursor-pointer text-inputGray hover:bg-alt/50"
               onClick={() => {
                 setValue(suggestion.place_name);
+                console.log(suggestion);
                 setSuggestions([]);
               }}
             >

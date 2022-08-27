@@ -3,6 +3,7 @@ import useSelectFile from "../../../../../Hooks/useSelectFile";
 import SingleDateRange from "../../../../helpers/calendars/SingleDateRange";
 import ImageUpload from "../../../../helpers/ImageContainers/ImageUpload";
 import InputWithLabel from "../../../../helpers/Inputs/InputWithLabel";
+import TimeRangePickerInput from "../../../../helpers/Inputs/TimeRangePickerInput";
 import AddressSearch from "../../../../helpers/map/AddressSearch";
 
 export default function CreateEvent() {
@@ -24,6 +25,7 @@ export default function CreateEvent() {
       />
       <AddressSearch />
       <SingleDateRange title="Date" />
+      <TimeRangePickerInput />
     </div>
   );
 }

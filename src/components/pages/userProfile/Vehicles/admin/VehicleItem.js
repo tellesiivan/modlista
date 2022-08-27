@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function VehicleItem({ vehicle }) {
-  console.log(vehicle);
   return (
     <div>
       <div className="px-2 mt-3 divide-y rounded-md bg-alt divide-inputMain ">

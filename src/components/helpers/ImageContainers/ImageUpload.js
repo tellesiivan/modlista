@@ -6,18 +6,19 @@ export default function ImageUpload({ onSelectedFile, selectedFile }) {
   const uploadRef = useRef(null);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-md h-44 bg-darkAlt">
+    <div className="relative w-full h-56 overflow-hidden rounded-md bg-darkAlt">
       {selectedFile ? (
         <>
           <Image
             className="w-full h-full"
+            alt=""
             layout="fill"
             objectFit="fill"
             objectPosition="center"
             src={selectedFile}
           />
           <button
-            className="absolute flex items-center justify-center w-8 h-8 transition-all rounded-full hover:scale-110 bg-black/20 bottom-2 right-2"
+            className="absolute z-40 flex items-center justify-center w-8 h-8 transition-all rounded-full hover:scale-110 bg-black/20 bottom-2 right-2"
             onClick={() => uploadRef.current?.click()}
           >
             <BsPencil
@@ -39,9 +40,9 @@ export default function ImageUpload({ onSelectedFile, selectedFile }) {
       )}
       <input
         type="file"
-        hidden
         ref={uploadRef}
         accept="image/*"
+        className="absolute inset-0 w-full h-full transition-colors duration-200 opacity-0 hover:cursor-pointer hover:bg-black/10"
         onChange={onSelectedFile}
       />
     </div>
