@@ -1,7 +1,7 @@
 Paaartly:
 
 - Share your vehicles modifications, add events, save your favorite builds and more.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Sample profile with added mods: https://www.simplimods.app/u/pRufKEb4bMVvih2hLPdn9uDdoJI3
 
 ![image](https://user-images.githubusercontent.com/59785454/179124297-9e306bd1-921d-4c12-b3e6-6226b6e4a313.png)
 
