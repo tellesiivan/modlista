@@ -1,7 +1,7 @@
 Paaartly:
 
 - Share your vehicles modifications, add events, save your favorite builds and more.
-- Sample profile with added mods: https://www.simplimods.app/u/pRufKEb4bMVvih2hLPdn9uDdoJI3
+- Sample profile with added mods: [[https://www.simplimods.app/u/pRufKEb4bMVvih2hLPdn9uDdoJI3](https://simplimods-git-main-tellesiivan.vercel.app/u/pRufKEb4bMVvih2hLPdn9uDdoJI3)](https://simplimods-git-main-tellesiivan.vercel.app/u/pRufKEb4bMVvih2hLPdn9uDdoJI3)
 
 ![image](https://user-images.githubusercontent.com/59785454/179124297-9e306bd1-921d-4c12-b3e6-6226b6e4a313.png)
 
